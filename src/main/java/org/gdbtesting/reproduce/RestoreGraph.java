@@ -1,8 +1,8 @@
 package org.gdbtesting.reproduce;
 
-import com.baidu.hugegraph.driver.GremlinManager;
-import com.baidu.hugegraph.driver.SchemaManager;
-import com.baidu.hugegraph.structure.gremlin.Result;
+import org.apache.hugegraph.driver.GremlinManager;
+import org.apache.hugegraph.driver.SchemaManager;
+import org.apache.hugegraph.structure.gremlin.Result;
 import org.apache.tinkerpop.gremlin.process.traversal.dsl.graph.GraphTraversalSource;
 import org.apache.tinkerpop.gremlin.structure.Edge;
 import org.apache.tinkerpop.gremlin.structure.Vertex;
@@ -42,25 +42,25 @@ public class RestoreGraph {
             if (connection.getDatabase().equals("HugeGraph")) {
                 GremlinManager gremlin = connection.getHugespecial().gremlin();
                 try{
-                    com.baidu.hugegraph.structure.gremlin.ResultSet hugeResult = gremlin.gremlin(arg).execute();
+                    org.apache.hugegraph.structure.gremlin.ResultSet hugeResult = gremlin.gremlin(arg).execute();
                     System.out.println(connection.getDatabase() + ": " + arg );
                     Iterator<Result> huresult = hugeResult.iterator();
                     huresult.forEachRemaining(result -> {
                         Object object = result.getObject();
-                        if (object instanceof com.baidu.hugegraph.structure.graph.Vertex) {
+                        if (object instanceof org.apache.hugegraph.structure.graph.Vertex) {
                             try {
-                                System.out.println("v[" + ((com.baidu.hugegraph.structure.graph.Vertex) object).id() + "]");
+                                System.out.println("v[" + ((org.apache.hugegraph.structure.graph.Vertex) object).id() + "]");
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
-                        } else if (object instanceof com.baidu.hugegraph.structure.graph.Edge) {
+                        } else if (object instanceof org.apache.hugegraph.structure.graph.Edge) {
                             try {
-                                System.out.println("e[" + ((com.baidu.hugegraph.structure.graph.Edge) object).id() + "]");
+                                System.out.println("e[" + ((org.apache.hugegraph.structure.graph.Edge) object).id() + "]");
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
-                        } else if (object instanceof com.baidu.hugegraph.structure.graph.Path) {
-                            List<Object> elements = ((com.baidu.hugegraph.structure.graph.Path) object).objects();
+                        } else if (object instanceof org.apache.hugegraph.structure.graph.Path) {
+                            List<Object> elements = ((org.apache.hugegraph.structure.graph.Path) object).objects();
                             elements.forEach(element -> {
                                 System.out.println(element.getClass());
                                 System.out.println(element);
@@ -88,7 +88,7 @@ public class RestoreGraph {
 
     private static void restoreGraphData(String logFilePath) throws IOException {
         String DataFilePath = logFilePath + "/JanusGraph-graphdata.txt";
-        Map<String,com.baidu.hugegraph.structure.graph.Vertex> hugeVerticesMap = new HashMap<>();
+        Map<String,org.apache.hugegraph.structure.graph.Vertex> hugeVerticesMap = new HashMap<>();
         Map<String,Vertex> VerticesMap = new HashMap<>();
         for(GremlinConnection connection: connections){
             BufferedReader in = new BufferedReader(new FileReader(DataFilePath));
@@ -102,10 +102,10 @@ public class RestoreGraph {
                 line = in.readLine();
                 String labelname = line.substring(line.indexOf(":") + 2);
                 line = in.readLine();
-                com.baidu.hugegraph.structure.graph.Vertex hugeadd = null;
+                org.apache.hugegraph.structure.graph.Vertex hugeadd = null;
                 Vertex add = null;
                 if (connection.getDatabase().equals("HugeGraph")) {
-                    hugeadd = new com.baidu.hugegraph.structure.graph.Vertex(labelname);
+                    hugeadd = new org.apache.hugegraph.structure.graph.Vertex(labelname);
                 } else {
                     add = g.addV(labelname).next();
                 }
@@ -166,12 +166,12 @@ public class RestoreGraph {
                 String InID = line.substring(line.indexOf(":") + 2);
                 Object OutVertex = null;
                 Object InVertex = null;
-                com.baidu.hugegraph.structure.graph.Edge HugeaddEdge = null;
+                org.apache.hugegraph.structure.graph.Edge HugeaddEdge = null;
                 Edge addEdge = null;
                 if (connection.getDatabase().equals("HugeGraph")){
                     OutVertex = hugeVerticesMap.get(OutID);
                     InVertex = hugeVerticesMap.get(InID);
-                    HugeaddEdge = new com.baidu.hugegraph.structure.graph.Edge(labelname).source((com.baidu.hugegraph.structure.graph.Vertex) OutVertex).target((com.baidu.hugegraph.structure.graph.Vertex) InVertex);
+                    HugeaddEdge = new org.apache.hugegraph.structure.graph.Edge(labelname).source((org.apache.hugegraph.structure.graph.Vertex) OutVertex).target((org.apache.hugegraph.structure.graph.Vertex) InVertex);
                 }
                 else{
                     OutVertex = VerticesMap.get(OutID);

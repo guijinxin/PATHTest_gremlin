@@ -1,9 +1,10 @@
 package org.gdbtesting.hugegraph;
 
-import com.baidu.hugegraph.HugeGraph;
-import com.baidu.hugegraph.driver.*;
-import com.baidu.hugegraph.structure.constant.T;
-import com.baidu.hugegraph.structure.graph.Path;
+
+import org.apache.hugegraph.driver.GraphManager;
+import org.apache.hugegraph.driver.GremlinManager;
+import org.apache.hugegraph.driver.HugeClient;
+import org.apache.hugegraph.driver.HugeClientBuilder;
 import org.apache.tinkerpop.gremlin.driver.Cluster;
 import org.apache.tinkerpop.gremlin.driver.Result;
 import org.apache.tinkerpop.gremlin.driver.ResultSet;
@@ -13,7 +14,6 @@ import org.apache.tinkerpop.gremlin.structure.Edge;
 import org.apache.tinkerpop.gremlin.structure.Graph;
 import org.apache.tinkerpop.gremlin.structure.Vertex;
 import org.gdbtesting.connection.GremlinConnection;
-import com.baidu.hugegraph.HugeFactory;
 import org.gdbtesting.tinkergraph.TinkerGraphConnection;
 
 import java.util.Arrays;
@@ -32,8 +32,11 @@ public class HugeGraphConnection extends GremlinConnection {
 
     public void setup(){
         try {
-            HugeClientBuilder builder = new HugeClientBuilder("http://localhost:8080", "hugegraph");
-            HugeClient hugeClient = new HugeClient(builder);
+            HugeClient client = HugeClient.builder(
+                    "http://localhost:8080",
+                    "hugegraph"
+            ).build();
+
             GraphManager graph = hugeClient.graph();
             System.out.println(graph.graph());
         }catch (Exception e){
@@ -132,8 +135,8 @@ public class HugeGraphConnection extends GremlinConnection {
         //class org.apache.tinkerpop.gremlin.arcadedb.structure.ArcadeEdge cannot be cast to class java.lang.Comparable
         System.out.println("query0 : " + query1);
         try {
-            com.baidu.hugegraph.structure.gremlin.ResultSet hugeResult = gremlin.gremlin(query1).execute();
-            Iterator< com.baidu.hugegraph.structure.gremlin.Result> huresult = hugeResult.iterator();
+            org.apache.hugegraph.structure.gremlin.ResultSet hugeResult = gremlin.gremlin(query1).execute();
+            Iterator< org.apache.hugegraph.structure.gremlin.Result> huresult = hugeResult.iterator();
             huresult.forEachRemaining(result -> {
                 Object object = result.getObject();
                 System.out.println(object);

@@ -12,6 +12,7 @@ import org.apache.tinkerpop.gremlin.tinkergraph.structure.TinkerFactory;
 import org.apache.tinkerpop.gremlin.tinkergraph.structure.TinkerGraph;
 import org.gdbtesting.connection.GremlinConnection;
 
+import java.net.URL;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -39,8 +40,13 @@ public class TinkerGraphConnection extends GremlinConnection {
         try {
             String file = this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
             file = file.substring(0,file.lastIndexOf("target")+6);
-            String exactfile = System.getProperty("user.dir")+"/conf/tinkergraph.yaml";
-            cluster = Cluster.open(exactfile);
+            URL resource = Thread.currentThread()
+                    .getContextClassLoader()
+                    .getResource("conf/tinkergraph.yaml");
+            if (resource == null) {
+                throw new RuntimeException("tinkergraph.yaml not found in classpath");
+            }
+            cluster = Cluster.open(resource.getPath());
             client = cluster.connect();
             setClient(client);
             setCluster(cluster);

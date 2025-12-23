@@ -1,11 +1,12 @@
 package org.gdbtesting.hugegraph;
 
-import com.baidu.hugegraph.driver.GraphManager;
-import com.baidu.hugegraph.driver.HugeClient;
-import com.baidu.hugegraph.driver.SchemaManager;
-import com.baidu.hugegraph.structure.graph.Edge;
-import com.baidu.hugegraph.structure.graph.Vertex;
-import com.baidu.hugegraph.structure.schema.PropertyKey;
+
+import org.apache.hugegraph.driver.GraphManager;
+import org.apache.hugegraph.driver.HugeClient;
+import org.apache.hugegraph.driver.SchemaManager;
+import org.apache.hugegraph.structure.graph.Edge;
+import org.apache.hugegraph.structure.graph.Vertex;
+import org.apache.hugegraph.structure.schema.PropertyKey;
 import org.gdbtesting.GraphDB;
 import org.gdbtesting.Randomly;
 import org.gdbtesting.common.GDBCommon;

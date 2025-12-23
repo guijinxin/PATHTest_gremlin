@@ -34,7 +34,10 @@
 
 
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.6.0</version>
+
                 <configuration>
                     <appendAssemblyId>false</appendAssemblyId>
                     <descriptorRefs>
@@ -46,16 +49,18 @@
                         </manifest>
                     </archive>
                 </configuration>
+
                 <executions>
                     <execution>
                         <id>make-assembly</id>
                         <phase>package</phase>
                         <goals>
-                            <goal>assembly</goal>
+                            <goal>single</goal>
                         </goals>
                     </execution>
                 </executions>
             </plugin>
+
 
         </plugins>
     </build>
@@ -98,18 +103,13 @@
         </dependency>
 
         <!-- Hugegraph -->
-        <dependency>
-            <groupId>com.baidu.hugegraph</groupId>
-            <artifactId>hugegraph-core</artifactId>
-            <version>0.11.2</version>
-        </dependency>
-
 
         <dependency>
-            <groupId>com.baidu.hugegraph</groupId>
+            <groupId>org.apache.hugegraph</groupId>
             <artifactId>hugegraph-client</artifactId>
-            <version>1.9.3</version>
+            <version>1.7.0</version>
         </dependency>
+
 
         <!-- Neo4j -->
         <!-- https://mvnrepository.com/artifact/org.neo4j/neo4j -->
@@ -131,19 +131,7 @@
         </dependency>
 
 
-        <!-- https://mvnrepository.com/artifact/com.baidu.hugegraph/hugegraph-common -->
-        <dependency>
-            <groupId>com.baidu.hugegraph</groupId>
-            <artifactId>hugegraph-common</artifactId>
-            <version>1.8.3</version>
-        </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.baidu.hugegraph/hugegraph-client -->
-        <dependency>
-            <groupId>com.baidu.hugegraph</groupId>
-            <artifactId>hugegraph-client</artifactId>
-            <version>2.0.1</version>
-        </dependency>
 
 
         <!-- End Graph Database -->

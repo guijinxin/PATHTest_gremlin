@@ -1,6 +1,6 @@
 package org.gdbtesting.connection;
 
-import com.baidu.hugegraph.driver.HugeClient;
+import org.apache.hugegraph.driver.HugeClient;
 import org.apache.tinkerpop.gremlin.driver.*;
 import org.apache.tinkerpop.gremlin.driver.remote.DriverRemoteConnection;
 import org.apache.tinkerpop.gremlin.process.traversal.dsl.graph.GraphTraversalSource;

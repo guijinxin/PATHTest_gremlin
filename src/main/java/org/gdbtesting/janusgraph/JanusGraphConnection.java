@@ -16,6 +16,7 @@ import org.janusgraph.core.JanusGraphFactory;
 import org.janusgraph.graphdb.database.StandardJanusGraph;
 
 
+import java.net.URL;
 import java.util.List;
 
 import static org.apache.tinkerpop.gremlin.process.traversal.AnonymousTraversalSource.traversal;
@@ -39,8 +40,15 @@ public class JanusGraphConnection extends GremlinConnection {
             // connect 1
             String file = this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
             file = file.substring(0, file.lastIndexOf("target")+6);
-            String exactfile = System.getProperty("user.dir")+"/conf/janusgraph.yaml";
-            cluster = Cluster.open(exactfile);
+            URL resource = Thread.currentThread()
+                    .getContextClassLoader()
+                    .getResource("conf/janusgraph.yaml");
+
+            if (resource == null) {
+                throw new RuntimeException("janusgraph.yaml not found in classpath");
+            }
+
+            cluster = Cluster.open(resource.getPath());
             client = cluster.connect();
             setClient(client);
             setCluster(cluster);

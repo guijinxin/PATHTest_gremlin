@@ -9,6 +9,11 @@ import java.util.Scanner;
 public class Starter {
 
     public static void main(String[] args) {
+        // Fine tuning
+        // String[] mockArgs = {"5", "100", "200", "20", "20", "100"};
+        String[] mockArgs = {"5", "100", "200", "5", "5", "1000"};
+        // String[] mockArgs = {"5", "100", "200", "5", "5", "300"};
+        args = mockArgs;
         if (args.length != 6)
             System.out.println("Missing Parameters!, 1.QueryDepth, 2.VerMaxNum, 3.EdgeMaxNum, 4.EdgeLabelNum, 5.VerLabelNum, 6.QueryNum");
         GraphGlobalState state = new GraphGlobalState(Integer.parseInt(args[0]));

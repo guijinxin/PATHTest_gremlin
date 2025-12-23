@@ -1,8 +1,8 @@
 package org.gdbtesting.validation;
 
-import com.baidu.hugegraph.driver.GraphManager;
-import com.baidu.hugegraph.structure.graph.Edge;
-import com.baidu.hugegraph.structure.graph.Vertex;
+import org.apache.hugegraph.driver.GraphManager;
+import org.apache.hugegraph.structure.graph.Edge;
+import org.apache.hugegraph.structure.graph.Vertex;
 import org.gdbtesting.connection.GremlinConnection;
 import org.gdbtesting.hugegraph.HugeGraphConnection;
 

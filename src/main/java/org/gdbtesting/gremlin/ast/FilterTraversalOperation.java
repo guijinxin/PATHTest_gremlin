@@ -1,6 +1,5 @@
 package org.gdbtesting.gremlin.ast;
 
-import com.baidu.hugegraph.backend.id.Id;
 import org.gdbtesting.Randomly;
 
 import java.util.List;

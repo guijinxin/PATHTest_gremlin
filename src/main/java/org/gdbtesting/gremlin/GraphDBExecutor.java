@@ -1,8 +1,8 @@
 package org.gdbtesting.gremlin;
 
-import com.baidu.hugegraph.driver.GraphManager;
-import com.baidu.hugegraph.driver.GremlinManager;
-import com.baidu.hugegraph.driver.HugeClient;
+import org.apache.hugegraph.driver.GraphManager;
+import org.apache.hugegraph.driver.GremlinManager;
+import org.apache.hugegraph.driver.HugeClient;
 import org.apache.tinkerpop.gremlin.driver.Client;
 import org.apache.tinkerpop.gremlin.driver.Result;
 import org.apache.tinkerpop.gremlin.process.traversal.dsl.graph.GraphTraversalSource;
@@ -62,28 +62,29 @@ public class GraphDBExecutor {
                 List<Object> list = new ArrayList<>();
                 if(connection.getDatabase().equals("HugeGraph")){
                     GremlinManager gremlin = connection.getHugespecial().gremlin();
-                        com.baidu.hugegraph.structure.gremlin.ResultSet hugeResult = gremlin.gremlin(queryList.get(i)).execute();
-                        Iterator<com.baidu.hugegraph.structure.gremlin.Result> huresult = hugeResult.iterator();
+
+                        org.apache.hugegraph.structure.gremlin.ResultSet hugeResult = gremlin.gremlin(queryList.get(i)).execute();
+                        Iterator<org.apache.hugegraph.structure.gremlin.Result> huresult = hugeResult.iterator();
                         Long t = System.currentTimeMillis() - time;
                         System.out.println("query " + i + " in " + t + "ms");
                         huresult.forEachRemaining(result -> {
                             Object object = result.getObject();
-                            if (object instanceof com.baidu.hugegraph.structure.graph.Vertex) {
+                            if (object instanceof org.apache.hugegraph.structure.graph.Vertex) {
                                 try {
-                                    out.write("v[" + ((com.baidu.hugegraph.structure.graph.Vertex) object).id() + "]");
+                                    out.write("v[" + ((org.apache.hugegraph.structure.graph.Vertex) object).id() + "]");
                                     list.add(object);
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
-                            } else if (object instanceof com.baidu.hugegraph.structure.graph.Edge) {
+                            } else if (object instanceof org.apache.hugegraph.structure.graph.Edge) {
                                 try {
-                                    out.write("e[" + ((com.baidu.hugegraph.structure.graph.Edge) object).id() + "]");
+                                    out.write("e[" + ((org.apache.hugegraph.structure.graph.Edge) object).id() + "]");
                                     list.add(object);
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
-                            } else if (object instanceof com.baidu.hugegraph.structure.graph.Path) {
-                                List<Object> elements = ((com.baidu.hugegraph.structure.graph.Path) object).objects();
+                            } else if (object instanceof org.apache.hugegraph.structure.graph.Path) {
+                                List<Object> elements = ((org.apache.hugegraph.structure.graph.Path) object).objects();
                                 elements.forEach(element -> {
                                     System.out.println(element.getClass());
                                     System.out.println(element);
@@ -171,12 +172,12 @@ public class GraphDBExecutor {
         if(connection.getDatabase().equals("HugeGraph")){
             HugeClient hc = connection.getHugespecial();
             GraphManager graph = hc.graph();
-            Map<String,com.baidu.hugegraph.structure.graph.Vertex> verticesMap = new HashMap<>();
+            Map<String,org.apache.hugegraph.structure.graph.Vertex> verticesMap = new HashMap<>();
             out.write("Vertex:");
             for(GraphData.VertexObject v : addV){
                 try {
                     String Label = v.getLabel();
-                    com.baidu.hugegraph.structure.graph.Vertex add = new com.baidu.hugegraph.structure.graph.Vertex(Label);
+                    org.apache.hugegraph.structure.graph.Vertex add = new org.apache.hugegraph.structure.graph.Vertex(Label);
                     Map<String, GraphConstant> map = v.getProperites();
                     out.newLine();
                     out.write("Label: " + add.label());
@@ -207,9 +208,9 @@ public class GraphDBExecutor {
             out.newLine();
             try {
                 for (GraphData.EdgeObject e : addE) {
-                    com.baidu.hugegraph.structure.graph.Vertex outVertex = verticesMap.get(tempMap.get(e.getOutVertex().getId()));
-                    com.baidu.hugegraph.structure.graph.Vertex inVertex = verticesMap.get(tempMap.get(e.getInVertex().getId()));
-                    com.baidu.hugegraph.structure.graph.Edge addEdge = new com.baidu.hugegraph.structure.graph.Edge(e.getLabel()).source(outVertex).target(inVertex);
+                    org.apache.hugegraph.structure.graph.Vertex outVertex = verticesMap.get(tempMap.get(e.getOutVertex().getId()));
+                    org.apache.hugegraph.structure.graph.Vertex inVertex = verticesMap.get(tempMap.get(e.getInVertex().getId()));
+                    org.apache.hugegraph.structure.graph.Edge addEdge = new org.apache.hugegraph.structure.graph.Edge(e.getLabel()).source(outVertex).target(inVertex);
                     Map<String, GraphConstant> map = e.getProperites();
                     out.write("Label: " + addEdge.label());
                     out.newLine();
@@ -417,18 +418,18 @@ public class GraphDBExecutor {
                         sb.append("n:").append(idList.toString());
                     }
                     else{
-                        if(elements.get(0) instanceof com.baidu.hugegraph.structure.graph.Vertex){
+                        if(elements.get(0) instanceof org.apache.hugegraph.structure.graph.Vertex){
                             for(Object e : elements){
-                                idList.add(vertexIDMap.get(connections.get(j).getDatabase()).get(((com.baidu.hugegraph.structure.graph.Vertex)e).id().toString()));
+                                idList.add(vertexIDMap.get(connections.get(j).getDatabase()).get(((org.apache.hugegraph.structure.graph.Vertex)e).id().toString()));
                             }
                             if(idList != null && idList.size() > 0){
                                 Collections.sort(idList);
                             }
                             sb.append("v:").append(idList.toString());
                         }
-                        else if(elements.get(0) instanceof com.baidu.hugegraph.structure.graph.Edge){
+                        else if(elements.get(0) instanceof org.apache.hugegraph.structure.graph.Edge){
                             for(Object e : elements){
-                                idList.add(edgeIDMap.get(connections.get(j).getDatabase()).get(((com.baidu.hugegraph.structure.graph.Edge)e).id().toString()));
+                                idList.add(edgeIDMap.get(connections.get(j).getDatabase()).get(((org.apache.hugegraph.structure.graph.Edge)e).id().toString()));
                             }
                             if(idList != null && idList.size() > 0){
                                 Collections.sort(idList);

@@ -1,10 +1,13 @@
 package org.gdbtesting.hugegraph
-import com.baidu.hugegraph.HugeFactory
 import org.apache.tinkerpop.gremlin.structure.T
+import org.apache.hugegraph.driver.HugeClient;
+import org.apache.hugegraph.driver.SchemaManager;
 
-conf = "conf/hugegraph.properties"
-graph = HugeFactory.open(conf);
-schema = graph.schema();
+HugeClient client = HugeClient.builder("http://localhost:8080", "hugegraph")
+        .build();
+
+SchemaManager schema = client.schema();
+
 
 schema.propertyKey("name").asText().ifNotExist().create();
 schema.propertyKey("age").asInt().ifNotExist().create();
