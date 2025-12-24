@@ -1,5 +1,6 @@
 package org.gdbtesting.gremlin;
 
+import org.apache.hugegraph.driver.SchemaManager;
 import org.gdbtesting.Randomly;
 import org.gdbtesting.arabgodb.ArangodbConnection;
 import org.gdbtesting.arcadedb.ArcadedbConnection;
@@ -32,7 +33,7 @@ public class GremlinGraphProvider implements GraphDBProvider<GraphGlobalState, G
     protected GraphGlobalState state;
     private GraphDBExecutor graphDBSetup;
 
-    public boolean containsHuge = true;
+    public boolean containsHuge = false;
 
 
     protected String version;
@@ -53,13 +54,13 @@ public class GremlinGraphProvider implements GraphDBProvider<GraphGlobalState, G
         this.version = globalState.getDbVersion();
         // TODO: User-defined graph database
         List<GremlinConnection> connections = Arrays.asList(
-                new HugeGraphConnection("0.11.2", "conf/remote-hugegraph.properties"),
+                //new HugeGraphConnection("0.11.2", "conf/remote-hugegraph.properties"),
                 //new Neo4jConnection("3.5.27", "conf/remote-neo4j.properties"),
                 //new ArangodbConnection("3.8.4","conf/remote-arango.properties"),
                 //new ArcadedbConnection("21.12.1","conf/remote-arcade.properties")
-                new JanusGraphConnection("0.5.3", "conf/remote-janusgraph.properties"),
+                new TinkerGraphConnection("3.7.3", "conf/remote-tinkergraph.properties"),
+                new JanusGraphConnection("1.1.0", "conf/remote-janusgraph.properties")
                 //new OrientdbConnection("0.5.3", "conf/remote-orient.properties")
-                new TinkerGraphConnection("3.4.10", "conf/remote-tinkergraph.properties")
         );
 
        /* List<GremlinConnection> connections = Arrays.asList(new TinkerGraphConnection(""));*/
@@ -103,7 +104,9 @@ public class GremlinGraphProvider implements GraphDBProvider<GraphGlobalState, G
             }
         }
     }
-
+    // createGraphData() -> executeActions() -> executeAction(): two actions, one create node, one create edge. ->
+    // addVertexAndProperty() create node date and store it in aadVMap and graphData
+    // addEdgeAndProperty() create edge data and store it in addEMap and graphData
     public void executeAction(Action a, int number){
         switch (a){
             case ADD_VERTEX_PROPERTY:
@@ -257,7 +260,9 @@ public class GremlinGraphProvider implements GraphDBProvider<GraphGlobalState, G
             String labelName = GDBCommon.createVertexLabelName(i);
             // generate randomly properties
             List<GraphSchema.GraphVertexProperty> list = new ArrayList<>();
-            if(this.getConnection().getHugespecial() != null){
+            if(this.getConnection().getHugespecial() != null &&
+                    this.getConnection().getHugespecial().schema().vertexLabel(labelName) == null)
+            {
                 this.getConnection().getHugespecial().schema().vertexLabel(labelName).ifNotExist().create();
             }
             int random = (int) randomly.getInteger(vertexProperties.size());
@@ -307,27 +312,32 @@ public class GremlinGraphProvider implements GraphDBProvider<GraphGlobalState, G
     }
 
     public void whetherHuge(String propertyName, ConstantType type) {
-        if(containsHuge)
-            switch (type){
-                case INTEGER:
-                    this.getConnection().getHugespecial().schema().propertyKey(propertyName).asInt().ifNotExist().create();
-                    break;
-                case STRING:
-                    this.getConnection().getHugespecial().schema().propertyKey(propertyName).asText().ifNotExist().create();
-                    break;
-                case DOUBLE:
-                    this.getConnection().getHugespecial().schema().propertyKey(propertyName).asDouble().ifNotExist().create();
-                    break;
-                case BOOLEAN:
-                    this.getConnection().getHugespecial().schema().propertyKey(propertyName).asBoolean().ifNotExist().create();
-                    break;
-                case FLOAT:
-                    this.getConnection().getHugespecial().schema().propertyKey(propertyName).asFloat().ifNotExist().create();
-                    break;
-                case LONG:
-                    this.getConnection().getHugespecial().schema().propertyKey(propertyName).asLong().ifNotExist().create();
-                    break;
+        if(containsHuge) {
+            SchemaManager schema = this.getConnection().getHugespecial().schema();
+            if (schema.propertyKey(propertyName) == null) {
+                switch (type) {
+                    case INTEGER:
+                        this.getConnection().getHugespecial().schema().propertyKey(propertyName).asInt().ifNotExist().create();
+                        break;
+                    case STRING:
+                        this.getConnection().getHugespecial().schema().propertyKey(propertyName).asText().ifNotExist().create();
+                        break;
+                    case DOUBLE:
+                        this.getConnection().getHugespecial().schema().propertyKey(propertyName).asDouble().ifNotExist().create();
+                        break;
+                    case BOOLEAN:
+                        this.getConnection().getHugespecial().schema().propertyKey(propertyName).asBoolean().ifNotExist().create();
+                        break;
+                    case FLOAT:
+                        this.getConnection().getHugespecial().schema().propertyKey(propertyName).asFloat().ifNotExist().create();
+                        break;
+                    case LONG:
+                        this.getConnection().getHugespecial().schema().propertyKey(propertyName).asLong().ifNotExist().create();
+                        break;
+                }
             }
+
+        }
     }
 
     public void createEdgeIndex(){
@@ -356,7 +366,7 @@ public class GremlinGraphProvider implements GraphDBProvider<GraphGlobalState, G
                     list, Randomly.nonEmptySubList(edgeIndices));
             state.getEdgeLabelIndex().addAndGet(1);
             edgeLabels.add(edgeLabel);
-            if(containsHuge){
+            if(containsHuge && this.getConnection().getHugespecial().schema().edgeLabel(labelName) == null) {
                 this.getConnection().getHugespecial().schema().edgeLabel(labelName).link(edgeLabel.getOutLabel().getLabelName(),edgeLabel.getInLabel().getLabelName()).ifNotExist().create();
             }
             // generate randomly properties

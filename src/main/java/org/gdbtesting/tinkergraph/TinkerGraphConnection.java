@@ -1,5 +1,6 @@
 package org.gdbtesting.tinkergraph;
-
+import org.apache.tinkerpop.gremlin.util.ser.GraphBinaryMessageSerializerV1;  // 正确包路径（3.7.3）
+import org.apache.tinkerpop.gremlin.structure.io.binary.TypeSerializerRegistry;  // 只在需要自定义 registry 时用（这里不需要）
 import org.apache.tinkerpop.gremlin.driver.Cluster;
 //import org.apache.tinkerpop.gremlin.driver.RequestOptions;
 import org.apache.tinkerpop.gremlin.driver.Result;
@@ -38,15 +39,15 @@ public class TinkerGraphConnection extends GremlinConnection {
 
     public void connect(){
         try {
-            String file = this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
-            file = file.substring(0,file.lastIndexOf("target")+6);
-            URL resource = Thread.currentThread()
-                    .getContextClassLoader()
-                    .getResource("conf/tinkergraph.yaml");
-            if (resource == null) {
-                throw new RuntimeException("tinkergraph.yaml not found in classpath");
-            }
-            cluster = Cluster.open(resource.getPath());
+            // TinkerGraph 无自定义类型，直接使用默认 GraphBinary 序列化器（性能最佳）
+            GraphBinaryMessageSerializerV1 serializer = new GraphBinaryMessageSerializerV1();
+
+            cluster = Cluster.build()
+                    .addContactPoint("localhost")
+                    .port(8184)
+                    .serializer(serializer)
+                    .create();
+
             client = cluster.connect();
             setClient(client);
             setCluster(cluster);
@@ -54,6 +55,10 @@ public class TinkerGraphConnection extends GremlinConnection {
             g = traversal().withRemote(DriverRemoteConnection.using(cluster, "g"));
             setG(g);
             setGraph(g.getGraph());
+
+            System.out.println("TinkerGraph 连接成功！");
+            System.out.println("顶点数量测试: " + g.V().count().next());
+
         } catch (Exception e) {
             e.printStackTrace();
         }

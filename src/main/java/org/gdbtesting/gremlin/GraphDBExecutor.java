@@ -237,6 +237,7 @@ public class GraphDBExecutor {
             }
         }
         else{
+            System.out.println(connection.getDatabase());
             GraphTraversalSource g = connection.getG();
             // reset
             g.E().drop().iterate();

@@ -1,8 +1,6 @@
 package org.gdbtesting.arabgodb;
 
-import com.arangodb.ArangoGraph;
-import com.arangodb.tinkerpop.gremlin.structure.ArangoDBGraph;
-import com.arangodb.tinkerpop.gremlin.utils.ArangoDBConfigurationBuilder;
+
 import org.apache.commons.configuration.AbstractConfiguration;
 import org.apache.commons.configuration.BaseConfiguration;
 import org.apache.commons.configuration.Configuration;

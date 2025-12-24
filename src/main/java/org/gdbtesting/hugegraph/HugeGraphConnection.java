@@ -1,10 +1,7 @@
 package org.gdbtesting.hugegraph;
 
 
-import org.apache.hugegraph.driver.GraphManager;
-import org.apache.hugegraph.driver.GremlinManager;
-import org.apache.hugegraph.driver.HugeClient;
-import org.apache.hugegraph.driver.HugeClientBuilder;
+import org.apache.hugegraph.driver.*;
 import org.apache.tinkerpop.gremlin.driver.Cluster;
 import org.apache.tinkerpop.gremlin.driver.Result;
 import org.apache.tinkerpop.gremlin.driver.ResultSet;
@@ -54,6 +51,26 @@ public class HugeGraphConnection extends GremlinConnection {
 
             HugeClient hugeClient = HugeClient.builder("http://127.0.0.1:8080", "hugegraph").build();
             hugespecial = hugeClient;
+
+// 2. 清空 Schema
+            SchemaManager schema = hugeClient.schema();
+
+// EdgeLabel
+            schema.getEdgeLabels().forEach(el ->
+                    schema.edgeLabel(el.name()).remove()
+            );
+
+// VertexLabel
+            schema.getVertexLabels().forEach(vl ->
+                    schema.vertexLabel(vl.name()).remove()
+            );
+
+// PropertyKey
+            schema.getPropertyKeys().forEach(pk ->
+                    schema.propertyKey(pk.name()).remove()
+            );
+
+
 
         } catch (Exception e) {
             e.printStackTrace();

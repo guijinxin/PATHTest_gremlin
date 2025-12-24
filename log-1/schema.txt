@@ -1,0 +1,52 @@
+vertex: 
+vl0
+	vp2: STRING
+	vp4: FLOAT
+
+vl1
+	vp2: STRING
+	vp0: FLOAT
+	vp4: FLOAT
+	vp3: INTEGER
+	vp1: DOUBLE
+
+vl2
+	vp3: INTEGER
+
+index: 
+
+edge: 
+el0
+outVertex: vl1
+	vp2: STRING
+	vp0: FLOAT
+	vp4: FLOAT
+	vp3: INTEGER
+	vp1: DOUBLE
+
+inVertex: vl0
+	vp2: STRING
+	vp4: FLOAT
+
+	ep2: BOOLEAN
+	ep0: INTEGER
+	ep3: LONG
+
+el1
+outVertex: vl0
+	vp2: STRING
+	vp4: FLOAT
+
+inVertex: vl0
+	vp2: STRING
+	vp4: FLOAT
+
+	ep2: BOOLEAN
+	ep0: INTEGER
+
+Edgeindex: 
+el0byep2Shard
+el0byep0Shard
+el0byep3Shard
+el1byep2Shard
+el1byep0Shard

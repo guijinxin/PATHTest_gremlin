@@ -74,6 +74,7 @@ public class GraphAddEdgeAndPropertyGenerator {
                 addMap.add(addone);
             }
             else{
+                // It seems to prevent generate two similar edge, which means it inNode id, outNode id, and edge label are the same.
                 i--;
             }
         }

@@ -1,6 +1,10 @@
 package org.gdbtesting.janusgraph;
 
-
+import org.apache.tinkerpop.gremlin.util.ser.GraphBinaryMessageSerializerV1;  // 新包（3.7+）
+import org.apache.tinkerpop.gremlin.structure.io.binary.TypeSerializerRegistry;  // 这个通常不变
+import org.janusgraph.graphdb.tinkerpop.JanusGraphIoRegistry;  // JanusGraph 自定义 registry
+import org.janusgraph.graphdb.tinkerpop.JanusGraphIoRegistry;  // 来自 janusgraph-core 1.1.0
+import org.janusgraph.graphdb.tinkerpop.JanusGraphIoRegistry;  // 来自 janusgraph-core
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.tinkerpop.gremlin.driver.Cluster;
@@ -35,28 +39,32 @@ public class JanusGraphConnection extends GremlinConnection {
         System.out.println(g.V());
     }*/
 
-    public void connect(){
+    public void connect() {
         try {
-            // connect 1
-            String file = this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
-            file = file.substring(0, file.lastIndexOf("target")+6);
-            URL resource = Thread.currentThread()
-                    .getContextClassLoader()
-                    .getResource("conf/janusgraph.yaml");
+            // 构建带 JanusGraph 自定义类型支持的 registry
+            TypeSerializerRegistry registry = TypeSerializerRegistry.build()
+                    .addRegistry(JanusGraphIoRegistry.instance())
+                    .create();
 
-            if (resource == null) {
-                throw new RuntimeException("janusgraph.yaml not found in classpath");
-            }
+            // 使用 registry 构造 GraphBinary 序列化器
+            GraphBinaryMessageSerializerV1 serializer = new GraphBinaryMessageSerializerV1(registry);
 
-            cluster = Cluster.open(resource.getPath());
+            cluster = Cluster.build()
+                    .addContactPoint("localhost")
+                    .port(8185)  // 你之前 JanusGraph 的端口
+                    .serializer(serializer)
+                    .create();
+
             client = cluster.connect();
             setClient(client);
             setCluster(cluster);
 
-            // connect 2
             g = traversal().withRemote(DriverRemoteConnection.using(cluster, "g"));
             setG(g);
             setGraph(g.getGraph());
+
+            System.out.println("JanusGraph 连接成功！");
+            System.out.println("测试: " + g.V().limit(1).toList());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -64,7 +72,7 @@ public class JanusGraphConnection extends GremlinConnection {
     }
 
     public static void main(String[] args) {
-        JanusGraphConnection test = new JanusGraphConnection("0.5.3", "conf/remote-janusgraph.properties");
+        JanusGraphConnection test = new JanusGraphConnection("1.1.0", "conf/remote-janusgraph.properties");
         GraphTraversalSource g = test.getG();
         Vertex Ironman = g.addV("Hero").property("name", "Tony").property("ATK",100.00).next();
         Vertex Superman = g.addV("Hero").property("name", "Clark").property("ATK",Double.POSITIVE_INFINITY).next();
@@ -83,6 +91,9 @@ public class JanusGraphConnection extends GremlinConnection {
         }catch (Exception e){
             e.printStackTrace();
         }
+        g.E().drop().iterate();
+        g.V().drop().iterate();
+        System.out.println(g.V().count().next());
 
         System.exit(0);
     }

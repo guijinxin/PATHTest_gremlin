@@ -24,7 +24,7 @@ public class GraphAddVertexAndProeprtyGenerator {
     }
 
     public GraphData.VertexObject generateVertexAndProperty(GraphSchema.GraphVertexLabel label, int id){
-        // randomly choose vertex label
+        // randomly choose vertex label and its subset properties in label schema
         List<GraphSchema.GraphVertexProperty> properties = label.getRandomNonEmptyVertexPropertiesSubset();
         // add a vertex
         GraphData.VertexObject v = new GraphData.VertexObject();
@@ -43,7 +43,7 @@ public class GraphAddVertexAndProeprtyGenerator {
     public void generateVerticesAndProperties(int random){
         for(int i = 0; i < random; i++){
             GraphSchema.GraphVertexLabel label = state.getSchema().getRandomVertexLabel();
-            addMap.add(generateVertexAndProperty(label, i));
+            addMap.add(generateVertexAndProperty(label, i)); // i is the node name.
         }
     }
 
