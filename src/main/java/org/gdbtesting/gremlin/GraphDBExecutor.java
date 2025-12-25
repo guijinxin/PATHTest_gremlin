@@ -11,6 +11,7 @@ import org.apache.tinkerpop.gremlin.structure.Vertex;
 import org.gdbtesting.connection.GremlinConnection;
 import org.gdbtesting.gremlin.ast.GraphConstant;
 import org.gdbtesting.gremlin.query.GraphTraversalGenerator;
+import org.openrdf.query.algebra.Str;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -24,6 +25,7 @@ public class GraphDBExecutor {
     private List<GremlinConnection> connections;
     private GraphGlobalState state;
     private Map<String, String> commands;
+    // =========== Start dividing line for Grand's differential strategy ==========
     // map vertex and edge in different databases to a unified Id
     private Map<String, Map<String,String>> vertexIDMap;
     private Map<String, Map<String,String>> edgeIDMap;
@@ -31,11 +33,23 @@ public class GraphDBExecutor {
     private List<List<List<Object>>> resultList;
     private List<Map<String,Exception>> errorList;
 
+    // =========== Start dividing line for V2F,F2V strategies ==========
+    private List<String> origQueryList;
+    private List<String> mutatedQueryList;
+    private List<List<List<Object>>> origResultList;
+    private List<List<List<Object>>> mutatedResultList;
+    private List<Map<String,Exception>> origErrorResultList;
+    private List<Map<String,Exception>> mutatedErrorResultList;
+
     public GraphDBExecutor(List<GremlinConnection> connections, GraphGlobalState state){
         this.connections = connections;
         this.state = state;
     }
 
+
+    /***
+     * =========== Start dividing line for Grand strategy, which isn't related to our approach
+     */
     // generate query
     public void generateRandomQuery(){
         queryList = new ArrayList<>();
@@ -139,6 +153,43 @@ public class GraphDBExecutor {
         // record db map
         recordDBMap();
     }
+
+    /***
+     * =========== End dividing line for Grand strategy, which isn't related to our approach
+     *
+     */
+    public void generateRandomQueryAndMutate(){
+        origQueryList = new ArrayList<>();
+        mutatedQueryList = new ArrayList<>();
+        origResultList = new ArrayList<>();
+        mutatedResultList = new ArrayList<>();
+        origErrorResultList = new ArrayList<>();
+        mutatedErrorResultList = new ArrayList<>();
+
+
+    }
+
+
+    public void setupGraphWithMutationCheck(List<GraphData.VertexObject> addV, List<GraphData.EdgeObject> addE) throws IOException {
+        vertexIDMap = new HashMap<>();
+        edgeIDMap = new HashMap<>();
+        int count = 0;
+        // for each graph db
+        for(GremlinConnection connection: connections){
+            // setup database
+            long start = System.currentTimeMillis();
+            setupGraphDatabase(connection, addV, addE);
+            System.out.println("setup " + connection.getDatabase() + " in " + (System.currentTimeMillis() - start) +"ms");
+            // query database
+            start = System.currentTimeMillis();
+            executeQuery(connection, count);
+            count++;
+            System.out.println("query " + connection.getDatabase() + " in " + (System.currentTimeMillis() - start) +"ms");
+        }
+        // record db map
+        recordDBMap();
+    }
+
 
     public void recordDBMap() throws IOException {
         for(GremlinConnection connection: connections){

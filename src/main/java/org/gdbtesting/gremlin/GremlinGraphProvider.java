@@ -58,8 +58,9 @@ public class GremlinGraphProvider implements GraphDBProvider<GraphGlobalState, G
                 //new Neo4jConnection("3.5.27", "conf/remote-neo4j.properties"),
                 //new ArangodbConnection("3.8.4","conf/remote-arango.properties"),
                 //new ArcadedbConnection("21.12.1","conf/remote-arcade.properties")
-                new TinkerGraphConnection("3.7.3", "conf/remote-tinkergraph.properties"),
-                new JanusGraphConnection("1.1.0", "conf/remote-janusgraph.properties")
+                new JanusGraphConnection("1.1.0", "conf/remote-janusgraph.properties"),
+
+                new TinkerGraphConnection("3.7.3", "conf/remote-tinkergraph.properties")
                 //new OrientdbConnection("0.5.3", "conf/remote-orient.properties")
         );
 
@@ -197,6 +198,17 @@ public class GremlinGraphProvider implements GraphDBProvider<GraphGlobalState, G
         }
     }
 
+
+    public void generateRandomlyMutationTest(){
+        try{
+            System.out.println("generate query");
+            graphDBSetup.generateRandomQuery();
+            System.out.println("setup Graph and check result");
+            graphDBSetup.setupGraphWithMutationCheck(addVMap, addEMap);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /*public abstract void generateGraph() throws Exception;
 

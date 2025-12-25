@@ -57,7 +57,7 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
     private enum GraphFilterTraversal{
         PROPERTY, FILTER_TRAVERSAL, NEIGHBOR_TRAVERSAL, STATISTIC, ORDER;
     }
-
+    // todo: need add mutation support: approach core
     List<Traversal> list = new ArrayList<>();
     public String generateGraphTraversal(){
 //        System.out.println("generate depth : " + state.getGenerateDepth());
@@ -86,6 +86,7 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
 
     public Traversal generateExpressionTraversal(int depth){
 //        System.out.println("depth:" + depth);
+        // gui: start with g.V() or g.E()
         if(depth == 0) return createStartTraversal();
         if(depth >= state.getGenerateDepth()) return (Traversal) generateLeafNode();
         int x = Randomly.getInteger(0, 100);

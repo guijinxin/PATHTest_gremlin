@@ -250,35 +250,7 @@ public class GraphSchema extends AbstractGraphSchema<GraphSchema.GraphVertexLabe
         this.edgeIndices = edgeIndices;
     }
 
-    /**
-     * vertex label, properties, in/out Vertex label
-     */
-    public void setInOutVertexLabelRelations(){
-        for(GraphRelationship e : getEdgeList()){
-            GraphVertexLabel out = e.getOutLabel();
-            GraphVertexLabel in = e.getInLabel();
-            String outKey = out.getLabelName();
-            if(outVertexLabelMap.containsKey(outKey)){
-                List<GraphVertexLabel> list = outVertexLabelMap.get(outKey);
-                list.add(in);
-                outVertexLabelMap.put(outKey, list);
-            }else{
-                List<GraphVertexLabel> list = new ArrayList<>();
-                list.add(in);
-                outVertexLabelMap.put(outKey, list);
-            }
-            String inKey = in.getLabelName();
-            if(inVertexLabelMap.containsKey(inKey)){
-                List<GraphVertexLabel> list = inVertexLabelMap.get(inKey);
-                list.add(out);
-                inVertexLabelMap.put(inKey, list);
-            }else{
-                List<GraphVertexLabel> list = new ArrayList<>();
-                list.add(out);
-                inVertexLabelMap.put(inKey, list);
-            }
-        }
-    }
+
 
     public Map<String, List<GraphVertexLabel>> getOutVertexLabelMap() {
         return outVertexLabelMap;

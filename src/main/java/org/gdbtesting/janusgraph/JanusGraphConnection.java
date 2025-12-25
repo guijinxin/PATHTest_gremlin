@@ -74,13 +74,15 @@ public class JanusGraphConnection extends GremlinConnection {
     public static void main(String[] args) {
         JanusGraphConnection test = new JanusGraphConnection("1.1.0", "conf/remote-janusgraph.properties");
         GraphTraversalSource g = test.getG();
-        Vertex Ironman = g.addV("Hero").property("name", "Tony").property("ATK",100.00).next();
-        Vertex Superman = g.addV("Hero").property("name", "Clark").property("ATK",Double.POSITIVE_INFINITY).next();
-        Vertex Moly = g.addV("student").property("grade", 9).next();
-        Vertex notebook = g.addV("homework").property("subject", "Math").next();
-        Edge edge1 = g.addE("write").from(Moly).to(notebook).property("date","0.8").next();
+//        Vertex Ironman = g.addV("Hero").property("name", "Tony").property("ATK","asdasd111").next();
+//        Vertex Superman = g.addV("Hero").property("name", "Clark").property("ATK",Double.POSITIVE_INFINITY).next();
+//        Vertex Moly = g.addV("student").property("grade", 9).next();
+//        Vertex notebook = g.addV("homework").property("subject", "Math").next();
+//        Edge edge1 = g.addE("write").from(Moly).to(notebook).property("date","0.8").next();
 
-        String query1 = "g.V().where(__.out('el1').count().is(gt(-5)))";
+        String query1 = "g.V().repeat(out()).times(2).path().count()";
+        String query2 = "g.V().out().out().path().count()";
+        String query = "g.V().where(__.out('el1').count().is(gt(-5)))";
 
         try{
             List<Result> results = test.getClient().submit(query1).all().get();
@@ -91,9 +93,7 @@ public class JanusGraphConnection extends GremlinConnection {
         }catch (Exception e){
             e.printStackTrace();
         }
-        g.E().drop().iterate();
-        g.V().drop().iterate();
-        System.out.println(g.V().count().next());
+
 
         System.exit(0);
     }
