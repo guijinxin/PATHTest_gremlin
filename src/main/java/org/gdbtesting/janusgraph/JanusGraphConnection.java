@@ -80,15 +80,15 @@ public class JanusGraphConnection extends GremlinConnection {
 //        Vertex notebook = g.addV("homework").property("subject", "Math").next();
 //        Edge edge1 = g.addE("write").from(Moly).to(notebook).property("date","0.8").next();
 
-        String query1 = "g.V().repeat(out()).times(2).path().count()";
-        String query2 = "g.V().out().out().path().count()";
-        String query = "g.V().where(__.out('el1').count().is(gt(-5)))";
+        String query1 = "g.V().repeat(out()).emit().times(5).where( path().count().is(eq(4))).count()";
+        String query2 = "g.V().out().out().out().out().out().count()";
+        String query = "g.E()";
 
         try{
             List<Result> results = test.getClient().submit(query1).all().get();
             System.out.println(results.size());
             for (Result r : results) {
-                System.out.println(r);
+                System.out.println(String.valueOf(r));
             }
         }catch (Exception e){
             e.printStackTrace();
