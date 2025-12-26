@@ -7,6 +7,7 @@ import org.gdbtesting.gremlin.GraphSchema;
 import org.gdbtesting.gremlin.GremlinPrint;
 import org.gdbtesting.gremlin.gen.GraphExpressionGenerator;
 import org.gdbtesting.gremlin.gen.GraphHasFilterGenerator;
+import org.javatuples.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +50,18 @@ public class GraphTraversalGenerator {
 
     public String generateRandomlyTraversal(){
         return getExpression();
+    }
+
+    public Pair<String, String> generateRandomlyTraversalAndMutation(){
+        return null;
+    }
+
+    public Pair<String, String> getExpressionAndMutation(){
+        GraphExpressionGenerator geg = new GraphExpressionGenerator(state);
+        geg.setInVertexLabelMap(state.getSchema().getInVertexLabelMap());
+        geg.setOutVertexLabelMap(state.getSchema().getOutVertexLabelMap());
+        Pair<String, String> queryAndMutation = geg.generateGraphTraversalAndMutation();
+        return queryAndMutation;
     }
 
     public String getExpression(){

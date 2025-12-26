@@ -6,6 +6,7 @@ import org.gdbtesting.gremlin.ConstantType;
 import org.gdbtesting.gremlin.GraphGlobalState;
 import org.gdbtesting.gremlin.GraphSchema;
 import org.gdbtesting.gremlin.ast.*;
+import org.javatuples.Pair;
 import scala.math.Ordering;
 
 import java.util.ArrayList;
@@ -57,6 +58,36 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
     private enum GraphFilterTraversal{
         PROPERTY, FILTER_TRAVERSAL, NEIGHBOR_TRAVERSAL, STATISTIC, ORDER;
     }
+    // ========= start line of mutation rule ===========
+    List<Traversal> origlist = new ArrayList<>();
+    List<Traversal> mutatedList = new ArrayList<>();
+    public Pair<String, String> generateGraphTraversalAndMutation(){
+        int length = Randomly.getInteger(2, state.getGenerateDepth());
+        for(int i = 0; i < length; i++){
+            Traversal t = null;
+            while(t == null){
+                t =  generateExpressionTraversal(i);
+            }
+            origlist.add(t);
+            String Type = t.getTraversalType();
+            if(Type.contains("property") || Type.contains("statistic")){
+                if(Type.contains("property") && Randomly.getBoolean()){
+                    Traversal ta = createStatistic(t);
+                    origlist.add(ta);
+                }
+                break;
+            }
+        }
+        StringBuilder queryBuilder = new StringBuilder("g");
+        StringBuilder mutationBuilder = new StringBuilder("g");
+        for(Traversal t : origlist){
+            queryBuilder.append(".").append(t.toString());
+        }
+        return new Pair<>(queryBuilder.toString(), mutationBuilder.toString());
+    }
+
+
+    // ========= end line of mutation rule ===========
     // todo: need add mutation support: approach core
     List<Traversal> list = new ArrayList<>();
     public String generateGraphTraversal(){
@@ -531,23 +562,49 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
     public NeighborTraversalOperation createVertexNeighbor(String type){
         switch (Randomly.fromOptions(NeighborTraversalOperation.NeighborV.values())){
             case out:
-                NeighborTraversalOperation.Out out = NeighborTraversalOperation.createOut(getEdgeLabelList());
-                out.setStartStep(type);
-                out.setEndStep("vertex");
-                out.setTraversalType("neighbor");
-                return out;
+                if (Randomly.getBoolean()){
+                    NeighborTraversalOperation.Out out = NeighborTraversalOperation.createOut(getEdgeLabelList());
+                    out.setStartStep(type);
+                    out.setEndStep("vertex");
+                    out.setTraversalType("neighbor");
+                    return out;
+                }else {
+                    // variable-length path traversal, all the node in the path will be returned
+                    NeighborTraversalOperation.Out out = NeighborTraversalOperation.createOut(getEdgeLabelList(), true);
+                    out.setStartStep(type);
+                    out.setEndStep("vertex");
+                    out.setTraversalType("neighbor");
+                    return out;
+                }
+
             case in:
-                NeighborTraversalOperation.In in = NeighborTraversalOperation.createIn(getEdgeLabelList());
-                in.setStartStep(type);
-                in.setEndStep("vertex");
-                in.setTraversalType("neighbor");
-                return in;
+                if (Randomly.getBoolean()){
+                    NeighborTraversalOperation.In in = NeighborTraversalOperation.createIn(getEdgeLabelList());
+                    in.setStartStep(type);
+                    in.setEndStep("vertex");
+                    in.setTraversalType("neighbor");
+                    return in;
+                }else {
+                    NeighborTraversalOperation.In in = NeighborTraversalOperation.createIn(getEdgeLabelList(), true);
+                    in.setStartStep(type);
+                    in.setEndStep("vertex");
+                    in.setTraversalType("neighbor");
+                    return in;
+                }
             case both:
-                NeighborTraversalOperation.Both both = NeighborTraversalOperation.createBoth(getEdgeLabelList());
-                both.setStartStep(type);
-                both.setEndStep("vertex");
-                both.setTraversalType("neighbor");
-                return both;
+                if (Randomly.getBoolean()){
+                    NeighborTraversalOperation.Both both = NeighborTraversalOperation.createBoth(getEdgeLabelList());
+                    both.setStartStep(type);
+                    both.setEndStep("vertex");
+                    both.setTraversalType("neighbor");
+                    return both;
+                }else {
+                    NeighborTraversalOperation.Both both = NeighborTraversalOperation.createBoth(getEdgeLabelList(), true);
+                    both.setStartStep(type);
+                    both.setEndStep("vertex");
+                    both.setTraversalType("neighbor");
+                    return both;
+                }
             case outE:
                 NeighborTraversalOperation.OutE outE = NeighborTraversalOperation.createOutE(getEdgeLabelList());
                 outE.setStartStep(type);

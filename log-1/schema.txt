@@ -1,106 +1,18 @@
 vertex: 
 vl0
-	vp8: INTEGER
-	vp0: DOUBLE
-	vp4: INTEGER
-
-vl1
-	vp4: INTEGER
-	vp8: INTEGER
-	vp1: DOUBLE
-	vp9: LONG
-	vp2: FLOAT
-
-vl2
-	vp7: BOOLEAN
-	vp4: INTEGER
-	vp5: LONG
+	vp0: LONG
 
 index: 
 
 edge: 
 el0
-outVertex: vl1
-	vp4: INTEGER
-	vp8: INTEGER
-	vp1: DOUBLE
-	vp9: LONG
-	vp2: FLOAT
-
-inVertex: vl2
-	vp7: BOOLEAN
-	vp4: INTEGER
-	vp5: LONG
-
-	ep3: INTEGER
-
-el1
-outVertex: vl1
-	vp4: INTEGER
-	vp8: INTEGER
-	vp1: DOUBLE
-	vp9: LONG
-	vp2: FLOAT
+outVertex: vl0
+	vp0: LONG
 
 inVertex: vl0
-	vp8: INTEGER
-	vp0: DOUBLE
-	vp4: INTEGER
+	vp0: LONG
 
-	ep5: FLOAT
-	ep0: FLOAT
-
-el2
-outVertex: vl0
-	vp8: INTEGER
-	vp0: DOUBLE
-	vp4: INTEGER
-
-inVertex: vl2
-	vp7: BOOLEAN
-	vp4: INTEGER
-	vp5: LONG
-
-	ep4: BOOLEAN
-	ep0: FLOAT
-
-el3
-outVertex: vl0
-	vp8: INTEGER
-	vp0: DOUBLE
-	vp4: INTEGER
-
-inVertex: vl2
-	vp7: BOOLEAN
-	vp4: INTEGER
-	vp5: LONG
-
-	ep2: STRING
-	ep3: INTEGER
-	ep5: FLOAT
-
-el4
-outVertex: vl0
-	vp8: INTEGER
-	vp0: DOUBLE
-	vp4: INTEGER
-
-inVertex: vl1
-	vp4: INTEGER
-	vp8: INTEGER
-	vp1: DOUBLE
-	vp9: LONG
-	vp2: FLOAT
-
-	ep4: BOOLEAN
+	ep2: BOOLEAN
 
 Edgeindex: 
-el0byep3Shard
-el1byep5Shard
-el1byep0Shard
-el2byep4Shard
-el2byep0Shard
-el3byep2Shard
-el3byep3Shard
-el3byep5Shard
-el4byep4Shard
+el0byep2Shard

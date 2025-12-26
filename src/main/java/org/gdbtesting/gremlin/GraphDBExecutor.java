@@ -11,6 +11,7 @@ import org.apache.tinkerpop.gremlin.structure.Vertex;
 import org.gdbtesting.connection.GremlinConnection;
 import org.gdbtesting.gremlin.ast.GraphConstant;
 import org.gdbtesting.gremlin.query.GraphTraversalGenerator;
+import org.javatuples.Pair;
 import org.openrdf.query.algebra.Str;
 
 import java.io.BufferedWriter;
@@ -46,22 +47,25 @@ public class GraphDBExecutor {
         this.state = state;
     }
 
-
-    /***
-     * =========== Start dividing line for Grand strategy, which isn't related to our approach
-     */
     // generate query
-    public void generateRandomQuery(){
+    public void generateRandomQuery() throws IOException {
         queryList = new ArrayList<>();
         resultList = new ArrayList<>((int) state.getQueryNum());
         errorList = new ArrayList<>((int) state.getQueryNum());
         GraphTraversalGenerator gtg = new GraphTraversalGenerator(state);
+
+        String cur = System.getProperty("period");
+        BufferedWriter out = new BufferedWriter(new FileWriter(System.getProperty("user.dir") + "/log-" + cur + "/" + "queries-" + cur +".log"));
         for(int i = 0; i < state.getQueryNum(); i++){
             String query = gtg.generateRandomlyTraversal();
+            out.write("========================Query " + i + "=======================\n");
+            out.write(query + "\n");
+
             queryList.add(query);
             resultList.add(i, new ArrayList<>(connections.size()));
             errorList.add(i, new HashMap<>());
         }
+        out.close();
     }
 
     public void executeQuery(GremlinConnection connection, int count) throws IOException {
@@ -155,8 +159,7 @@ public class GraphDBExecutor {
     }
 
     /***
-     * =========== End dividing line for Grand strategy, which isn't related to our approach
-     *
+     * ============== starting line of mutation-based approach
      */
     public void generateRandomQueryAndMutate(){
         origQueryList = new ArrayList<>();
@@ -165,7 +168,17 @@ public class GraphDBExecutor {
         mutatedResultList = new ArrayList<>();
         origErrorResultList = new ArrayList<>();
         mutatedErrorResultList = new ArrayList<>();
+        GraphTraversalGenerator gtg = new GraphTraversalGenerator(state);
+        for(int i = 0; i < state.getQueryNum(); i++){
+            Pair<String, String> queryAndMutation = gtg.generateRandomlyTraversalAndMutation();
+            origQueryList.add(queryAndMutation.getValue0());
+            origResultList.add(i, new ArrayList<>(connections.size()));
+            origErrorResultList.add(i, new HashMap<>());
 
+            mutatedQueryList.add(queryAndMutation.getValue1());
+            mutatedResultList.add(i, new ArrayList<>(connections.size()));
+            mutatedErrorResultList.add(i, new HashMap<>());
+        }
 
     }
 
