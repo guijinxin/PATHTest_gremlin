@@ -8,6 +8,9 @@ public class NeighborTraversalOperation extends Traversal implements GraphExpres
 
     // =========== starting line of variable-length path generator ===========
     public boolean isVariableLength = false;
+    protected int length;
+    public int getLength() {return length;}
+
     public void setVariableLength(boolean variableLength) {
         isVariableLength = variableLength;
     }
@@ -56,6 +59,8 @@ public class NeighborTraversalOperation extends Traversal implements GraphExpres
             return "Vertex";
         }
 
+        public int getLength(){return length;}
+
         public Out(List<String> edgelabels){
             this.edgelabels = edgelabels;
         }
@@ -63,6 +68,7 @@ public class NeighborTraversalOperation extends Traversal implements GraphExpres
         public Out(List<String> edgelabels, boolean isVariableLength){
             this.edgelabels = edgelabels;
             this.isVariableLength = isVariableLength;
+            this.length = Randomly.getInteger(1, 5);
         }
 
         public String getEdgelabels(){
@@ -78,10 +84,10 @@ public class NeighborTraversalOperation extends Traversal implements GraphExpres
             if (isVariableLength){
                 if (Randomly.getBoolean()){
                     // variable-length path: [1..n]
-                    return "repeat(out(" + getEdgelabels() + ")).emit().times(" + Randomly.getInteger(1, 5) + ")";
+                    return "repeat(out(" + getEdgelabels() + ")).emit().times(" + length + ")";
                 }else {
                     // variable-length path: [0..n]
-                    return "emit().repeat(out(" + getEdgelabels() + ")).times(" + Randomly.getInteger(1, 5) + ")";
+                    return "emit().repeat(out(" + getEdgelabels() + ")).times(" + length + ")";
                 }
             }
             return "out(" + getEdgelabels() + ")";
@@ -91,10 +97,12 @@ public class NeighborTraversalOperation extends Traversal implements GraphExpres
 
     public static class In extends NeighborTraversalOperation{
         private List<String> edgelabels;
-
+        private int length;
         public String getEndType(){
             return "Vertex";
         }
+
+        public int getLength(){return length;}
 
         public In(List<String> edgelabels){
             this.edgelabels = edgelabels;
@@ -103,6 +111,7 @@ public class NeighborTraversalOperation extends Traversal implements GraphExpres
         public In(List<String> edgelabels, boolean isVariableLength){
             this.edgelabels = edgelabels;
             this.isVariableLength = isVariableLength;
+            this.length = Randomly.getInteger(1, 5);
         }
 
         public String getEdgelabels(){
@@ -118,10 +127,10 @@ public class NeighborTraversalOperation extends Traversal implements GraphExpres
             if (isVariableLength){
                 if (Randomly.getBoolean()){
                     // variable-length path: [1..n]
-                    return "repeat(out(" + getEdgelabels() + ")).emit().times(" + Randomly.getInteger(1, 5) + ")";
+                    return "repeat(in(" + getEdgelabels() + ")).emit().times(" + length + ")";
                 }else {
                     // variable-length path: [0..n]
-                    return "emit().repeat(out(" + getEdgelabels() + ")).times(" + Randomly.getInteger(1, 5) + ")";
+                    return "emit().repeat(in(" + getEdgelabels() + ")).times(" + length + ")";
                 }
             }
             return "in(" + getEdgelabels() + ")";
@@ -131,6 +140,9 @@ public class NeighborTraversalOperation extends Traversal implements GraphExpres
 
     public static class Both extends NeighborTraversalOperation{
         private List<String> edgelabels;
+        private int length;
+
+        public int getLength(){return length;}
 
         public Both(List<String> edgelabels){
             this.edgelabels = edgelabels;
@@ -139,6 +151,7 @@ public class NeighborTraversalOperation extends Traversal implements GraphExpres
         public Both(List<String> edgelabels, boolean isVariableLength){
             this.edgelabels = edgelabels;
             this.isVariableLength = isVariableLength;
+            this.length = Randomly.getInteger(1, 5);
         }
 
         public String getEndType(){
@@ -157,10 +170,10 @@ public class NeighborTraversalOperation extends Traversal implements GraphExpres
             if (isVariableLength){
                 if (Randomly.getBoolean()){
                     // variable-length path: [1..n]
-                    return "repeat(out(" + getEdgelabels() + ")).emit().times(" + Randomly.getInteger(1, 5) + ")";
+                    return "repeat(both(" + getEdgelabels() + ")).emit().times(" + length + ")";
                 }else {
                     // variable-length path: [0..n]
-                    return "emit().repeat(out(" + getEdgelabels() + ")).times(" + Randomly.getInteger(1, 5) + ")";
+                    return "emit().repeat(both(" + getEdgelabels() + ")).times(" + length + ")";
                 }
             }
             return "both(" + getEdgelabels() + ")";

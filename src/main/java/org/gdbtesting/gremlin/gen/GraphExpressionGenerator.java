@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphExpression, GraphSchema.GraphVertexProperty> {
@@ -60,7 +62,7 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
     }
     // ========= start line of mutation rule ===========
     List<Traversal> origlist = new ArrayList<>();
-    List<Traversal> mutatedList = new ArrayList<>();
+    public static int path_end_node_id = 0;
     public Pair<String, String> generateGraphTraversalAndMutation(){
         int length = Randomly.getInteger(2, state.getGenerateDepth());
         for(int i = 0; i < length; i++){
@@ -81,11 +83,108 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
         StringBuilder queryBuilder = new StringBuilder("g");
         StringBuilder mutationBuilder = new StringBuilder("g");
         for(Traversal t : origlist){
-            queryBuilder.append(".").append(t.toString());
+            String traversal = t.toString();
+            queryBuilder.append(".").append(traversal);
+
+            if (t instanceof NeighborTraversalOperation.Out ||
+                    t instanceof NeighborTraversalOperation.In ||
+                    t instanceof  NeighborTraversalOperation.Both){
+                if (((NeighborTraversalOperation) t).isVariableLength){
+                    int path_length = ((NeighborTraversalOperation) t).getLength();
+                    int min_path_length;
+                    if (traversal.contains("emit().repeat")){
+                        min_path_length = 0;
+                    }else {
+                        min_path_length = 1;
+                    }
+                    String mutatedTraversal = var2FixPath(traversal, min_path_length, path_length);
+                    mutationBuilder.append(".").append(mutatedTraversal);
+                }else {
+                    String mutatedTraversal = fix2VarPath(traversal);
+                    mutationBuilder.append(".").append(mutatedTraversal);
+                }
+
+            }else {
+                mutationBuilder.append(".").append(t.toString());
+            }
         }
         return new Pair<>(queryBuilder.toString(), mutationBuilder.toString());
     }
+    private static final Pattern REPEAT_PATTERN = Pattern.compile("repeat\\(\\s*((?:[^()]+|\\([^()]*\\))*)\\s*\\)");
+    private static final Pattern PATH_PATTERN = Pattern.compile("(out|in|both)\\(([^)]*)\\)");
+    public static String var2FixPath(String path, int min, int max){
+        StringBuilder partitionResult = new StringBuilder();
+        partitionResult.append("union(");
 
+        String con = ".";
+        String pathPattern;
+        Matcher repeatMatcher = REPEAT_PATTERN.matcher(path);
+        if (!repeatMatcher.find()) {
+            return null; // 没找到 repeat
+        }
+        String insideRepeat = repeatMatcher.group(1).trim();
+        Matcher pathMatcher = PATH_PATTERN.matcher(insideRepeat);
+        if (pathMatcher.find()) {
+            String func = pathMatcher.group(1); // out / in / both
+            String args = pathMatcher.group(2); // 参数部分
+            pathPattern =  func + "(" + args + ")";
+        }else {
+            return null;
+        }
+        for (int i = min; i <= max; i++) {
+            if (min == 0 && i == min) {
+                // the path start with length zero, need specific traversal
+                partitionResult.append("identity(), ");
+                continue;
+            }
+            int rand = Randomly.getInteger(0, 5);
+            if (rand < 2) {
+                if (Randomly.getBoolean()) {
+                    partitionResult.append("repeat(").append(pathPattern).append(con)
+                            .append("as('a").append(path_end_node_id).append("'))")
+                            .append(con).append("times(").append(i).append(").simplePath().path()").append(con)
+                            .append("select(last, 'a").append(path_end_node_id).append("'), ");
+
+                    partitionResult.append("repeat(").append(pathPattern).append(con)
+                            .append("as('a").append(path_end_node_id).append("'))")
+                            .append(con).append("times(").append(i).append(").cyclicPath().path()").append(con)
+                            .append("select(last, 'a").append(path_end_node_id).append("')");
+                    path_end_node_id++;
+                    if (i != max) {
+                        partitionResult.append(", ");
+                    }
+                }else {
+                    partitionResult.append("repeat(").append(pathPattern).append(")").append(con)
+                            .append("times(").append(i).append(")");
+                    if (i != max) {
+                        partitionResult.append(", ");
+                    }
+                }
+            }else {
+                for (int j = 0; j < i; j++){
+                    if (j == 0) {
+                        partitionResult.append(pathPattern);
+                    }else {
+                        partitionResult.append(con).append(pathPattern);
+                    }
+                }
+                if (i != max) {
+                    partitionResult.append(", ");
+                }
+            }
+        }
+        return partitionResult.append(")").toString();
+    }
+    public static void main(String[] args){
+        String i = "repeat(out().as('a')).emit().times(5)";
+        int min = 0;
+        int max = 5;
+        String result = GraphExpressionGenerator.var2FixPath(i, min, max);
+        System.out.println(result);
+    }
+    private String fix2VarPath(String path){
+        return null;
+    }
 
     // ========= end line of mutation rule ===========
     // todo: need add mutation support: approach core

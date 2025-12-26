@@ -1,18 +1,49 @@
 vertex: 
 vl0
-	vp0: LONG
+	vp4: INTEGER
+	vp1: LONG
+
+vl1
+	vp1: LONG
+
+vl2
+	vp3: LONG
 
 index: 
 
 edge: 
 el0
 outVertex: vl0
-	vp0: LONG
+	vp4: INTEGER
+	vp1: LONG
 
 inVertex: vl0
-	vp0: LONG
+	vp4: INTEGER
+	vp1: LONG
 
-	ep2: BOOLEAN
+	ep0: INTEGER
+	ep5: STRING
+	ep4: LONG
+	ep1: STRING
+	ep3: STRING
+
+el1
+outVertex: vl1
+	vp1: LONG
+
+inVertex: vl2
+	vp3: LONG
+
+	ep6: INTEGER
+	ep4: LONG
+	ep0: INTEGER
 
 Edgeindex: 
-el0byep2Shard
+el0byep0Shard
+el0byep5Shard
+el0byep4Shard
+el0byep1Shard
+el0byep3Shard
+el1byep6Shard
+el1byep4Shard
+el1byep0Shard
