@@ -186,6 +186,7 @@ public class GraphDBExecutor {
             mutatedResultList.add(i, new ArrayList<>(connections.size()));
             mutatedErrorResultList.add(i, new HashMap<>());
         }
+        out.close();
 
     }
 

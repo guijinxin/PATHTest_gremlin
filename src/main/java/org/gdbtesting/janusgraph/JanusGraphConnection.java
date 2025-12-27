@@ -80,9 +80,10 @@ public class JanusGraphConnection extends GremlinConnection {
 //        Vertex notebook = g.addV("homework").property("subject", "Math").next();
 //        Edge edge1 = g.addE("write").from(Moly).to(notebook).property("date","0.8").next();
 
-        String query1 = "g.V().out('el2','el1').values('vp0').sum()";
+        String query1 = "g.V().repeat(in('el2','el1')).emit().times(2).or(__.emit().repeat(out('el0')).times(1)).where(__.emit().repeat(both('el0','el2','el1')).times(1).values('ep2').is(lt('1')))";
         String query2 = "g.E().outV().repeat(out('el0').as('a0')).emit().times(3).where(select('a0').count(local).is(eq(1))).select(last, 'a0')";
-        String query3 = "g.V().as('start0').repeat(out('el2','el1').as('a0')).emit().times(3).where(__.path().from('start0').unfold().count().is(eq(2))).select(last, 'a0').values('vp0').sum()";
+        String query3 = "g.V().repeat(in('el2','el1')).emit().times(2).or(__.emit().repeat(out('el0')).times(1)).where(__.emit().repeat(both('el0','el2','el1')).times(1).values('ep2').is(lt('1')))";
+
 
         String query4 = "g.V().repeat(out().as('a0')).emit().times(2).simplePath().path().select(last, 'a0').count()";
         String query5 = "g.V().repeat(out().as('a0')).emit().times(2).cyclicPath().path().select(last, 'a0').count()";
