@@ -68,7 +68,7 @@ public class NeighborTraversalOperation extends Traversal implements GraphExpres
         public Out(List<String> edgelabels, boolean isVariableLength){
             this.edgelabels = edgelabels;
             this.isVariableLength = isVariableLength;
-            this.length = Randomly.getInteger(1, 5);
+            this.length = Randomly.getInteger(1, 3);
         }
 
         public String getEdgelabels(){
@@ -111,7 +111,7 @@ public class NeighborTraversalOperation extends Traversal implements GraphExpres
         public In(List<String> edgelabels, boolean isVariableLength){
             this.edgelabels = edgelabels;
             this.isVariableLength = isVariableLength;
-            this.length = Randomly.getInteger(1, 5);
+            this.length = Randomly.getInteger(1, 3);
         }
 
         public String getEdgelabels(){
@@ -151,7 +151,7 @@ public class NeighborTraversalOperation extends Traversal implements GraphExpres
         public Both(List<String> edgelabels, boolean isVariableLength){
             this.edgelabels = edgelabels;
             this.isVariableLength = isVariableLength;
-            this.length = Randomly.getInteger(1, 5);
+            this.length = Randomly.getInteger(1, 3);
         }
 
         public String getEndType(){

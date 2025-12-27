@@ -11,7 +11,7 @@ public class Starter {
     public static void main(String[] args) {
         // Fine tuning
         // String[] mockArgs = {"5", "100", "200", "20", "20", "100"};
-        String[] mockArgs = {"5", "100", "200", "5", "5", "1000"};
+        String[] mockArgs = {"5", "100", "200", "5", "5", "5000"};
         // String[] mockArgs = {"5", "100", "200", "5", "5", "300"};
         args = mockArgs;
         if (args.length != 6)
@@ -35,7 +35,8 @@ public class Starter {
         //Scanner input = new Scanner(System.in);
         //int i = input.nextInt();
         try {
-            provider.generateAndTestDatabase(state);
+            //provider.generateAndTestDatabase(state);
+            provider.generateAndMutatedTestDatabase(state);
         } catch (Exception e) {
             e.printStackTrace();
         }

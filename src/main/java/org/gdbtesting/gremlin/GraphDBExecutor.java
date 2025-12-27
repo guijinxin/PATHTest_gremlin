@@ -161,7 +161,7 @@ public class GraphDBExecutor {
     /***
      * ============== starting line of mutation-based approach
      */
-    public void generateRandomQueryAndMutate(){
+    public void generateRandomQueryAndMutate() throws IOException {
         origQueryList = new ArrayList<>();
         mutatedQueryList = new ArrayList<>();
         origResultList = new ArrayList<>();
@@ -169,8 +169,15 @@ public class GraphDBExecutor {
         origErrorResultList = new ArrayList<>();
         mutatedErrorResultList = new ArrayList<>();
         GraphTraversalGenerator gtg = new GraphTraversalGenerator(state);
+
+        String cur = System.getProperty("period");
+        BufferedWriter out = new BufferedWriter(new FileWriter(System.getProperty("user.dir") + "/log-" + cur + "/" + "queries-" + cur +".log"));
         for(int i = 0; i < state.getQueryNum(); i++){
             Pair<String, String> queryAndMutation = gtg.generateRandomlyTraversalAndMutation();
+
+            out.write("========================QueryPair " + i + "=======================\n");
+            out.write(queryAndMutation.getValue0() + "\n" + queryAndMutation.getValue1() + "\n");
+
             origQueryList.add(queryAndMutation.getValue0());
             origResultList.add(i, new ArrayList<>(connections.size()));
             origErrorResultList.add(i, new HashMap<>());
@@ -182,8 +189,139 @@ public class GraphDBExecutor {
 
     }
 
+    public void executeQueryAndMutate(GremlinConnection connection, int count) throws IOException {
+        String cur = System.getProperty("period");
+        BufferedWriter out = new BufferedWriter(new FileWriter(System.getProperty("user.dir") + "/log-" + cur + "/" + connection.getDatabase()+ "-pair" + cur +".log"));
+        for(int i = 0; i < origQueryList.size(); i++){
+            try{
+                out.write("========================QueryPair " + i + "=======================\n");
+                out.write(origQueryList.get(i) + "\n");
+                long time = System.currentTimeMillis();
+                List<Result> origResults;
+                List<Object> origList = new ArrayList<>();
 
-    public void setupGraphWithMutationCheck(List<GraphData.VertexObject> addV, List<GraphData.EdgeObject> addE) throws IOException {
+                if(connection.getDatabase().equals("HugeGraph")){
+                    GremlinManager gremlin = connection.getHugespecial().gremlin();
+
+                    org.apache.hugegraph.structure.gremlin.ResultSet origHugeResult = gremlin.gremlin(origQueryList.get(i)).execute();
+                    Iterator<org.apache.hugegraph.structure.gremlin.Result> huresult = origHugeResult.iterator();
+                    Long origT = System.currentTimeMillis() - time;
+                    System.out.println("queryPair " + i + " first in " + origT + "ms");
+                    huresult.forEachRemaining(result -> {
+                        Object object = result.getObject();
+                        if (object instanceof org.apache.hugegraph.structure.graph.Vertex) {
+                            try {
+                                out.write("v[" + ((org.apache.hugegraph.structure.graph.Vertex) object).id() + "]");
+                                origList.add(object);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        } else if (object instanceof org.apache.hugegraph.structure.graph.Edge) {
+                            try {
+                                out.write("e[" + ((org.apache.hugegraph.structure.graph.Edge) object).id() + "]");
+                                origList.add(object);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        } else if (object instanceof org.apache.hugegraph.structure.graph.Path) {
+                            List<Object> elements = ((org.apache.hugegraph.structure.graph.Path) object).objects();
+                            elements.forEach(element -> {
+                                System.out.println(element.getClass());
+                                System.out.println(element);
+                            });
+                        } else {
+                            try {
+                                out.write("n[" + object + "]");
+                                origList.add(object);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    });
+                }
+                else{
+                    origResults = connection.getClient().submit(origQueryList.get(i)).all().get();
+                    System.out.println("queryPair " + i + " first in " + (System.currentTimeMillis() - time) + "ms");
+                    for (Result r : origResults) {
+                        String result = String.valueOf(r);
+                        out.write(result);
+                        out.newLine();
+                        origList.add(r);
+                    }
+                }
+                origResultList.get(i).add(count, origList);
+            }catch (Exception e){
+                out.write(e.toString());
+                origResultList.get(i).add(count, null);
+                origErrorResultList.get(i).put(String.valueOf(count),e);
+            }
+
+            try {
+                List<Result> mutatedResults;
+                List<Object> mutatedList = new ArrayList<>();
+                long time = System.currentTimeMillis();
+                if(connection.getDatabase().equals("HugeGraph")){
+                    GremlinManager gremlin = connection.getHugespecial().gremlin();
+
+                    org.apache.hugegraph.structure.gremlin.ResultSet mutatedHugeResult = gremlin.gremlin(mutatedQueryList.get(i)).execute();
+                    Iterator<org.apache.hugegraph.structure.gremlin.Result> mutatedHuresult = mutatedHugeResult.iterator();
+                    Long mutatedT = System.currentTimeMillis() - time;
+                    System.out.println("queryPair " + i + " second in " + mutatedT + "ms");
+                    mutatedHuresult.forEachRemaining(result -> {
+                        Object object = result.getObject();
+                        if (object instanceof org.apache.hugegraph.structure.graph.Vertex) {
+                            try {
+                                out.write("v[" + ((org.apache.hugegraph.structure.graph.Vertex) object).id() + "]");
+                                mutatedList.add(object);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        } else if (object instanceof org.apache.hugegraph.structure.graph.Edge) {
+                            try {
+                                out.write("e[" + ((org.apache.hugegraph.structure.graph.Edge) object).id() + "]");
+                                mutatedList.add(object);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        } else if (object instanceof org.apache.hugegraph.structure.graph.Path) {
+                            List<Object> elements = ((org.apache.hugegraph.structure.graph.Path) object).objects();
+                            elements.forEach(element -> {
+                                System.out.println(element.getClass());
+                                System.out.println(element);
+                            });
+                        } else {
+                            try {
+                                out.write("n[" + object + "]");
+                                mutatedList.add(object);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    });
+                }
+                else {
+                    mutatedResults = connection.getClient().submit(mutatedQueryList.get(i)).all().get();
+                    System.out.println("queryPair " + i + " second in " + (System.currentTimeMillis() - time) + "ms");
+                    for (Result r : mutatedResults) {
+                        String result = String.valueOf(r);
+                        out.write(result);
+                        out.newLine();
+                        mutatedList.add(r);
+                    }
+                    mutatedResultList.get(i).add(count, mutatedList);
+                }
+            }catch (Exception e){
+                out.write(e.toString());
+                mutatedResultList.get(i).add(count, null);
+                mutatedErrorResultList.get(i).put(String.valueOf(count),e);
+            }
+        }
+        out.close();
+    }
+
+    public void setupGraphWithMutation(List<GraphData.VertexObject> addV, List<GraphData.EdgeObject> addE) throws IOException {
         vertexIDMap = new HashMap<>();
         edgeIDMap = new HashMap<>();
         int count = 0;
@@ -195,12 +333,181 @@ public class GraphDBExecutor {
             System.out.println("setup " + connection.getDatabase() + " in " + (System.currentTimeMillis() - start) +"ms");
             // query database
             start = System.currentTimeMillis();
-            executeQuery(connection, count);
+            executeQueryAndMutate(connection, count);
             count++;
             System.out.println("query " + connection.getDatabase() + " in " + (System.currentTimeMillis() - start) +"ms");
         }
         // record db map
         recordDBMap();
+    }
+
+    public void checkMutatedResult() throws IOException {
+        String cur = System.getProperty("period");
+        BufferedWriter out = new BufferedWriter(new FileWriter(System.getProperty("user.dir") + "/log-" + cur + "/check-" + cur + ".log"));
+        BufferedWriter resultOut = new BufferedWriter(new FileWriter(System.getProperty("user.dir") + "/log-" + cur + "/result-" + cur + ".log"));
+        // for each query
+        for(int i = 0; i < origResultList.size(); i++){
+            List<List<Object>> origlist = origResultList.get(i);
+            Map<String, Exception> origelist = origErrorResultList.get(i);
+            List<List<Object>> mutatedList = mutatedResultList.get(i);
+            Map<String, Exception> mutatedelist = mutatedErrorResultList.get(i);
+            out.write("========================QueryPair " + i + "=======================");
+            out.newLine();
+            // for each graph db
+            for(int j = 0; j < origlist.size(); j++){
+                List<String> compare = new ArrayList<>();
+                List<Object> origElements = origlist.get(j);
+                Exception origErrors = origelist.get(String.valueOf(j));
+                StringBuilder origSb = new StringBuilder();
+                if(origElements == null || origElements.size() == 0){
+                    if(origErrors == null)
+                        origSb.append("null");
+                    else
+                        origSb.append(origErrors);
+                }else{
+                    List<String> idList = new ArrayList<>();
+                    String view = origElements.get(0).toString();
+                    if(origElements.get(0).toString().contains("e[")){
+                        for(Object e : origElements){
+                            idList.add(edgeIDMap.get(connections.get(j).getDatabase()).get(((Result)e).getElement().id().toString()));
+                        }
+                        if(idList != null && idList.size() > 0){
+                            Collections.sort(idList);
+                        }
+                        origSb.append("e:").append(idList.toString());
+                    }else if(origElements.get(0).toString().contains("v[")){
+                        for(Object e : origElements){
+                            idList.add(vertexIDMap.get(connections.get(j).getDatabase()).get(((Result)e).getElement().id().toString()));
+                        }
+                        if(idList != null && idList.size() > 0){
+                            Collections.sort(idList);
+                        }
+                        origSb.append("v:").append(idList.toString());
+                    }else if(origElements.get(0).toString().contains("java.lang.")){
+                        for(Object e : origElements){
+                            String value = e.toString();
+                            idList.add(value.substring(value.indexOf("object=")+7,value.indexOf(" class=")));
+                        }
+                        if(idList != null && idList.size() > 0){
+                            Collections.sort(idList);
+                        }
+                        origSb.append("n:").append(idList.toString());
+                    }
+                    else{
+                        if(origElements.get(0) instanceof org.apache.hugegraph.structure.graph.Vertex){
+                            for(Object e : origElements){
+                                idList.add(vertexIDMap.get(connections.get(j).getDatabase()).get(((org.apache.hugegraph.structure.graph.Vertex)e).id().toString()));
+                            }
+                            if(idList != null && idList.size() > 0){
+                                Collections.sort(idList);
+                            }
+                            origSb.append("v:").append(idList.toString());
+                        }
+                        else if(origElements.get(0) instanceof org.apache.hugegraph.structure.graph.Edge){
+                            for(Object e : origElements){
+                                idList.add(edgeIDMap.get(connections.get(j).getDatabase()).get(((org.apache.hugegraph.structure.graph.Edge)e).id().toString()));
+                            }
+                            if(idList != null && idList.size() > 0){
+                                Collections.sort(idList);
+                            }
+                            origSb.append("e:").append(idList.toString());
+                        }
+                        else{
+                            for(Object e : origElements){
+                                String value = e.toString();
+                                idList.add(value);
+                            }
+                            if(idList != null && idList.size() > 0){
+                                Collections.sort(idList);
+                            }
+                            origSb.append("n:").append(idList.toString());
+                        }
+                    }
+                }
+                compare.add(origSb.toString());
+                out.write("db" + j + " first : " + origSb.toString());
+                out.newLine();
+
+                List<Object> mutatedElements = mutatedList.get(j);
+                Exception mutatedErrors = mutatedelist.get(String.valueOf(j));
+
+                StringBuilder mutatedSb = new StringBuilder();
+                if(mutatedElements == null || mutatedElements.size() == 0){
+                    if(mutatedErrors == null)
+                        mutatedSb.append("null");
+                    else
+                        mutatedSb.append(mutatedErrors);
+                }else{
+                    List<String> idList = new ArrayList<>();
+                    String view = mutatedElements.get(0).toString();
+                    if(mutatedElements.get(0).toString().contains("e[")){
+                        for(Object e : mutatedElements){
+                            idList.add(edgeIDMap.get(connections.get(j).getDatabase()).get(((Result)e).getElement().id().toString()));
+                        }
+                        if(idList != null && idList.size() > 0){
+                            Collections.sort(idList);
+                        }
+                        mutatedSb.append("e:").append(idList.toString());
+                    }else if(mutatedElements.get(0).toString().contains("v[")){
+                        for(Object e : mutatedElements){
+                            idList.add(vertexIDMap.get(connections.get(j).getDatabase()).get(((Result)e).getElement().id().toString()));
+                        }
+                        if(idList != null && idList.size() > 0){
+                            Collections.sort(idList);
+                        }
+                        mutatedSb.append("v:").append(idList.toString());
+                    }else if(mutatedElements.get(0).toString().contains("java.lang.")){
+                        for(Object e : mutatedElements){
+                            String value = e.toString();
+                            idList.add(value.substring(value.indexOf("object=")+7,value.indexOf(" class=")));
+                        }
+                        if(idList != null && idList.size() > 0){
+                            Collections.sort(idList);
+                        }
+                        mutatedSb.append("n:").append(idList.toString());
+                    }
+                    else{
+                        if(mutatedElements.get(0) instanceof org.apache.hugegraph.structure.graph.Vertex){
+                            for(Object e : mutatedElements){
+                                idList.add(vertexIDMap.get(connections.get(j).getDatabase()).get(((org.apache.hugegraph.structure.graph.Vertex)e).id().toString()));
+                            }
+                            if(idList != null && idList.size() > 0){
+                                Collections.sort(idList);
+                            }
+                            mutatedSb.append("v:").append(idList.toString());
+                        }
+                        else if(mutatedElements.get(0) instanceof org.apache.hugegraph.structure.graph.Edge){
+                            for(Object e : mutatedElements){
+                                idList.add(edgeIDMap.get(connections.get(j).getDatabase()).get(((org.apache.hugegraph.structure.graph.Edge)e).id().toString()));
+                            }
+                            if(idList != null && idList.size() > 0){
+                                Collections.sort(idList);
+                            }
+                            mutatedSb.append("e:").append(idList.toString());
+                        }
+                        else{
+                            for(Object e : mutatedElements){
+                                String value = e.toString();
+                                idList.add(value);
+                            }
+                            if(idList != null && idList.size() > 0){
+                                Collections.sort(idList);
+                            }
+                            mutatedSb.append("n:").append(idList.toString());
+                        }
+                    }
+                }
+                compare.add(mutatedSb.toString());
+                out.write("db" + j + " second : " + mutatedSb.toString());
+                out.newLine();
+                if(!compareResult(compare)){
+                    resultOut.write("db " + j + "'s queryPair" + i + ": false");
+                    resultOut.newLine();
+                }
+            }
+        }
+        out.close();
+        resultOut.close();
     }
 
 

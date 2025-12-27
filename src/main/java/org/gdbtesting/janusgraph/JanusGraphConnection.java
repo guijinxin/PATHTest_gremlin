@@ -80,23 +80,23 @@ public class JanusGraphConnection extends GremlinConnection {
 //        Vertex notebook = g.addV("homework").property("subject", "Math").next();
 //        Edge edge1 = g.addE("write").from(Moly).to(notebook).property("date","0.8").next();
 
-        String query1 = "g.V().union(identity(), out(), repeat(out().as('a0')).emit().times(2).simplePath().path().select(last, 'a0'), repeat(out().as('a0')).emit().times(2).cyclicPath().path().select(last, 'a0'), out().out().out(), out().out().out().out(), repeat(out().as('a1')).emit().times(5).simplePath().path().select(last, 'a1'), repeat(out().as('a1')).emit().times(5).cyclicPath().path().select(last, 'a1')).count()";
-        String query2 = "g.V().union(identity(), repeat(out()).times(1), repeat(out()).times(2), repeat(out()).times(3), out().out().out().out(), repeat(out().as('a0')).times(5).simplePath().path().select(last, 'a0'), repeat(out().as('a0')).times(5).cyclicPath().path().select(last, 'a0')).count()";
-        String query = "g.V().emit().repeat(out()).times(5).count()";
-        String query3 = "g.V().union(identity(), out(), repeat(out().as('a0')).times(2).simplePath().path().select(last, 'a0'), repeat(out().as('a0')).times(2).cyclicPath().path().select(last, 'a0'), out().out().out()).count()";
+        String query1 = "g.V().out('el2','el1').values('vp0').sum()";
+        String query2 = "g.E().outV().repeat(out('el0').as('a0')).emit().times(3).where(select('a0').count(local).is(eq(1))).select(last, 'a0')";
+        String query3 = "g.V().as('start0').repeat(out('el2','el1').as('a0')).emit().times(3).where(__.path().from('start0').unfold().count().is(eq(2))).select(last, 'a0').values('vp0').sum()";
 
         String query4 = "g.V().repeat(out().as('a0')).emit().times(2).simplePath().path().select(last, 'a0').count()";
         String query5 = "g.V().repeat(out().as('a0')).emit().times(2).cyclicPath().path().select(last, 'a0').count()";
         String query6 = "g.V().out().out().count()";
         try{
-            List<Result> results = test.getClient().submit(query).all().get();
-            List<Result> results1 = test.getClient().submit(query2).all().get();
+            List<Result> results = test.getClient().submit(query1).all().get();
+            List<Result> results1 = test.getClient().submit(query3).all().get();
 
             System.out.println(results.size());
             for (Result r : results) {
                 System.out.println(String.valueOf(r));
-                System.out.println("sadads");
             }
+            System.out.println("=============");
+
             for (Result r : results1) {
                 System.out.println(String.valueOf(r));
             }

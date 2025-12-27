@@ -199,12 +199,26 @@ public class GremlinGraphProvider implements GraphDBProvider<GraphGlobalState, G
     }
 
 
+    public void generateAndMutatedTestDatabase(GraphGlobalState globalState) throws Exception {
+        for(int repeat = 0; repeat < 1; repeat++){
+
+            createGraphSchema();
+
+            creatGraphData();
+
+            // test graph database
+            generateRandomlyMutationTest();
+        }
+    }
+
     public void generateRandomlyMutationTest(){
         try{
             System.out.println("generate query");
-            graphDBSetup.generateRandomQuery();
+            graphDBSetup.generateRandomQueryAndMutate();
             System.out.println("setup Graph and check result");
-            graphDBSetup.setupGraphWithMutationCheck(addVMap, addEMap);
+            graphDBSetup.setupGraphWithMutation(addVMap, addEMap);
+            System.out.println("check result");
+            graphDBSetup.checkMutatedResult();
         } catch (Exception e) {
             e.printStackTrace();
         }

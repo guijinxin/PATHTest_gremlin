@@ -53,7 +53,7 @@ public class GraphTraversalGenerator {
     }
 
     public Pair<String, String> generateRandomlyTraversalAndMutation(){
-        return null;
+        return getExpressionAndMutation();
     }
 
     public Pair<String, String> getExpressionAndMutation(){

@@ -61,8 +61,7 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
         PROPERTY, FILTER_TRAVERSAL, NEIGHBOR_TRAVERSAL, STATISTIC, ORDER;
     }
     // ========= start line of mutation rule ===========
-    List<Traversal> origlist = new ArrayList<>();
-    public static int path_end_node_id = 0;
+    public int path_end_node_id = 0;
     public Pair<String, String> generateGraphTraversalAndMutation(){
         int length = Randomly.getInteger(2, state.getGenerateDepth());
         for(int i = 0; i < length; i++){
@@ -70,19 +69,19 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
             while(t == null){
                 t =  generateExpressionTraversal(i);
             }
-            origlist.add(t);
+            list.add(t);
             String Type = t.getTraversalType();
             if(Type.contains("property") || Type.contains("statistic")){
                 if(Type.contains("property") && Randomly.getBoolean()){
                     Traversal ta = createStatistic(t);
-                    origlist.add(ta);
+                    list.add(ta);
                 }
                 break;
             }
         }
         StringBuilder queryBuilder = new StringBuilder("g");
         StringBuilder mutationBuilder = new StringBuilder("g");
-        for(Traversal t : origlist){
+        for(Traversal t : list){
             String traversal = t.toString();
             queryBuilder.append(".").append(traversal);
 
@@ -105,14 +104,14 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
                 }
 
             }else {
-                mutationBuilder.append(".").append(t.toString());
+                mutationBuilder.append(".").append(traversal);
             }
         }
         return new Pair<>(queryBuilder.toString(), mutationBuilder.toString());
     }
     private static final Pattern REPEAT_PATTERN = Pattern.compile("repeat\\(\\s*((?:[^()]+|\\([^()]*\\))*)\\s*\\)");
     private static final Pattern PATH_PATTERN = Pattern.compile("(out|in|both)\\(([^)]*)\\)");
-    public static String var2FixPath(String path, int min, int max){
+    public String var2FixPath(String path, int min, int max){
         StringBuilder partitionResult = new StringBuilder();
         partitionResult.append("union(");
 
@@ -176,14 +175,32 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
         return partitionResult.append(")").toString();
     }
     public static void main(String[] args){
-        String i = "repeat(out().as('a')).emit().times(5)";
+        String i = "out()";
         int min = 0;
         int max = 5;
-        String result = GraphExpressionGenerator.var2FixPath(i, min, max);
+        GraphExpressionGenerator geg = new GraphExpressionGenerator(null);
+
+        String result = geg.fix2VarPath(i);
+        String result2 = geg.fix2VarPath(i);
         System.out.println(result);
+        System.out.println(result2);
+
     }
+    private int start_id = 0;
     private String fix2VarPath(String path){
-        return null;
+        StringBuilder varPathResult = new StringBuilder();
+        varPathResult.append("as('start").append(start_id).append("').");
+        if (Randomly.getBoolean()){
+            varPathResult.append("emit().repeat(").append(path).append(".as('a").append(path_end_node_id).append("'))");
+        }else {
+            varPathResult.append("repeat(").append(path).append(".as('a").append(path_end_node_id).append("')).emit()");
+        }
+
+        varPathResult.append(".times(").append(Randomly.getInteger(1, 5)).append(").where(__.path().from('start").append(start_id).append("').")
+                .append("unfold().count().is(eq(2))).select(last, 'a").append(path_end_node_id).append("')");
+        path_end_node_id++;
+        start_id++;
+        return varPathResult.toString();
     }
 
     // ========= end line of mutation rule ===========
@@ -220,11 +237,11 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
         if(depth == 0) return createStartTraversal();
         if(depth >= state.getGenerateDepth()) return (Traversal) generateLeafNode();
         int x = Randomly.getInteger(0, 100);
-        if(0 <= x && x < 50){
+        if(0 <= x && x < 35){
             return createFilterTraversalOperation(list.get(depth-1));
-        }else if(51 <= x && x <85){
+        }else if(35 <= x && x <85){
             return createNeighborTraversalOperation(list.get(depth-1));
-        }else if(86 <= x && x <98){
+        }else if(85 <= x && x <95){
             return createPropertyOrConstant(list.get(depth-1));
         } else{
             return createOrder(list.get(depth-1));
