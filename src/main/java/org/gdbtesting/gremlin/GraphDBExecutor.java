@@ -257,7 +257,9 @@ public class GraphDBExecutor {
                 origResultList.get(i).add(count, null);
                 origErrorResultList.get(i).put(String.valueOf(count),e);
             }
-
+            out.newLine();
+            out.write("========================QueryPair " + i + " second =======================\n");
+            out.write(mutatedQueryList.get(i) + "\n");
             try {
                 List<Result> mutatedResults;
                 List<Object> mutatedList = new ArrayList<>();
