@@ -1,2237 +1,979 @@
 Vertex:
 
-ID: 6213
-Label: vl1
-Properties: 
-Key: vp1 Value: -7154209462050760588
-
-ID: 6215
+ID: 11604
 Label: vl0
 Properties: 
-Key: vp1 Value: 3244057245722911663
-Key: vp4 Value: -2133630460
+Key: vp1 Value: 0.4243294
 
-ID: 6218
+ID: 11606
 Label: vl0
 Properties: 
-Key: vp1 Value: -8210999379706653448
-Key: vp4 Value: -2133630460
+Key: vp1 Value: 0.3212828
 
-ID: 6221
-Label: vl1
+ID: 11608
+Label: vl2
 Properties: 
-Key: vp1 Value: -6424908836595799329
+Key: vp1 Value: 0.08574289
+Key: vp4 Value: 2948942097795682377
 
-ID: 6223
+ID: 11611
+Label: vl2
+Properties: 
+Key: vp1 Value: 0.46186638
+Key: vp4 Value: -1315239481435535254
+
+ID: 11614
+Label: vl2
+Properties: 
+Key: vp3 Value: -8808413717099705486
+
+ID: 11616
+Label: vl2
+Properties: 
+Key: vp4 Value: 6416010677375191979
+
+ID: 11618
 Label: vl0
 Properties: 
-Key: vp4 Value: -1594398539
+Key: vp1 Value: 0.15603799
 
-ID: 6225
+ID: 11620
+Label: vl3
+Properties: 
+Key: vp4 Value: 3162431605989546110
+
+ID: 11622
 Label: vl2
 Properties: 
-Key: vp3 Value: 4996440864054714085
+Key: vp1 Value: 0.052604854
+Key: vp3 Value: 3169647195181845406
+Key: vp4 Value: 7333278291664108989
 
-ID: 6227
+ID: 11626
+Label: vl1
+Properties: 
+Key: vp1 Value: 0.116437316
+
+ID: 11628
+Label: vl3
+Properties: 
+Key: vp2 Value: false
+
+ID: 11630
+Label: vl1
+Properties: 
+Key: vp4 Value: -1224410583246904501
+
+ID: 11632
+Label: vl3
+Properties: 
+Key: vp2 Value: true
+Key: vp4 Value: -3008909738411775738
+
+ID: 11635
+Label: vl1
+Properties: 
+Key: vp1 Value: 0.10853976
+Key: vp4 Value: -3984279249005161827
+
+ID: 11638
+Label: vl3
+Properties: 
+Key: vp2 Value: false
+Key: vp4 Value: -18997045874824924
+
+ID: 11641
 Label: vl0
 Properties: 
-Key: vp1 Value: 2214351136081800279
+Key: vp1 Value: 0.12858254
 
-ID: 6229
+ID: 11643
+Label: vl3
+Properties: 
+Key: vp4 Value: 4965386572221010945
+
+ID: 11645
 Label: vl1
 Properties: 
-Key: vp1 Value: -791859762936537053
+Key: vp1 Value: 0.4373989
 
-ID: 6231
+ID: 11647
+Label: vl2
+Properties: 
+Key: vp3 Value: -4316579691679924806
+Key: vp4 Value: 7733833398163857807
+
+ID: 11650
 Label: vl1
 Properties: 
-Key: vp1 Value: 1836385034259834791
+Key: vp1 Value: 0.20517516
 
-ID: 6233
+ID: 11652
+Label: vl3
+Properties: 
+Key: vp2 Value: false
+Key: vp4 Value: 4667456373721266446
+
+ID: 11655
+Label: vl3
+Properties: 
+Key: vp2 Value: true
+Key: vp4 Value: 3679390478983920598
+
+ID: 11658
 Label: vl2
 Properties: 
-Key: vp3 Value: -26754154555090484
+Key: vp3 Value: 6141546781057579283
+Key: vp4 Value: -5647934264538025420
 
-ID: 6235
-Label: vl2
-Properties: 
-Key: vp3 Value: 4293440874365270305
-
-ID: 6237
-Label: vl2
-Properties: 
-Key: vp3 Value: -7802350430107279428
-
-ID: 6239
+ID: 11661
 Label: vl1
 Properties: 
-Key: vp1 Value: 6690177397992669349
+Key: vp1 Value: 0.25965732
+Key: vp4 Value: -8172891054302774915
 
-ID: 6241
-Label: vl1
-Properties: 
-Key: vp1 Value: -6670072018976664015
-
-ID: 6243
+ID: 11664
 Label: vl2
 Properties: 
-Key: vp3 Value: 8005916454273605582
+Key: vp1 Value: 0.5142284
+Key: vp4 Value: 4092115007255556431
 
-ID: 6245
+ID: 11667
+Label: vl1
+Properties: 
+Key: vp1 Value: 0.76128805
+Key: vp4 Value: -8596740435732503218
+
+ID: 11670
+Label: vl3
+Properties: 
+Key: vp2 Value: true
+Key: vp4 Value: 8170540363694374087
+
+ID: 11673
 Label: vl0
 Properties: 
-Key: vp1 Value: -751672338380862107
-Key: vp4 Value: -1594398539
+Key: vp1 Value: 0.29330772
 
-ID: 6248
-Label: vl2
+ID: 11675
+Label: vl1
 Properties: 
-Key: vp3 Value: 1427463420085475381
+Key: vp4 Value: -2075082569301057474
 
-ID: 6250
-Label: vl2
+ID: 11677
+Label: vl3
 Properties: 
-Key: vp3 Value: -7957180503454923197
+Key: vp4 Value: -5340180196475039494
 
-ID: 6252
+ID: 11679
 Label: vl0
 Properties: 
-Key: vp1 Value: -4577509055846538441
-Key: vp4 Value: -2133630460
+Key: vp1 Value: 0.75374407
 
-ID: 6255
-Label: vl1
-Properties: 
-Key: vp1 Value: -6941733373659051301
-
-ID: 6257
-Label: vl2
-Properties: 
-Key: vp3 Value: 2431570211378119284
-
-ID: 6259
-Label: vl2
-Properties: 
-Key: vp3 Value: 2717988300288382191
-
-ID: 6261
-Label: vl2
-Properties: 
-Key: vp3 Value: 6024162171989463905
-
-ID: 6263
-Label: vl1
-Properties: 
-Key: vp1 Value: -6610196994558269503
-
-ID: 6265
-Label: vl2
-Properties: 
-Key: vp3 Value: 4134728912394644738
-
-ID: 6267
+ID: 11681
 Label: vl0
 Properties: 
-Key: vp1 Value: 1147073204283482944
-Key: vp4 Value: -2133630460
+Key: vp1 Value: 0.02890706
 
-ID: 6270
+ID: 11683
 Label: vl0
 Properties: 
-Key: vp1 Value: -7780511340353051917
-Key: vp4 Value: 1059713129
+Key: vp1 Value: 0.7472912
 
-ID: 6273
+ID: 11685
+Label: vl3
+Properties: 
+Key: vp2 Value: false
+
+ID: 11687
+Label: vl3
+Properties: 
+Key: vp2 Value: false
+Key: vp4 Value: 6612308737412019240
+
+ID: 11690
+Label: vl3
+Properties: 
+Key: vp2 Value: false
+Key: vp4 Value: 7916409641746265888
+
+ID: 11693
+Label: vl1
+Properties: 
+Key: vp1 Value: 0.5645824
+
+ID: 11695
+Label: vl2
+Properties: 
+Key: vp1 Value: 0.1906327
+Key: vp3 Value: -8210650914492708177
+Key: vp4 Value: -1823744641105417084
+
+ID: 11699
+Label: vl3
+Properties: 
+Key: vp2 Value: false
+
+ID: 11701
+Label: vl3
+Properties: 
+Key: vp2 Value: false
+Key: vp4 Value: -1136693385417737510
+
+ID: 11704
 Label: vl0
 Properties: 
-Key: vp1 Value: -1731085048993045989
-Key: vp4 Value: -1
+Key: vp1 Value: 0.013223231
 
-ID: 6276
-Label: vl2
+ID: 11706
+Label: vl3
 Properties: 
-Key: vp3 Value: 3173116081253905312
+Key: vp2 Value: true
+Key: vp4 Value: 4666922161898365145
 
-ID: 6278
-Label: vl2
+ID: 11709
+Label: vl3
 Properties: 
-Key: vp3 Value: -2340527172003457548
+Key: vp2 Value: true
 
-ID: 6280
-Label: vl1
+ID: 11711
+Label: vl3
 Properties: 
-Key: vp1 Value: -212977624288118759
+Key: vp2 Value: false
+Key: vp4 Value: -3877569479179135088
 
-ID: 6282
-Label: vl1
-Properties: 
-Key: vp1 Value: 2630850908650680342
-
-ID: 6284
+ID: 11714
 Label: vl0
 Properties: 
-Key: vp1 Value: 7314209662768081189
-Key: vp4 Value: -104963945
+Key: vp1 Value: 0.85446984
 
-ID: 6287
+ID: 11716
 Label: vl0
 Properties: 
-Key: vp4 Value: -171469367
+Key: vp1 Value: 0.6818516
 
-ID: 6289
-Label: vl1
-Properties: 
-Key: vp1 Value: 8674390569072008977
-
-ID: 6291
-Label: vl1
-Properties: 
-Key: vp1 Value: -9038669230820572445
-
-ID: 6293
+ID: 11718
 Label: vl2
 Properties: 
-Key: vp3 Value: 2159142709567053735
+Key: vp1 Value: 0.6445335
 
-ID: 6295
+ID: 11720
 Label: vl1
 Properties: 
-Key: vp1 Value: 3719888885344614150
+Key: vp1 Value: 0.9043671
+Key: vp4 Value: -2651952706888710453
 
-ID: 6297
-Label: vl1
+ID: 11723
+Label: vl3
 Properties: 
-Key: vp1 Value: -1170946537154383421
+Key: vp2 Value: false
+Key: vp4 Value: -8025934305026026919
 
-ID: 6299
-Label: vl0
-Properties: 
-Key: vp1 Value: -3511247719066629354
-Key: vp4 Value: 421832671
-
-ID: 6302
-Label: vl0
-Properties: 
-Key: vp1 Value: -3595827378337147468
-
-ID: 6304
-Label: vl0
-Properties: 
-Key: vp1 Value: 7739295111000161872
-
-ID: 6306
-Label: vl1
-Properties: 
-Key: vp1 Value: -3609955763592693631
-
-ID: 6308
+ID: 11726
 Label: vl2
 Properties: 
-Key: vp3 Value: -3208019759191733018
-
-ID: 6310
-Label: vl1
-Properties: 
-Key: vp1 Value: -3340223423625871311
-
-ID: 6312
-Label: vl0
-Properties: 
-Key: vp1 Value: 406785665544705733
-Key: vp4 Value: 846913576
-
-ID: 6315
-Label: vl2
-Properties: 
-Key: vp3 Value: 8803692264603722181
-
-ID: 6317
-Label: vl1
-Properties: 
-Key: vp1 Value: -5037211692444668315
-
-ID: 6319
-Label: vl2
-Properties: 
-Key: vp3 Value: 1714903753599147487
-
-ID: 6321
-Label: vl2
-Properties: 
-Key: vp3 Value: 7515860410021926407
-
-ID: 6323
-Label: vl1
-Properties: 
-Key: vp1 Value: -4061429847388372626
-
-ID: 6325
-Label: vl1
-Properties: 
-Key: vp1 Value: -6767339716314142336
-
-ID: 6327
-Label: vl1
-Properties: 
-Key: vp1 Value: 5621740661521557855
-
-ID: 6329
-Label: vl1
-Properties: 
-Key: vp1 Value: -8640432106193806515
-
-ID: 6331
-Label: vl2
-Properties: 
-Key: vp3 Value: -7938821314659407511
-
-ID: 6333
-Label: vl1
-Properties: 
-Key: vp1 Value: 3544296090508970955
-
-ID: 6335
-Label: vl1
-Properties: 
-Key: vp1 Value: -7054380698796365555
-
-ID: 6337
-Label: vl1
-Properties: 
-Key: vp1 Value: -3443815938894080746
-
-ID: 6339
-Label: vl0
-Properties: 
-Key: vp1 Value: -5118189748399441323
-
-ID: 6341
-Label: vl2
-Properties: 
-Key: vp3 Value: 729470261530319180
-
-ID: 6343
-Label: vl0
-Properties: 
-Key: vp1 Value: 3074128568427751592
-
-ID: 6345
-Label: vl2
-Properties: 
-Key: vp3 Value: 5584082916396296231
-
-ID: 6347
-Label: vl1
-Properties: 
-Key: vp1 Value: 5871459228639129682
-
-ID: 6349
-Label: vl2
-Properties: 
-Key: vp3 Value: -6414158779194280774
-
-ID: 6351
-Label: vl1
-Properties: 
-Key: vp1 Value: 7778621955077135692
-
-ID: 6353
-Label: vl0
-Properties: 
-Key: vp1 Value: -773059431597019651
-Key: vp4 Value: 1059713129
-
-ID: 6356
-Label: vl0
-Properties: 
-Key: vp1 Value: -6964482651712729195
-
-ID: 6358
-Label: vl1
-Properties: 
-Key: vp1 Value: 4600060796720357736
-
-ID: 6360
-Label: vl2
-Properties: 
-Key: vp3 Value: 4207659918455758830
-
-ID: 6362
-Label: vl2
-Properties: 
-Key: vp3 Value: -1509214471454790162
-
-ID: 6364
-Label: vl0
-Properties: 
-Key: vp1 Value: 2984913939235787893
-Key: vp4 Value: 1059713129
-
-ID: 6367
-Label: vl1
-Properties: 
-Key: vp1 Value: 9178784634027318043
-
-ID: 6369
-Label: vl2
-Properties: 
-Key: vp3 Value: -8149425285023641423
-
-ID: 6371
-Label: vl1
-Properties: 
-Key: vp1 Value: -6162317415969759938
-
-ID: 6373
-Label: vl1
-Properties: 
-Key: vp1 Value: -897822378287421097
-
-ID: 6375
-Label: vl2
-Properties: 
-Key: vp3 Value: 2224362303262929020
-
-ID: 6377
-Label: vl2
-Properties: 
-Key: vp3 Value: 8622968012985053763
-
-ID: 6379
-Label: vl0
-Properties: 
-Key: vp1 Value: -8965629753800506319
-Key: vp4 Value: -969134630
-
-ID: 6382
-Label: vl2
-Properties: 
-Key: vp3 Value: -4320396812794407450
-
-ID: 6384
-Label: vl2
-Properties: 
-Key: vp3 Value: -1617698241657500537
-
-ID: 6386
-Label: vl0
-Properties: 
-Key: vp1 Value: -3024357305666490995
-Key: vp4 Value: -1237553708
-
-ID: 6389
-Label: vl0
-Properties: 
-Key: vp1 Value: 5876653236634990603
-Key: vp4 Value: -194421218
-
-ID: 6392
-Label: vl2
-Properties: 
-Key: vp3 Value: 6571377941382198004
-
-ID: 6394
-Label: vl2
-Properties: 
-Key: vp3 Value: -9085426518974674016
-
-ID: 6396
-Label: vl2
-Properties: 
-Key: vp3 Value: -9120980301747554088
-
-ID: 6398
-Label: vl2
-Properties: 
-Key: vp3 Value: 5874664860642599455
-
-ID: 6400
-Label: vl1
-Properties: 
-Key: vp1 Value: 7631679041734516070
-
-ID: 6402
-Label: vl1
-Properties: 
-Key: vp1 Value: 6244168528309059658
-
-ID: 6404
-Label: vl0
-Properties: 
-Key: vp4 Value: 48548005
-
-ID: 6406
-Label: vl1
-Properties: 
-Key: vp1 Value: 7320781385195081163
-
-ID: 6408
-Label: vl0
-Properties: 
-Key: vp1 Value: 6776716186003221656
-Key: vp4 Value: 349937212
-
-ID: 6411
-Label: vl2
-Properties: 
-Key: vp3 Value: 7603581503684915576
-
-ID: 6413
-Label: vl0
-Properties: 
-Key: vp1 Value: -9051684183691728717
-Key: vp4 Value: 48548005
-
-ID: 6416
-Label: vl1
-Properties: 
-Key: vp1 Value: 6977349107845011194
-
-ID: 6418
-Label: vl2
-Properties: 
-Key: vp3 Value: -6564095268493032165
-
-ID: 6420
-Label: vl0
-Properties: 
-Key: vp1 Value: 460275030511420131
-
-ID: 6422
-Label: vl2
-Properties: 
-Key: vp3 Value: -1450302655638894512
-
-ID: 6424
-Label: vl1
-Properties: 
-Key: vp1 Value: -6177513231498683796
-
-ID: 6426
-Label: vl2
-Properties: 
-Key: vp3 Value: 4758890052375638340
-
-ID: 6428
-Label: vl2
-Properties: 
-Key: vp3 Value: -2014164328667263381
+Key: vp1 Value: 0.925274
+Key: vp3 Value: 8450378340238890144
+Key: vp4 Value: 2700249572025132254
 
 Edge:
-ID: 6430
+ID: 11730
 Label: el1
-Out: 6280
-In: 6308
+Out: 11726
+In: 11658
 Properties: 
-Key: ep6  Value: -969134630
+Key: ep0  Value: 0.9288654090612595
 
-ID: 6431
-Label: el1
-Out: 6351
-In: 6362
-Properties: 
-Key: ep4  Value: 1922742428118483004
-Key: ep6  Value: -315187568
-
-ID: 6432
-Label: el0
-Out: 6379
-In: 6215
-Properties: 
-Key: ep0  Value: 1325878691
-Key: ep1  Value: 'Mg￿'
-Key: ep5  Value: '-1237553708'
-
-ID: 6433
-Label: el0
-Out: 6379
-In: 6408
-Properties: 
-Key: ep0  Value: -337335869
-Key: ep1  Value: 'Y '
-Key: ep4  Value: -6186251854210421000
-Key: ep3  Value: '*'
-Key: ep5  Value: ''
-
-ID: 6434
-Label: el0
-Out: 6413
-In: 6299
-Properties: 
-Key: ep1  Value: '*'
-Key: ep3  Value: '9%'
-Key: ep5  Value: '>RaP샙'
-
-ID: 6435
-Label: el0
-Out: 6356
-In: 6389
-Properties: 
-Key: ep0  Value: -376773542
-Key: ep1  Value: 'd{゜'
-Key: ep4  Value: -5113896785989153988
-Key: ep3  Value: '-1e500'
-Key: ep5  Value: '-337335869'
-
-ID: 6436
-Label: el1
-Out: 6373
-In: 6257
-Properties: 
-Key: ep0  Value: 2011520465
-Key: ep6  Value: 979158183
-
-ID: 6437
-Label: el0
-Out: 6287
-In: 6389
-Properties: 
-Key: ep4  Value: -636052200361669327
-Key: ep3  Value: '*'
-
-ID: 6438
-Label: el0
-Out: 6408
-In: 6270
-Properties: 
-Key: ep0  Value: 1059713129
-Key: ep1  Value: 'b2x\|,'
-Key: ep4  Value: 8291009199632889798
-Key: ep3  Value: '-2133630460'
-Key: ep5  Value: ''
-
-ID: 6439
-Label: el0
-Out: 6304
-In: 6287
-Properties: 
-Key: ep0  Value: -1731709071
-Key: ep1  Value: 'jh'
-Key: ep4  Value: -5296597389721070233
-Key: ep3  Value: '闉'
-Key: ep5  Value: ''n&S^my9
-'
-
-ID: 6440
-Label: el0
-Out: 6420
-In: 6356
-Properties: 
-Key: ep0  Value: 1566483034
-
-ID: 6441
-Label: el1
-Out: 6416
-In: 6426
-Properties: 
-Key: ep0  Value: 43551712
-Key: ep4  Value: 6134430750590230192
-Key: ep6  Value: 480699348
-
-ID: 6442
-Label: el0
-Out: 6304
-In: 6356
-Properties: 
-Key: ep1  Value: '480699348'
-Key: ep4  Value: -3254567777996083255
-Key: ep3  Value: '9%'
-
-ID: 6443
-Label: el1
-Out: 6347
-In: 6237
-Properties: 
-Key: ep4  Value: 8852175021916425147
-
-ID: 6444
-Label: el1
-Out: 6325
-In: 6237
-Properties: 
-Key: ep0  Value: 453136164
-Key: ep4  Value: -6428436827769860854
-Key: ep6  Value: 846913576
-
-ID: 6445
-Label: el0
-Out: 6353
-In: 6413
-Properties: 
-Key: ep4  Value: 952597709243352994
-
-ID: 6446
-Label: el1
-Out: 6406
-In: 6345
-Properties: 
-Key: ep0  Value: -1593213073
-Key: ep4  Value: -5504887218473192905
-
-ID: 6447
-Label: el0
-Out: 6270
-In: 6356
-Properties: 
-Key: ep0  Value: -77449039
-
-ID: 6448
-Label: el1
-Out: 6317
-In: 6308
-Properties: 
-Key: ep4  Value: -4199703032795381785
-
-ID: 6449
-Label: el1
-Out: 6327
-In: 6396
-Properties: 
-Key: ep4  Value: -7323292243052509573
-Key: ep6  Value: -349676324
-
-ID: 6450
-Label: el1
-Out: 6333
-In: 6377
-Properties: 
-Key: ep6  Value: 2117124119
-
-ID: 6451
-Label: el1
-Out: 6400
-In: 6360
-Properties: 
-Key: ep0  Value: 1566483034
-Key: ep4  Value: 3259346025449584986
-Key: ep6  Value: 151734458
-
-ID: 6452
-Label: el1
-Out: 6329
-In: 6250
-Properties: 
-Key: ep4  Value: 6183029154091935777
-Key: ep6  Value: 646078063
-
-ID: 6453
-Label: el0
-Out: 6302
-In: 6339
-Properties: 
-Key: ep0  Value: 1658548107
-Key: ep4  Value: -4173805681934676804
-
-ID: 6454
-Label: el0
-Out: 6312
-In: 6343
-Properties: 
-Key: ep4  Value: 4183850070434677349
-Key: ep5  Value: ''
-
-ID: 6455
-Label: el1
-Out: 6402
-In: 6321
-Properties: 
-Key: ep0  Value: -306609045
-Key: ep4  Value: -5190571128102001989
-Key: ep6  Value: 2117124119
-
-ID: 6456
-Label: el1
-Out: 6406
-In: 6392
-Properties: 
-Key: ep6  Value: 48548005
-
-ID: 6457
-Label: el1
-Out: 6241
-In: 6375
-Properties: 
-Key: ep0  Value: 902203217
-Key: ep6  Value: -884748528
-
-ID: 6458
-Label: el1
-Out: 6337
-In: 6369
-Properties: 
-Key: ep0  Value: 431404168
-Key: ep4  Value: -1949431801163660142
-Key: ep6  Value: 9349603
-
-ID: 6459
-Label: el1
-Out: 6347
-In: 6384
-Properties: 
-Key: ep0  Value: -337335869
-Key: ep4  Value: 5998776925557877478
-Key: ep6  Value: 902203217
-
-ID: 6460
-Label: el1
-Out: 6337
-In: 6428
-Properties: 
-Key: ep0  Value: 1893546734
-Key: ep6  Value: -842792202
-
-ID: 6461
-Label: el1
-Out: 6367
-In: 6243
-Properties: 
-Key: ep0  Value: -1788893694
-Key: ep4  Value: 6642330675629039689
-
-ID: 6462
-Label: el1
-Out: 6231
-In: 6233
-Properties: 
-Key: ep4  Value: 2547597755471390136
-Key: ep6  Value: 1893546734
-
-ID: 6463
-Label: el1
-Out: 6280
-In: 6382
-Properties: 
-Key: ep0  Value: 611462943
-Key: ep4  Value: -6794575256493504141
-Key: ep6  Value: 68645599
-
-ID: 6464
-Label: el1
-Out: 6221
-In: 6362
-Properties: 
-Key: ep0  Value: -884748528
-Key: ep4  Value: 5077372663276435597
-Key: ep6  Value: -1594398539
-
-ID: 6465
-Label: el0
-Out: 6252
-In: 6386
-Properties: 
-Key: ep0  Value: 1899899000
-Key: ep1  Value: '-1788893694'
-Key: ep3  Value: '5ꉚ'
-Key: ep5  Value: 'XX'
-
-ID: 6466
-Label: el1
-Out: 6347
-In: 6428
-Properties: 
-Key: ep4  Value: 8027358886220848314
-
-ID: 6467
-Label: el0
-Out: 6215
-In: 6273
-Properties: 
-Key: ep0  Value: -670074902
-Key: ep1  Value: 'bd'
-Key: ep4  Value: -8202139516981312539
-Key: ep3  Value: '2TS皜*H{㯩'
-
-ID: 6468
-Label: el1
-Out: 6424
-In: 6345
-Properties: 
-Key: ep4  Value: -8850599507124540001
-Key: ep6  Value: -1496709532
-
-ID: 6469
-Label: el1
-Out: 6229
-In: 6331
-Properties: 
-Key: ep0  Value: -955300485
-Key: ep4  Value: 6281219517070079301
-Key: ep6  Value: -1535636268
-
-ID: 6470
-Label: el0
-Out: 6364
-In: 6389
-Properties: 
-Key: ep0  Value: 1980316437
-Key: ep4  Value: -7774860174499780223
-Key: ep3  Value: '(Wd'
-Key: ep5  Value: ''
-
-ID: 6471
-Label: el1
-Out: 6329
-In: 6362
-Properties: 
-Key: ep0  Value: 1706866137
-Key: ep4  Value: -2050565946424925029
-Key: ep6  Value: -225349934
-
-ID: 6472
-Label: el0
-Out: 6356
-In: 6252
-Properties: 
-Key: ep1  Value: '|9PzE'
-
-ID: 6473
-Label: el1
-Out: 6289
-In: 6369
-Properties: 
-Key: ep0  Value: 480699348
-Key: ep4  Value: -5725648907090592428
-Key: ep6  Value: -1125038494
-
-ID: 6474
-Label: el0
-Out: 6404
-In: 6413
+ID: 11731
+Label: el4
+Out: 11690
+In: 11701
 Properties: 
-Key: ep4  Value: 4187152994784572666
+Key: ep0  Value: 0.9288654090612595
 
-ID: 6475
-Label: el1
-Out: 6347
-In: 6319
+ID: 11732
+Label: el4
+Out: 11699
+In: 11670
 Properties: 
-Key: ep0  Value: -1868159790
-Key: ep4  Value: 6853710820217932029
+Key: ep0  Value: 0.23384227042026517
 
-ID: 6476
-Label: el0
-Out: 6386
-In: 6252
+ID: 11733
+Label: el3
+Out: 11635
+In: 11701
 Properties: 
-Key: ep3  Value: '#j'
+Key: ep0  Value: 0.05573455900193103
 
-ID: 6477
-Label: el0
-Out: 6299
-In: 6312
+ID: 11734
+Label: el4
+Out: 11701
+In: 11652
 Properties: 
-Key: ep1  Value: 'W'
-Key: ep3  Value: 'jh'
-Key: ep5  Value: '1785999516'
+Key: ep0  Value: 0.2673754561777565
 
-ID: 6478
-Label: el0
-Out: 6312
-In: 6353
+ID: 11735
+Label: el2
+Out: 11618
+In: 11647
 Properties: 
-Key: ep3  Value: 'jh'
+Key: ep0  Value: 0.46190223097265004
 
-ID: 6479
+ID: 11736
 Label: el1
-Out: 6329
-In: 6345
+Out: 11695
+In: 11726
 Properties: 
-Key: ep0  Value: -1594398539
-Key: ep4  Value: 4098912034894107
-Key: ep6  Value: -1671114851
+Key: ep0  Value: 0.29268145565923354
 
-ID: 6480
+ID: 11737
 Label: el1
-Out: 6402
-In: 6396
+Out: 11608
+In: 11726
 Properties: 
-Key: ep0  Value: -670074902
-Key: ep4  Value: 3935972580982829691
-Key: ep6  Value: -194421218
+Key: ep0  Value: 0.2485294969569044
 
-ID: 6481
-Label: el1
-Out: 6358
-In: 6331
+ID: 11738
+Label: el2
+Out: 11681
+In: 11726
 Properties: 
-Key: ep0  Value: -306609045
+Key: ep0  Value: 0.6928796713690359
 
-ID: 6482
-Label: el1
-Out: 6282
-In: 6225
+ID: 11739
+Label: el3
+Out: 11650
+In: 11709
 Properties: 
-Key: ep0  Value: 1709955874
-Key: ep4  Value: -8511859164606884962
-Key: ep6  Value: -1351000754
+Key: ep0  Value: 0.052111932848229015
 
-ID: 6483
+ID: 11740
 Label: el0
-Out: 6312
-In: 6284
+Out: 11695
+In: 11679
 Properties: 
-Key: ep4  Value: 2062637185502336037
-Key: ep3  Value: '೔d5'
-Key: ep5  Value: '㬕Sy'
+Key: ep0  Value: 0.3848306532111574
 
-ID: 6484
-Label: el1
-Out: 6231
-In: 6261
+ID: 11741
+Label: el3
+Out: 11720
+In: 11638
 Properties: 
-Key: ep4  Value: -4130117488592631437
-Key: ep6  Value: 262766089
+Key: ep0  Value: 0.1895204440431536
 
-ID: 6485
+ID: 11742
 Label: el0
-Out: 6379
-In: 6420
+Out: 11718
+In: 11641
 Properties: 
-Key: ep0  Value: -1496709532
-Key: ep3  Value: 'I'
-Key: ep5  Value: '೔d5'
+Key: ep0  Value: 0.05312844639619996
 
-ID: 6486
+ID: 11743
 Label: el1
-Out: 6406
-In: 6422
+Out: 11647
+In: 11695
 Properties: 
-Key: ep0  Value: 449987234
-Key: ep6  Value: 759480086
+Key: ep0  Value: 0.8375805210999978
 
-ID: 6487
-Label: el1
-Out: 6335
-In: 6418
-Properties: 
-Key: ep4  Value: 6384153851169587090
-Key: ep6  Value: -1159054761
-
-ID: 6488
-Label: el0
-Out: 6343
-In: 6218
-Properties: 
-Key: ep0  Value: 43551712
-Key: ep1  Value: 'Hc~h~GmQ>'
-Key: ep4  Value: -2092546736690635610
-Key: ep3  Value: ''
-Key: ep5  Value: '5ꉚ'
-
-ID: 6489
+ID: 11744
 Label: el0
-Out: 6287
-In: 6386
-Properties: 
-Key: ep0  Value: -52398436
-Key: ep1  Value: 'xSC'
-Key: ep4  Value: 137661500416315715
-Key: ep3  Value: 'jy'
-Key: ep5  Value: '1980316437'
-
-ID: 6490
-Label: el0
-Out: 6364
-In: 6299
-Properties: 
-Key: ep1  Value: '-1237553708'
-
-ID: 6491
-Label: el0
-Out: 6404
-In: 6227
-Properties: 
-Key: ep0  Value: 838118216
-Key: ep1  Value: '2TS皜*H{㯩'
-Key: ep4  Value: -7397867306840929469
-Key: ep3  Value: '%cLwb'
-Key: ep5  Value: '1785999516'
-
-ID: 6492
-Label: el1
-Out: 6291
-In: 6250
+Out: 11718
+In: 11604
 Properties: 
-Key: ep0  Value: 34375069
-Key: ep4  Value: 3639193728512133893
+Key: ep0  Value: 0.6928796713690359
 
-ID: 6493
-Label: el1
-Out: 6335
-In: 6375
-Properties: 
-Key: ep0  Value: -999488578
-Key: ep4  Value: 5730831405447584600
-Key: ep6  Value: 445320860
-
-ID: 6494
-Label: el1
-Out: 6263
-In: 6384
+ID: 11745
+Label: el4
+Out: 11643
+In: 11711
 Properties: 
-Key: ep0  Value: 354549633
-Key: ep4  Value: 7333136528739672862
-Key: ep6  Value: -583157582
+Key: ep0  Value: 0.8433653261573003
 
-ID: 6495
-Label: el1
-Out: 6371
-In: 6261
-Properties: 
-Key: ep4  Value: -6495779237437795172
-Key: ep6  Value: 187660779
-
-ID: 6496
-Label: el0
-Out: 6389
-In: 6252
+ID: 11746
+Label: el3
+Out: 11635
+In: 11711
 Properties: 
-Key: ep5  Value: '<|'
+Key: ep0  Value: 0.03814260824920235
 
-ID: 6497
+ID: 11747
 Label: el0
-Out: 6270
-In: 6215
-Properties: 
-Key: ep4  Value: -448113233467263829
-
-ID: 6498
-Label: el1
-Out: 6263
-In: 6369
+Out: 11622
+In: 11681
 Properties: 
-Key: ep4  Value: 1707208000342142725
+Key: ep0  Value: 0.38857233916166645
 
-ID: 6499
-Label: el0
-Out: 6386
-In: 6413
-Properties: 
-Key: ep0  Value: 0
-Key: ep1  Value: ''
-Key: ep4  Value: -5794780822696672291
-Key: ep3  Value: 'bd'
-Key: ep5  Value: 'Y '
-
-ID: 6500
-Label: el0
-Out: 6273
-In: 6302
-Properties: 
-Key: ep0  Value: -969134630
-Key: ep1  Value: 'gR'
-Key: ep4  Value: 811475318561415777
-Key: ep3  Value: ''
-Key: ep5  Value: ''
-
-ID: 6501
+ID: 11748
 Label: el0
-Out: 6389
-In: 6287
-Properties: 
-Key: ep0  Value: -1517070627
-Key: ep1  Value: '68645599'
-Key: ep4  Value: 5242729782503431454
-Key: ep3  Value: ''
-Key: ep5  Value: ''
-
-ID: 6502
-Label: el0
-Out: 6287
-In: 6304
+Out: 11664
+In: 11679
 Properties: 
-Key: ep3  Value: '*3m'
+Key: ep0  Value: 0.8519264428672924
 
-ID: 6503
-Label: el0
-Out: 6364
-In: 6304
-Properties: 
-Key: ep0  Value: 48548005
-Key: ep1  Value: '-0.0'
-Key: ep3  Value: 'D{('
-Key: ep5  Value: ''
-
-ID: 6504
-Label: el0
-Out: 6408
-In: 6227
+ID: 11749
+Label: el2
+Out: 11673
+In: 11614
 Properties: 
-Key: ep3  Value: ''
-Key: ep5  Value: '-1535636268'
+Key: ep0  Value: 0.758216420645984
 
-ID: 6505
-Label: el0
-Out: 6273
-In: 6227
-Properties: 
-Key: ep0  Value: -1217137682
-Key: ep1  Value: '/kY烛됵'
-Key: ep4  Value: -9012109702935919039
-Key: ep3  Value: '-3'
-Key: ep5  Value: ''
-
-ID: 6506
+ID: 11750
 Label: el0
-Out: 6218
-In: 6404
-Properties: 
-Key: ep0  Value: 759480086
-Key: ep1  Value: '7)'
-Key: ep4  Value: -409974952262757128
-Key: ep3  Value: '㬕Sy'
-Key: ep5  Value: '{?'
-
-ID: 6507
-Label: el0
-Out: 6267
-In: 6379
-Properties: 
-Key: ep0  Value: 2086424498
-Key: ep1  Value: '(Wd'
-Key: ep4  Value: 4143831406763262919
-Key: ep3  Value: '-842792202'
-Key: ep5  Value: 'I'
-
-ID: 6508
-Label: el1
-Out: 6239
-In: 6398
+Out: 11664
+In: 11716
 Properties: 
-Key: ep0  Value: 1155214745
-Key: ep4  Value: 5385019369426275324
-Key: ep6  Value: -1282388425
+Key: ep0  Value: 0.9288654090612595
 
-ID: 6509
-Label: el0
-Out: 6273
-In: 6389
+ID: 11751
+Label: el2
+Out: 11604
+In: 11726
 Properties: 
-Key: ep0  Value: 1119418948
-Key: ep3  Value: 'q'
-Key: ep5  Value: '2011520465'
+Key: ep0  Value: 0.3848306532111574
 
-ID: 6510
-Label: el0
-Out: 6389
-In: 6379
-Properties: 
-Key: ep0  Value: -969134630
-Key: ep1  Value: 'Jrn'
-Key: ep4  Value: 4449377138204915167
-Key: ep3  Value: '-52398436'
-Key: ep5  Value: ''
-
-ID: 6511
+ID: 11752
 Label: el1
-Out: 6317
-In: 6235
+Out: 11647
+In: 11726
 Properties: 
-Key: ep0  Value: 1892619132
-Key: ep4  Value: 8980091566905198051
-Key: ep6  Value: 184845342
+Key: ep0  Value: 0.2278891506481313
 
-ID: 6512
-Label: el1
-Out: 6239
-In: 6345
+ID: 11753
+Label: el3
+Out: 11693
+In: 11638
 Properties: 
-Key: ep0  Value: -1711223176
-Key: ep4  Value: 8761890869590017333
-Key: ep6  Value: 1570765079
+Key: ep0  Value: 0.7150426818383683
 
-ID: 6513
-Label: el1
-Out: 6327
-In: 6418
+ID: 11754
+Label: el2
+Out: 11606
+In: 11695
 Properties: 
-Key: ep0  Value: 1887945385
-Key: ep4  Value: 5529251775132551877
-Key: ep6  Value: 168245160
+Key: ep0  Value: 0.19178522296328748
 
-ID: 6514
-Label: el0
-Out: 6386
-In: 6215
+ID: 11755
+Label: el4
+Out: 11701
+In: 11670
 Properties: 
-Key: ep0  Value: 327016535
-Key: ep1  Value: '梅62LN'
-Key: ep3  Value: ']~bओ*犨w'
+Key: ep0  Value: 0.7150426818383683
 
-ID: 6515
-Label: el1
-Out: 6297
-In: 6422
+ID: 11756
+Label: el3
+Out: 11650
+In: 11690
 Properties: 
-Key: ep0  Value: -1219933112
+Key: ep0  Value: 0.3538860219262473
 
-ID: 6516
+ID: 11757
 Label: el1
-Out: 6337
-In: 6248
-Properties: 
-Key: ep0  Value: -1141344505
-Key: ep4  Value: -1499904405299603966
-
-ID: 6517
-Label: el0
-Out: 6408
-In: 6386
+Out: 11658
+In: 11616
 Properties: 
-Key: ep0  Value: 173382503
-Key: ep1  Value: '-376773542'
-Key: ep5  Value: '9%'
+Key: ep0  Value: 0.8415748735513205
 
-ID: 6518
-Label: el1
-Out: 6255
-In: 6321
+ID: 11758
+Label: el2
+Out: 11704
+In: 11664
 Properties: 
-Key: ep0  Value: -259185670
+Key: ep0  Value: 0.6928796713690359
 
-ID: 6519
-Label: el1
-Out: 6323
-In: 6259
+ID: 11759
+Label: el3
+Out: 11720
+In: 11620
 Properties: 
-Key: ep0  Value: -120391891
+Key: ep0  Value: 0.5443072431679242
 
-ID: 6520
-Label: el1
-Out: 6327
-In: 6259
+ID: 11760
+Label: el2
+Out: 11714
+In: 11614
 Properties: 
-Key: ep0  Value: -326681623
-Key: ep6  Value: -1432802545
+Key: ep0  Value: 0.4012012803641356
 
-ID: 6521
-Label: el0
-Out: 6353
-In: 6223
+ID: 11761
+Label: el2
+Out: 11606
+In: 11614
 Properties: 
-Key: ep4  Value: -8838714882752043285
-Key: ep3  Value: 'g'
-Key: ep5  Value: '611462943'
+Key: ep0  Value: 0.537599519446179
 
-ID: 6522
+ID: 11762
 Label: el0
-Out: 6245
-In: 6227
-Properties: 
-Key: ep0  Value: 902203217
-Key: ep1  Value: ''
-Key: ep4  Value: -5782933651403990060
-Key: ep5  Value: '-1671114851'
-
-ID: 6523
-Label: el0
-Out: 6386
-In: 6270
+Out: 11622
+In: 11604
 Properties: 
-Key: ep0  Value: -576968739
-Key: ep5  Value: 'J/w~8yPJ虗'
+Key: ep0  Value: 0.13921948334361933
 
-ID: 6524
-Label: el1
-Out: 6325
-In: 6250
+ID: 11763
+Label: el4
+Out: 11687
+In: 11711
 Properties: 
-Key: ep0  Value: 1290978592
-Key: ep4  Value: -3263946326280168857
-Key: ep6  Value: -1711223176
+Key: ep0  Value: 0.04692227178033803
 
-ID: 6525
-Label: el0
-Out: 6215
-In: 6270
-Properties: 
-Key: ep0  Value: -2059195247
-Key: ep1  Value: ''
-Key: ep4  Value: -3324536293338821862
-Key: ep3  Value: 'z'
-Key: ep5  Value: '}'
-
-ID: 6526
-Label: el1
-Out: 6255
-In: 6418
+ID: 11764
+Label: el2
+Out: 11641
+In: 11647
 Properties: 
-Key: ep0  Value: 256753881
+Key: ep0  Value: 0.5006387318958485
 
-ID: 6527
-Label: el0
-Out: 6302
-In: 6364
-Properties: 
-Key: ep0  Value: -1034420164
-Key: ep1  Value: '절jf1.X'
-Key: ep4  Value: 3379837187361628174
-Key: ep3  Value: '48548005'
-
-ID: 6528
-Label: el0
-Out: 6299
-In: 6356
-Properties: 
-Key: ep0  Value: 421832671
-Key: ep1  Value: '1059713129'
-Key: ep4  Value: -5522733982651593646
-Key: ep3  Value: '%cLwb'
-
-ID: 6529
-Label: el0
-Out: 6389
-In: 6215
+ID: 11765
+Label: el3
+Out: 11626
+In: 11652
 Properties: 
-Key: ep0  Value: 1709955874
-Key: ep3  Value: 'M%9u1K~巑.'
-Key: ep5  Value: '-1868159790'
+Key: ep0  Value: 0.3691514671259136
 
-ID: 6530
+ID: 11766
 Label: el1
-Out: 6347
-In: 6341
+Out: 11695
+In: 11695
 Properties: 
-Key: ep4  Value: 6197315749603771132
+Key: ep0  Value: 0.7203241189127232
 
-ID: 6531
-Label: el1
-Out: 6325
-In: 6233
+ID: 11767
+Label: el2
+Out: 11716
+In: 11608
 Properties: 
-Key: ep0  Value: 1292520505
-Key: ep4  Value: 5488244500086832383
-Key: ep6  Value: -1570689635
+Key: ep0  Value: 0.22786486097084258
 
-ID: 6532
-Label: el1
-Out: 6351
-In: 6265
+ID: 11768
+Label: el2
+Out: 11606
+In: 11664
 Properties: 
-Key: ep0  Value: 1325878691
+Key: ep0  Value: 0.19230818279955764
 
-ID: 6533
+ID: 11769
 Label: el0
-Out: 6304
-In: 6302
+Out: 11608
+In: 11673
 Properties: 
-Key: ep0  Value: -1711223176
-Key: ep4  Value: 246517775971690787
-Key: ep5  Value: ''
+Key: ep0  Value: 0.2673754561777565
 
-ID: 6534
-Label: el0
-Out: 6223
-In: 6299
+ID: 11770
+Label: el3
+Out: 11667
+In: 11632
 Properties: 
-Key: ep1  Value: '1566483034'
-Key: ep4  Value: 4576456443101903288
-Key: ep5  Value: 'wSfm'
+Key: ep0  Value: 0.2673754561777565
 
-ID: 6535
+ID: 11771
 Label: el0
-Out: 6343
-In: 6420
-Properties: 
-Key: ep0  Value: 846913576
-Key: ep1  Value: 'JJZ'
-Key: ep4  Value: 7349676855679092582
-Key: ep3  Value: ''
-Key: ep5  Value: '{?'
-
-ID: 6536
-Label: el0
-Out: 6299
-In: 6302
-Properties: 
-Key: ep0  Value: 1566483034
-Key: ep1  Value: 'lj'
-Key: ep4  Value: 131287893689852658
-Key: ep3  Value: 'Rr'
-Key: ep5  Value: '%퉫'
-
-ID: 6537
-Label: el1
-Out: 6400
-In: 6369
+Out: 11614
+In: 11716
 Properties: 
-Key: ep4  Value: -8326529154506880891
-Key: ep6  Value: 214619832
+Key: ep0  Value: 0.9288654090612595
 
-ID: 6538
+ID: 11772
 Label: el1
-Out: 6263
-In: 6308
+Out: 11622
+In: 11664
 Properties: 
-Key: ep0  Value: 101752349
-Key: ep4  Value: -1128194531884532127
-Key: ep6  Value: 1488878872
+Key: ep0  Value: 0.7711023866664166
 
-ID: 6539
-Label: el1
-Out: 6280
-In: 6345
-Properties: 
-Key: ep4  Value: -3773389945686788589
-
-ID: 6540
-Label: el0
-Out: 6287
-In: 6227
-Properties: 
-Key: ep0  Value: -670074902
-Key: ep1  Value: '.'
-Key: ep4  Value: -1877781069127006740
-Key: ep3  Value: ']~bओ*犨w'
-
-ID: 6541
-Label: el0
-Out: 6408
-In: 6302
-Properties: 
-Key: ep0  Value: -104963945
-Key: ep1  Value: '﮻H2'
-Key: ep4  Value: -2469014490433771236
-Key: ep3  Value: ']~bओ*犨w'
-Key: ep5  Value: '	W&-'
-
-ID: 6542
-Label: el1
-Out: 6239
-In: 6396
-Properties: 
-Key: ep4  Value: -8976880688313035846
-Key: ep6  Value: 1069637587
-
-ID: 6543
-Label: el0
-Out: 6343
-In: 6299
-Properties: 
-Key: ep1  Value: '168245160'
-Key: ep5  Value: 'z'
-
-ID: 6544
-Label: el0
-Out: 6299
-In: 6404
+ID: 11773
+Label: el4
+Out: 11677
+In: 11652
 Properties: 
-Key: ep0  Value: -1486740109
-Key: ep1  Value: 'jh'
-Key: ep4  Value: 5065163331947120574
+Key: ep0  Value: 0.8519264428672924
 
-ID: 6545
-Label: el1
-Out: 6373
-In: 6422
-Properties: 
-Key: ep0  Value: -1132276687
-
-ID: 6546
-Label: el1
-Out: 6221
-In: 6243
+ID: 11774
+Label: el2
+Out: 11679
+In: 11611
 Properties: 
-Key: ep0  Value: -736852044
-Key: ep6  Value: -1572124307
+Key: ep0  Value: 0.9991833652852468
 
-ID: 6547
+ID: 11775
 Label: el0
-Out: 6386
-In: 6287
+Out: 11695
+In: 11641
 Properties: 
-Key: ep1  Value: ',+(/,3*'
-Key: ep5  Value: 'qQ0'
+Key: ep0  Value: 0.281663483332496
 
-ID: 6548
-Label: el1
-Out: 6327
-In: 6315
+ID: 11776
+Label: el4
+Out: 11701
+In: 11723
 Properties: 
-Key: ep0  Value: -1968850456
-Key: ep6  Value: 1292520505
+Key: ep0  Value: 0.6669822938603006
 
-ID: 6549
-Label: el0
-Out: 6312
-In: 6364
-Properties: 
-Key: ep0  Value: 923970875
-Key: ep1  Value: 'c+S'
-Key: ep3  Value: '~C'
-Key: ep5  Value: 'W'
-
-ID: 6550
-Label: el0
-Out: 6227
-In: 6404
+ID: 11777
+Label: el4
+Out: 11652
+In: 11687
 Properties: 
-Key: ep3  Value: ''
-Key: ep5  Value: 'k'
+Key: ep0  Value: 0.4754879522898582
 
-ID: 6551
-Label: el0
-Out: 6287
-In: 6413
+ID: 11778
+Label: el2
+Out: 11618
+In: 11614
 Properties: 
-Key: ep1  Value: 'bd'
-Key: ep3  Value: '䶣''
+Key: ep0  Value: 0.1895204440431536
 
-ID: 6552
-Label: el1
-Out: 6402
-In: 6315
+ID: 11779
+Label: el4
+Out: 11628
+In: 11620
 Properties: 
-Key: ep0  Value: -1058956785
-Key: ep4  Value: 8101160752815459474
+Key: ep0  Value: 0.7151847542157366
 
-ID: 6553
+ID: 11780
 Label: el1
-Out: 6282
-In: 6293
+Out: 11718
+In: 11718
 Properties: 
-Key: ep4  Value: 893094523038062897
-Key: ep6  Value: 1741190482
+Key: ep0  Value: 0.758216420645984
 
-ID: 6554
+ID: 11781
 Label: el0
-Out: 6252
-In: 6389
+Out: 11614
+In: 11604
 Properties: 
-Key: ep1  Value: 'ᠣR('
+Key: ep0  Value: 0.5419222441795488
 
-ID: 6555
+ID: 11782
 Label: el1
-Out: 6400
-In: 6384
+Out: 11608
+In: 11611
 Properties: 
-Key: ep6  Value: -797842566
+Key: ep0  Value: 0.7288154337696502
 
-ID: 6556
-Label: el1
-Out: 6255
-In: 6243
+ID: 11783
+Label: el2
+Out: 11704
+In: 11611
 Properties: 
-Key: ep0  Value: -1865305035
-Key: ep4  Value: -5203439860182652719
-Key: ep6  Value: 1876925472
+Key: ep0  Value: 0.501937777538516
 
-ID: 6557
+ID: 11784
 Label: el0
-Out: 6252
-In: 6420
+Out: 11611
+In: 11673
 Properties: 
-Key: ep5  Value: '-194421218'
+Key: ep0  Value: 0.019235917827411186
 
-ID: 6558
+ID: 11785
 Label: el1
-Out: 6306
-In: 6250
-Properties: 
-Key: ep0  Value: -1911280017
-Key: ep4  Value: 1120387518546949640
-Key: ep6  Value: -2035567439
-
-ID: 6559
-Label: el0
-Out: 6304
-In: 6413
+Out: 11726
+In: 11608
 Properties: 
-Key: ep1  Value: 'JJZ'
+Key: ep0  Value: 0.2673754561777565
 
-ID: 6560
-Label: el1
-Out: 6327
-In: 6293
+ID: 11786
+Label: el3
+Out: 11661
+In: 11687
 Properties: 
-Key: ep0  Value: 353066037
-Key: ep4  Value: 5127944170892642210
-Key: ep6  Value: 1174812193
+Key: ep0  Value: 0.6669822938603006
 
-ID: 6561
-Label: el1
-Out: 6358
-In: 6243
+ID: 11787
+Label: el2
+Out: 11704
+In: 11608
 Properties: 
-Key: ep0  Value: -415302964
+Key: ep0  Value: 0.9909660163918806
 
-ID: 6562
+ID: 11788
 Label: el0
-Out: 6302
-In: 6379
-Properties: 
-Key: ep0  Value: -1203920978
-Key: ep5  Value: 'FALSE'
-
-ID: 6563
-Label: el1
-Out: 6221
-In: 6349
-Properties: 
-Key: ep0  Value: -2097644455
-Key: ep4  Value: 2998529358714815889
-Key: ep6  Value: -583157582
-
-ID: 6564
-Label: el1
-Out: 6335
-In: 6235
-Properties: 
-Key: ep0  Value: 68645599
-Key: ep4  Value: -7942175440356940705
-Key: ep6  Value: 110441779
-
-ID: 6565
-Label: el1
-Out: 6241
-In: 6278
+Out: 11622
+In: 11618
 Properties: 
-Key: ep0  Value: -863023042
-Key: ep4  Value: 4271898599722020899
+Key: ep0  Value: 0.573401496541793
 
-ID: 6566
-Label: el1
-Out: 6231
-In: 6248
+ID: 11789
+Label: el3
+Out: 11626
+In: 11677
 Properties: 
-Key: ep4  Value: 1514955990285195361
-Key: ep6  Value: -570575007
+Key: ep0  Value: 0.8707441332072647
 
-ID: 6567
-Label: el1
-Out: 6325
-In: 6360
+ID: 11790
+Label: el2
+Out: 11683
+In: 11614
 Properties: 
-Key: ep4  Value: -6460545917950932850
-Key: ep6  Value: 1875298446
+Key: ep0  Value: 0.6054392524164648
 
-ID: 6568
-Label: el0
-Out: 6299
-In: 6343
+ID: 11791
+Label: el4
+Out: 11620
+In: 11706
 Properties: 
-Key: ep1  Value: ''
-Key: ep4  Value: 6714927626216210236
-Key: ep5  Value: '|9PzE'
+Key: ep0  Value: 0.13638234680093642
 
-ID: 6569
+ID: 11792
 Label: el1
-Out: 6310
-In: 6375
+Out: 11695
+In: 11614
 Properties: 
-Key: ep4  Value: 2091015052924314801
+Key: ep0  Value: 0.5706929178772777
 
-ID: 6570
+ID: 11793
 Label: el0
-Out: 6245
-In: 6339
-Properties: 
-Key: ep0  Value: -295205545
-Key: ep1  Value: '-670074902'
-Key: ep4  Value: -7266645089758503636
-Key: ep3  Value: ''
-Key: ep5  Value: ''
-
-ID: 6571
-Label: el0
-Out: 6343
-In: 6389
-Properties: 
-Key: ep4  Value: -8287436482333903333
-Key: ep3  Value: '_'
-Key: ep5  Value: ''
-
-ID: 6572
-Label: el1
-Out: 6297
-In: 6428
+Out: 11695
+In: 11606
 Properties: 
-Key: ep4  Value: 7262137379155313044
+Key: ep0  Value: 0.6778930177157056
 
-ID: 6573
-Label: el0
-Out: 6389
-In: 6420
-Properties: 
-Key: ep0  Value: -682544349
-Key: ep1  Value: '9%'
-Key: ep4  Value: 9086438421681515644
-Key: ep3  Value: '*'
-Key: ep5  Value: ''
-
-ID: 6574
-Label: el1
-Out: 6310
-In: 6293
+ID: 11794
+Label: el4
+Out: 11723
+In: 11628
 Properties: 
-Key: ep0  Value: 1452902142
-Key: ep4  Value: 4356346928941601805
-Key: ep6  Value: -929744544
+Key: ep0  Value: 0.15260051242622108
 
-ID: 6575
-Label: el0
-Out: 6343
-In: 6343
-Properties: 
-Key: ep0  Value: 979158183
-Key: ep4  Value: -6313635643002270728
-Key: ep3  Value: 'j'
-Key: ep5  Value: ''
-
-ID: 6576
+ID: 11795
 Label: el1
-Out: 6416
-In: 6384
+Out: 11695
+In: 11718
 Properties: 
-Key: ep0  Value: -1198585306
-Key: ep4  Value: -3444440187183394264
-Key: ep6  Value: -1087529867
+Key: ep0  Value: 0.3848306532111574
 
-ID: 6577
-Label: el0
-Out: 6302
-In: 6284
-Properties: 
-Key: ep0  Value: 979158183
-Key: ep4  Value: -3315045438410532033
-Key: ep5  Value: 'Q
-z'
-
-ID: 6578
-Label: el1
-Out: 6400
-In: 6411
+ID: 11796
+Label: el2
+Out: 11606
+In: 11622
 Properties: 
-Key: ep0  Value: 1658548107
-Key: ep4  Value: 2874262155835716061
-Key: ep6  Value: 128210746
+Key: ep0  Value: 0.6508870165023135
 
-ID: 6579
+ID: 11797
 Label: el1
-Out: 6329
-In: 6261
-Properties: 
-Key: ep4  Value: 4584314641576205440
-
-ID: 6580
-Label: el0
-Out: 6353
-In: 6339
+Out: 11611
+In: 11658
 Properties: 
-Key: ep4  Value: 1249492322704621981
-Key: ep3  Value: '-77449039'
+Key: ep0  Value: 0.681891511437584
 
-ID: 6581
-Label: el0
-Out: 6379
-In: 6364
+ID: 11798
+Label: el4
+Out: 11690
+In: 11690
 Properties: 
-Key: ep5  Value: '闉'
+Key: ep0  Value: 0.03224204804530684
 
-ID: 6582
-Label: el0
-Out: 6353
-In: 6215
+ID: 11799
+Label: el4
+Out: 11655
+In: 11638
 Properties: 
-Key: ep1  Value: 'u'
+Key: ep0  Value: 0.15944844769276623
 
-ID: 6583
+ID: 11800
 Label: el1
-Out: 6295
-In: 6308
+Out: 11611
+In: 11608
 Properties: 
-Key: ep0  Value: -644376154
-Key: ep4  Value: -3339290306686664680
-Key: ep6  Value: 509177014
+Key: ep0  Value: 0.23885861260993846
 
-ID: 6584
-Label: el1
-Out: 6400
-In: 6426
+ID: 11801
+Label: el4
+Out: 11687
+In: 11632
 Properties: 
-Key: ep0  Value: 232193577
-Key: ep6  Value: 64898570
+Key: ep0  Value: 0.45688554671386905
 
-ID: 6585
+ID: 11802
 Label: el1
-Out: 6329
-In: 6398
+Out: 11608
+In: 11616
 Properties: 
-Key: ep0  Value: 398059664
-Key: ep4  Value: -8351526283026032796
+Key: ep0  Value: 0.7711023866664166
 
-ID: 6586
-Label: el0
-Out: 6312
-In: 6223
+ID: 11803
+Label: el3
+Out: 11645
+In: 11685
 Properties: 
-Key: ep0  Value: 0
+Key: ep0  Value: 0.8829840132243438
 
-ID: 6587
+ID: 11804
 Label: el1
-Out: 6280
-In: 6377
+Out: 11614
+In: 11647
 Properties: 
-Key: ep0  Value: -155059346
-Key: ep4  Value: 2590214102107508790
-Key: ep6  Value: 820928816
+Key: ep0  Value: 0.13638234680093642
 
-ID: 6588
-Label: el0
-Out: 6379
-In: 6302
-Properties: 
-Key: ep0  Value: 683833341
-Key: ep1  Value: ''
-Key: ep4  Value: -3833446620340557703
-Key: ep5  Value: 'Q'
-
-ID: 6589
-Label: el0
-Out: 6386
-In: 6386
+ID: 11805
+Label: el2
+Out: 11604
+In: 11718
 Properties: 
-Key: ep0  Value: 899181463
-Key: ep5  Value: '薝'
+Key: ep0  Value: 0.758216420645984
 
-ID: 6590
-Label: el1
-Out: 6358
-In: 6233
+ID: 11806
+Label: el3
+Out: 11630
+In: 11687
 Properties: 
-Key: ep4  Value: 175683608381560457
+Key: ep0  Value: 0.06816745929533408
 
-ID: 6591
-Label: el0
-Out: 6218
-In: 6364
-Properties: 
-Key: ep0  Value: 43551712
-Key: ep1  Value: '闉'
-Key: ep4  Value: -4866448178953887417
-Key: ep3  Value: ''
-Key: ep5  Value: '!'
-
-ID: 6592
-Label: el1
-Out: 6229
-In: 6349
+ID: 11807
+Label: el3
+Out: 11626
+In: 11709
 Properties: 
-Key: ep0  Value: -100999998
-Key: ep4  Value: -7327009916357463154
+Key: ep0  Value: 0.2651212696335524
 
-ID: 6593
-Label: el1
-Out: 6416
-In: 6257
+ID: 11808
+Label: el4
+Out: 11638
+In: 11638
 Properties: 
-Key: ep4  Value: 8044721308358114311
+Key: ep0  Value: 0.8387430502090356
 
-ID: 6594
-Label: el1
-Out: 6295
-In: 6384
+ID: 11809
+Label: el4
+Out: 11677
+In: 11723
 Properties: 
-Key: ep0  Value: -1841644610
-Key: ep4  Value: 3977171560156403329
+Key: ep0  Value: 0.2635437206714797
 
-ID: 6595
-Label: el1
-Out: 6367
-In: 6382
+ID: 11810
+Label: el4
+Out: 11670
+In: 11706
 Properties: 
-Key: ep6  Value: -1517070627
+Key: ep0  Value: 0.1835696806937388
 
-ID: 6596
-Label: el0
-Out: 6270
-In: 6343
-Properties: 
-Key: ep0  Value: 449987234
-Key: ep1  Value: 'Q
-z'
-Key: ep4  Value: -3612955701719807408
-Key: ep3  Value: 'oR'
-Key: ep5  Value: 'sK#'
-
-ID: 6597
-Label: el1
-Out: 6282
-In: 6308
+ID: 11811
+Label: el2
+Out: 11716
+In: 11614
 Properties: 
-Key: ep0  Value: -703064710
-Key: ep4  Value: 4001605470729776315
-Key: ep6  Value: -1711223176
+Key: ep0  Value: 0.8133915074377687
 
-ID: 6598
+ID: 11812
 Label: el0
-Out: 6218
-In: 6273
+Out: 11608
+In: 11714
 Properties: 
-Key: ep0  Value: -2000768094
+Key: ep0  Value: 0.31429083633202226
 
-ID: 6599
-Label: el1
-Out: 6416
-In: 6261
+ID: 11813
+Label: el3
+Out: 11630
+In: 11677
 Properties: 
-Key: ep0  Value: 213236816
+Key: ep0  Value: 0.2278891506481313
 
-ID: 6600
+ID: 11814
 Label: el0
-Out: 6386
-In: 6245
-Properties: 
-Key: ep1  Value: '626094760'
-Key: ep3  Value: 'I'
-
-ID: 6601
-Label: el1
-Out: 6327
-In: 6362
-Properties: 
-Key: ep4  Value: 3184743713885584662
-Key: ep6  Value: 1769620168
-
-ID: 6602
-Label: el1
-Out: 6335
-In: 6278
+Out: 11608
+In: 11679
 Properties: 
-Key: ep0  Value: 421832671
-Key: ep4  Value: 8959825484193476211
-Key: ep6  Value: -35670144
+Key: ep0  Value: 0.5706929178772777
 
-ID: 6603
-Label: el0
-Out: 6215
-In: 6299
-Properties: 
-Key: ep0  Value: -551861487
-Key: ep1  Value: '1709955874'
-Key: ep4  Value: -8109955014234155374
-Key: ep3  Value: '%cLwb'
-Key: ep5  Value: 'P'
-
-ID: 6604
-Label: el1
-Out: 6291
-In: 6394
+ID: 11815
+Label: el2
+Out: 11679
+In: 11616
 Properties: 
-Key: ep0  Value: 795813038
+Key: ep0  Value: 0.3868806717387231
 
-ID: 6605
+ID: 11816
 Label: el0
-Out: 6420
-In: 6420
-Properties: 
-Key: ep0  Value: 34375069
-Key: ep1  Value: '-77449039'
-Key: ep4  Value: 3790446714425480688
-Key: ep3  Value: 'np%,-'
-Key: ep5  Value: 'W'
-
-ID: 6606
-Label: el1
-Out: 6255
-In: 6422
-Properties: 
-Key: ep0  Value: 1892619132
-Key: ep6  Value: -961738514
-
-ID: 6607
-Label: el1
-Out: 6317
-In: 6265
-Properties: 
-Key: ep4  Value: -3292104310255872042
-Key: ep6  Value: -1
-
-ID: 6608
-Label: el1
-Out: 6229
-In: 6394
-Properties: 
-Key: ep0  Value: -1055702286
-Key: ep4  Value: 880180304357084763
-Key: ep6  Value: -1502938377
-
-ID: 6609
-Label: el1
-Out: 6213
-In: 6418
-Properties: 
-Key: ep0  Value: -1969378054
-Key: ep6  Value: -820308243
-
-ID: 6610
-Label: el1
-Out: 6406
-In: 6233
+Out: 11616
+In: 11683
 Properties: 
-Key: ep0  Value: -2133630460
-Key: ep4  Value: 624525904963203975
-Key: ep6  Value: 406790163
+Key: ep0  Value: 0.7425254762748507
 
-ID: 6611
+ID: 11817
 Label: el1
-Out: 6310
-In: 6259
+Out: 11611
+In: 11718
 Properties: 
-Key: ep0  Value: -1176003293
-Key: ep4  Value: -5586420649566073535
-Key: ep6  Value: -592417643
+Key: ep0  Value: 0.05573455900193103
 
-ID: 6612
-Label: el0
-Out: 6223
-In: 6270
+ID: 11818
+Label: el3
+Out: 11645
+In: 11655
 Properties: 
-Key: ep0  Value: 1488003652
-Key: ep3  Value: ''
-Key: ep5  Value: '/kY烛됵'
+Key: ep0  Value: 0.6507567023740394
 
-ID: 6613
-Label: el1
-Out: 6282
-In: 6243
+ID: 11819
+Label: el3
+Out: 11635
+In: 11685
 Properties: 
-Key: ep6  Value: 1566483034
+Key: ep0  Value: 0.6278744811538093
 
-ID: 6614
-Label: el0
-Out: 6302
-In: 6287
-Properties: 
-Key: ep0  Value: -1159054761
-Key: ep1  Value: '暎'
-Key: ep4  Value: 3217175485598061401
-Key: ep3  Value: '453136164'
-Key: ep5  Value: '	蹺A7I0Ha'
-
-ID: 6615
-Label: el1
-Out: 6317
-In: 6369
+ID: 11820
+Label: el2
+Out: 11673
+In: 11658
 Properties: 
-Key: ep0  Value: 269763323
-Key: ep4  Value: -5747948279294882539
-Key: ep6  Value: 327637520
+Key: ep0  Value: 0.537599519446179
 
-ID: 6616
+ID: 11821
 Label: el0
-Out: 6364
-In: 6339
+Out: 11608
+In: 11604
 Properties: 
-Key: ep4  Value: 6067971952067981136
+Key: ep0  Value: 0.281663483332496
 
-ID: 6617
+ID: 11822
 Label: el1
-Out: 6231
-In: 6349
-Properties: 
-Key: ep0  Value: 2011520465
-
-ID: 6618
-Label: el0
-Out: 6299
-In: 6386
+Out: 11614
+In: 11695
 Properties: 
-Key: ep1  Value: ''
-Key: ep3  Value: '-1217137682'
+Key: ep0  Value: 0.4012012803641356
 
-ID: 6619
-Label: el1
-Out: 6241
-In: 6349
+ID: 11823
+Label: el3
+Out: 11693
+In: 11677
 Properties: 
-Key: ep4  Value: 1483861992276717763
-Key: ep6  Value: -605889390
+Key: ep0  Value: 0.6508870165023135
 
-ID: 6620
-Label: el1
-Out: 6221
-In: 6428
+ID: 11824
+Label: el3
+Out: 11675
+In: 11628
 Properties: 
-Key: ep0  Value: 445320860
-Key: ep4  Value: -163876520814759616
+Key: ep0  Value: 0.24882962816056187
 
-ID: 6621
-Label: el1
-Out: 6351
-In: 6276
+ID: 11825
+Label: el2
+Out: 11681
+In: 11718
 Properties: 
-Key: ep6  Value: 26132705
+Key: ep0  Value: 0.4876837207567023
 
-ID: 6622
+ID: 11826
 Label: el1
-Out: 6371
-In: 6331
+Out: 11622
+In: 11611
 Properties: 
-Key: ep0  Value: -1
-Key: ep4  Value: 8365807496312005157
-Key: ep6  Value: -1214282028
+Key: ep0  Value: 0.31429083633202226
 
-ID: 6623
+ID: 11827
 Label: el1
-Out: 6221
-In: 6250
+Out: 11664
+In: 11726
 Properties: 
-Key: ep4  Value: -2737577899279673825
-Key: ep6  Value: -1990312505
+Key: ep0  Value: 0.08349861156533711
 
-ID: 6624
-Label: el0
-Out: 6408
-In: 6339
-Properties: 
-Key: ep4  Value: -1234076812099049774
-Key: ep3  Value: 'xP6ꭈ'
-Key: ep5  Value: ''
-
-ID: 6625
-Label: el0
-Out: 6223
-In: 6389
-Properties: 
-Key: ep0  Value: 431299525
-Key: ep1  Value: '-1731709071'
-Key: ep4  Value: -1255668329408675306
-Key: ep5  Value: '1292520505'
-
-ID: 6626
-Label: el0
-Out: 6304
-In: 6408
+ID: 11828
+Label: el4
+Out: 11638
+In: 11706
 Properties: 
-Key: ep1  Value: ' '
-Key: ep4  Value: 8958869768065172572
-Key: ep5  Value: '[w'
+Key: ep0  Value: 0.1196693352752487
 
-ID: 6627
-Label: el0
-Out: 6273
-In: 6420
-Properties: 
-Key: ep1  Value: 'M_<5>엂9qJ'
-Key: ep4  Value: -6780685126123749267
-Key: ep3  Value: ''
-Key: ep5  Value: '979158183'
-
-ID: 6628
-Label: el1
-Out: 6402
-In: 6319
+ID: 11829
+Label: el4
+Out: 11638
+In: 11655
 Properties: 
-Key: ep0  Value: -1230333862
-Key: ep6  Value: -77449039
-
-ID: 6629
-Label: el1
-Out: 6371
-In: 6315
-Properties: 
-Key: ep0  Value: 428765403
-Key: ep4  Value: -4082624916434329258
-Key: ep6  Value: 1706866137
+Key: ep0  Value: 0.7551642742728696
 

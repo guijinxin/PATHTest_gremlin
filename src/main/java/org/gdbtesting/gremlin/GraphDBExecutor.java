@@ -313,8 +313,8 @@ public class GraphDBExecutor {
                         out.newLine();
                         mutatedList.add(r);
                     }
-                    mutatedResultList.get(i).add(count, mutatedList);
                 }
+                mutatedResultList.get(i).add(count, mutatedList);
             }catch (Exception e){
                 out.write(e.toString());
                 mutatedResultList.get(i).add(count, null);
