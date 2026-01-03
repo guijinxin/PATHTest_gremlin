@@ -54,13 +54,13 @@ public class GremlinGraphProvider implements GraphDBProvider<GraphGlobalState, G
         this.version = globalState.getDbVersion();
         // TODO: User-defined graph database
         List<GremlinConnection> connections = Arrays.asList(
-                new HugeGraphConnection("0.11.2", "conf/remote-hugegraph.properties")
+                new HugeGraphConnection("0.11.2", "conf/remote-hugegraph.properties"),
                 //new Neo4jConnection("3.5.27", "conf/remote-neo4j.properties"),
                 //new ArangodbConnection("3.8.4","conf/remote-arango.properties"),
                 //new ArcadedbConnection("21.12.1","conf/remote-arcade.properties")
-               // new JanusGraphConnection("1.1.0", "conf/remote-janusgraph.properties"),
+                new JanusGraphConnection("1.1.0", "conf/remote-janusgraph.properties"),
 
-                //new TinkerGraphConnection("3.7.3", "conf/remote-tinkergraph.properties")
+                new TinkerGraphConnection("3.7.3", "conf/remote-tinkergraph.properties")
                 //new OrientdbConnection("0.5.3", "conf/remote-orient.properties")
         );
 

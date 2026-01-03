@@ -54,7 +54,7 @@ public class HugeGraphConnection extends GremlinConnection {
         HugeClient hugegraph = connection.getHugespecial();
         GremlinManager gremlin = hugegraph.gremlin();
 
-        String query1 = "g.V().repeat(__.in('el1')).emit().times(2).inE('el0','el2','el1').order().by(asc)";
+        String query1 = "g.V().union(identity(), __.in('el0','el1'), repeat(__.in('el0','el1').as('a0')).times(2).simplePath().path().select(last, 'a0'), repeat(__.in('el0','el1').as('a0')).times(2).cyclicPath().path().select(last, 'a0')).and(__.repeat(__.out('el1')).emit().times(1))";
 
         System.out.println("query0 : " + query1);
         try {

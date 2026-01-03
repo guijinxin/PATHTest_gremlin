@@ -84,10 +84,10 @@ public class NeighborTraversalOperation extends Traversal implements GraphExpres
             if (isVariableLength){
                 if (Randomly.getBoolean()){
                     // variable-length path: [1..n]
-                    return "repeat(out(" + getEdgelabels() + ")).emit().times(" + length + ")";
+                    return "repeat(__.out(" + getEdgelabels() + ")).emit().times(" + length + ")";
                 }else {
                     // variable-length path: [0..n]
-                    return "emit().repeat(out(" + getEdgelabels() + ")).times(" + length + ")";
+                    return "emit().repeat(__.out(" + getEdgelabels() + ")).times(" + length + ")";
                 }
             }
             return "out(" + getEdgelabels() + ")";
@@ -127,10 +127,10 @@ public class NeighborTraversalOperation extends Traversal implements GraphExpres
             if (isVariableLength){
                 if (Randomly.getBoolean()){
                     // variable-length path: [1..n]
-                    return "repeat(in(" + getEdgelabels() + ")).emit().times(" + length + ")";
+                    return "repeat(__.in(" + getEdgelabels() + ")).emit().times(" + length + ")";
                 }else {
                     // variable-length path: [0..n]
-                    return "emit().repeat(in(" + getEdgelabels() + ")).times(" + length + ")";
+                    return "emit().repeat(__.in(" + getEdgelabels() + ")).times(" + length + ")";
                 }
             }
             return "in(" + getEdgelabels() + ")";
@@ -170,10 +170,10 @@ public class NeighborTraversalOperation extends Traversal implements GraphExpres
             if (isVariableLength){
                 if (Randomly.getBoolean()){
                     // variable-length path: [1..n]
-                    return "repeat(both(" + getEdgelabels() + ")).emit().times(" + length + ")";
+                    return "repeat(__.both(" + getEdgelabels() + ")).emit().times(" + length + ")";
                 }else {
                     // variable-length path: [0..n]
-                    return "emit().repeat(both(" + getEdgelabels() + ")).times(" + length + ")";
+                    return "emit().repeat(__.both(" + getEdgelabels() + ")).times(" + length + ")";
                 }
             }
             return "both(" + getEdgelabels() + ")";

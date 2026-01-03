@@ -139,12 +139,12 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
             int rand = Randomly.getInteger(0, 5);
             if (rand < 2) {
                 if (Randomly.getBoolean()) {
-                    partitionResult.append("repeat(").append(pathPattern).append(con)
+                    partitionResult.append("repeat(__.").append(pathPattern).append(con)
                             .append("as('a").append(path_end_node_id).append("'))")
                             .append(con).append("times(").append(i).append(").simplePath().path()").append(con)
                             .append("select(last, 'a").append(path_end_node_id).append("'), ");
 
-                    partitionResult.append("repeat(").append(pathPattern).append(con)
+                    partitionResult.append("repeat(__.").append(pathPattern).append(con)
                             .append("as('a").append(path_end_node_id).append("'))")
                             .append(con).append("times(").append(i).append(").cyclicPath().path()").append(con)
                             .append("select(last, 'a").append(path_end_node_id).append("')");
@@ -153,7 +153,7 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
                         partitionResult.append(", ");
                     }
                 }else {
-                    partitionResult.append("repeat(").append(pathPattern).append(")").append(con)
+                    partitionResult.append("repeat(__.").append(pathPattern).append(")").append(con)
                             .append("times(").append(i).append(")");
                     if (i != max) {
                         partitionResult.append(", ");
@@ -162,7 +162,7 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
             }else {
                 for (int j = 0; j < i; j++){
                     if (j == 0) {
-                        partitionResult.append(pathPattern);
+                        partitionResult.append("__.").append(pathPattern);
                     }else {
                         partitionResult.append(con).append(pathPattern);
                     }
@@ -191,9 +191,9 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
         StringBuilder varPathResult = new StringBuilder();
         varPathResult.append("as('start").append(start_id).append("').");
         if (Randomly.getBoolean()){
-            varPathResult.append("emit().repeat(").append(path).append(".as('a").append(path_end_node_id).append("'))");
+            varPathResult.append("emit().repeat(__.").append(path).append(".as('a").append(path_end_node_id).append("'))");
         }else {
-            varPathResult.append("repeat(").append(path).append(".as('a").append(path_end_node_id).append("')).emit()");
+            varPathResult.append("repeat(__.").append(path).append(".as('a").append(path_end_node_id).append("')).emit()");
         }
 
         varPathResult.append(".times(").append(Randomly.getInteger(1, 5)).append(").where(__.path().from('start").append(start_id).append("').")
