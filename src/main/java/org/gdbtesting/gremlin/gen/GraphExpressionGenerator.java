@@ -112,7 +112,12 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
     private static final Pattern REPEAT_PATTERN = Pattern.compile("repeat\\(\\s*((?:[^()]+|\\([^()]*\\))*)\\s*\\)");
     private static final Pattern PATH_PATTERN = Pattern.compile("(out|in|both)\\(([^)]*)\\)");
     public String var2FixPath(String path, int min, int max){
+        boolean useUntil = Randomly.getBoolean();
         StringBuilder partitionResult = new StringBuilder();
+
+        if (useUntil){
+            partitionResult.append("as('start").append(start_id).append("').");
+        }
         partitionResult.append("union(");
 
         String con = ".";
@@ -139,22 +144,47 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
             int rand = Randomly.getInteger(0, 5);
             if (rand < 2) {
                 if (Randomly.getBoolean()) {
-                    partitionResult.append("repeat(__.").append(pathPattern).append(con)
-                            .append("as('a").append(path_end_node_id).append("'))")
-                            .append(con).append("times(").append(i).append(").simplePath().path()").append(con)
-                            .append("select(last, 'a").append(path_end_node_id).append("'), ");
+                    if (!useUntil || Randomly.getBoolean()){
+                        partitionResult.append("repeat(__.").append(pathPattern).append(con)
+                                .append("as('a").append(path_end_node_id).append("'))")
+                                .append(con).append("times(").append(i).append(").simplePath().path()").append(con)
+                                .append("select(last, 'a").append(path_end_node_id).append("'), ");
 
-                    partitionResult.append("repeat(__.").append(pathPattern).append(con)
-                            .append("as('a").append(path_end_node_id).append("'))")
-                            .append(con).append("times(").append(i).append(").cyclicPath().path()").append(con)
-                            .append("select(last, 'a").append(path_end_node_id).append("')");
-                    path_end_node_id++;
+                        partitionResult.append("repeat(__.").append(pathPattern).append(con)
+                                .append("as('a").append(path_end_node_id).append("'))")
+                                .append(con).append("times(").append(i).append(").cyclicPath().path()").append(con)
+                                .append("select(last, 'a").append(path_end_node_id).append("')");
+                        path_end_node_id++;
+                    }else {
+                        partitionResult.append("repeat(__.").append(pathPattern).append(con)
+                                .append("as('a").append(path_end_node_id).append("'))")
+                                .append(con).append("times().until(__.path().from('start").append(start_id)
+                                .append("').simplePath().path()").append(con)
+                                .append("select(last, 'a").append(path_end_node_id).append("'), ");
+
+                        partitionResult.append("repeat(__.").append(pathPattern).append(con)
+                                .append("as('a").append(path_end_node_id).append("'))")
+                                .append(con).append("times().until(__.path().from('start").append(start_id)
+                                .append("').unfold().count().is(eq(").append(i+1).append("))")
+                                .append("').cyclicPath().path()").append(con)
+                                .append("select(last, 'a").append(path_end_node_id).append("'), ");
+                        path_end_node_id++;
+                    }
+
                     if (i != max) {
                         partitionResult.append(", ");
                     }
                 }else {
-                    partitionResult.append("repeat(__.").append(pathPattern).append(")").append(con)
-                            .append("times(").append(i).append(")");
+                    if (!useUntil || Randomly.getBoolean()){
+                        partitionResult.append("repeat(__.").append(pathPattern).append(")").append(con)
+                                .append("times(").append(i).append(")");
+                    }else {
+                        partitionResult.append("repeat(__.").append(pathPattern).append(")").append(con)
+                                .append("times().").append("until(__.path().from('start").append(start_id)
+                                .append("').unfold().count().is(eq(").append(i+1).append("))");
+                    }
+
+
                     if (i != max) {
                         partitionResult.append(", ");
                     }
@@ -172,6 +202,10 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
                 }
             }
         }
+        if (useUntil){
+            start_id++;
+        }
+
         return partitionResult.append(")").toString();
     }
     public static void main(String[] args){
@@ -196,8 +230,15 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
             varPathResult.append("repeat(__.").append(path).append(".as('a").append(path_end_node_id).append("')).emit()");
         }
 
-        varPathResult.append(".times(").append(Randomly.getInteger(1, 5)).append(").where(__.path().from('start").append(start_id).append("').")
-                .append("unfold().count().is(eq(2))).select(last, 'a").append(path_end_node_id).append("')");
+        if (Randomly.getInteger(0, 10) < 3){
+            varPathResult.append(".times().until(__.path().from('start").append(start_id).append("').")
+                    .append("unfold().count().is(eq(2))).select(last, 'a").append(path_end_node_id).append("')");
+        }else {
+            varPathResult.append(".times(").append(Randomly.getInteger(1, 5)).append(").where(__.path().from('start").append(start_id).append("').")
+                    .append("unfold().count().is(eq(2))).select(last, 'a").append(path_end_node_id).append("')");
+        }
+
+
         path_end_node_id++;
         start_id++;
         return varPathResult.toString();

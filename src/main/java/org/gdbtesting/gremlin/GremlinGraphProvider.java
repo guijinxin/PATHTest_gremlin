@@ -186,7 +186,7 @@ public class GremlinGraphProvider implements GraphDBProvider<GraphGlobalState, G
 
     public void generateRandomlyTest(){
         try {
-            //create graph with a randomly schema
+            //create graph with a random schema
             System.out.println("generate query");
             graphDBSetup.generateRandomQuery();
             System.out.println("setup Graph");
@@ -372,7 +372,6 @@ public class GremlinGraphProvider implements GraphDBProvider<GraphGlobalState, G
                     break;
                 case DOUBLE:
                     this.getConnection().getHugespecial().schema().propertyKey(propertyName).asDouble().ifNotExist().create();
-
                     break;
                 case BOOLEAN:
                     this.getConnection().getHugespecial().schema().propertyKey(propertyName).asBoolean().ifNotExist().create();
@@ -380,11 +379,9 @@ public class GremlinGraphProvider implements GraphDBProvider<GraphGlobalState, G
                     break;
                 case FLOAT:
                     this.getConnection().getHugespecial().schema().propertyKey(propertyName).asFloat().ifNotExist().create();
-
                     break;
                 case LONG:
                     this.getConnection().getHugespecial().schema().propertyKey(propertyName).asLong().ifNotExist().create();
-
                     break;
             }
     }

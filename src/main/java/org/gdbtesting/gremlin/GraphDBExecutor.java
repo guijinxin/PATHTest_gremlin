@@ -240,6 +240,7 @@ public class GraphDBExecutor {
 
                         }
                     });
+                    out.newLine();
                 }
                 else{
                     origResults = connection.getClient().submit(origQueryList.get(i)).all().get();
@@ -258,7 +259,6 @@ public class GraphDBExecutor {
                 origErrorResultList.get(i).put(String.valueOf(count),e);
             }
             out.newLine();
-            out.write("========================QueryPair " + i + " second =======================\n");
             out.write(mutatedQueryList.get(i) + "\n");
             try {
                 List<Result> mutatedResults;
@@ -303,6 +303,7 @@ public class GraphDBExecutor {
 
                         }
                     });
+                    out.newLine();
                 }
                 else {
                     mutatedResults = connection.getClient().submit(mutatedQueryList.get(i)).all().get();
