@@ -159,14 +159,15 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
                         partitionResult.append("repeat(__.").append(pathPattern).append(con)
                                 .append("as('a").append(path_end_node_id).append("'))")
                                 .append(con).append("times().until(__.path().from('start").append(start_id)
-                                .append("').simplePath().path()").append(con)
+                                .append("').unfold().count().is(eq(").append(i+1).append("))")
+                                .append(".simplePath().path()").append(con)
                                 .append("select(last, 'a").append(path_end_node_id).append("'), ");
 
                         partitionResult.append("repeat(__.").append(pathPattern).append(con)
                                 .append("as('a").append(path_end_node_id).append("'))")
                                 .append(con).append("times().until(__.path().from('start").append(start_id)
                                 .append("').unfold().count().is(eq(").append(i+1).append("))")
-                                .append("').cyclicPath().path()").append(con)
+                                .append(".cyclicPath().path()").append(con)
                                 .append("select(last, 'a").append(path_end_node_id).append("'), ");
                         path_end_node_id++;
                     }
