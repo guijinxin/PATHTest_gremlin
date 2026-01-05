@@ -80,8 +80,8 @@ public class JanusGraphConnection extends GremlinConnection {
 //        Vertex notebook = g.addV("homework").property("subject", "Math").next();
 //        Edge edge1 = g.addE("write").from(Moly).to(notebook).property("date","0.8").next();
 
-        String query1 = "g.V().repeat(in()).emit().times(2).count()";
-        String query2 = "g.E().outV().repeat(out('el0').as('a0')).emit().times(3).where(select('a0').count(local).is(eq(1))).select(last, 'a0')";
+        String query1 = "g.E().order().by(asc).has('ep4',0.49562305).outV().both('el0','el2','el1').repeat(__.in('el3')).emit().times(2).where(__.bothE('el2','el1','el3').count().is(lt(886129397034095534))).count()";
+        String query2 = "g.E().match(__.as('start0').order().by(asc).as('m0')).select('m0').match(__.as('start1').has('ep4',0.49562305).as('m1')).select('m1').outV().as('start2').emit().repeat(__.both('el0','el2','el1').as('a0')).times(3).where(__.path().from('start2').unfold().count().is(eq(2))).select(last, 'a0').as('start3').union(repeat(__.in('el3').as('a1')).times(1).simplePath().path().select(last, 'a1'), repeat(__.in('el3').as('a1')).times(1).cyclicPath().path().select(last, 'a1'), __.in('el3').in('el3')).where(__.bothE('el2','el1','el3').count().is(lt(886129397034095534))).count()";
         String query3 = "g.V().as('start').union(repeat(in()).emit().until(__.path().from('start').unfold().count().is(eq(3))).count())";
 
 
@@ -90,13 +90,13 @@ public class JanusGraphConnection extends GremlinConnection {
         String query6 = "g.V().out().out().count()";
         try{
             List<Result> results = test.getClient().submit(query1).all().get();
-            List<Result> results1 = test.getClient().submit(query3).all().get();
 
             System.out.println(results.size());
             for (Result r : results) {
                 System.out.println(String.valueOf(r));
             }
             System.out.println("=============");
+            List<Result> results1 = test.getClient().submit(query2).all().get();
 
             for (Result r : results1) {
                 System.out.println(String.valueOf(r));

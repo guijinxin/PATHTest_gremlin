@@ -72,28 +72,21 @@ public class TinkerGraphConnection extends GremlinConnection {
 
         TinkerGraphConnection connection = new TinkerGraphConnection("");
         GraphTraversalSource g = connection.getG();
-        g.E().drop().iterate();
-        g.V().drop().iterate();
+        String query1 = "g.E().order().by(asc).has('ep4',0.49562305).outV().both('el0','el2','el1').repeat(__.in('el3')).emit().times(2).where(__.bothE('el2','el1','el3').count().is(lt(886129397034095534))).count()";
+        String query2 = "g.E().match(__.as('start0').order().by(asc).as('m0')).select('m0').match(__.as('start1').has('ep4',0.49562305).as('m1')).select('m1').outV().as('start2').emit().repeat(__.both('el0','el2','el1').as('a0')).times(3).where(__.path().from('start2').unfold().count().is(eq(2))).select(last, 'a0').as('start3').union(repeat(__.in('el3').as('a1')).times(1).simplePath().path().select(last, 'a1'), repeat(__.in('el3').as('a1')).times(1).cyclicPath().path().select(last, 'a1'), __.in('el3').in('el3')).where(__.bothE('el2','el1','el3').count().is(lt(886129397034095534))).count()";
 
-        Vertex bob = g.addV("person").property("name", "Bob").next();
-        Vertex alex = g.addV("person").property("age", 0.29027268300579956).next();
-        Vertex jhon = g.addV("person").property("age", 2.94858941E8).next();
-        Vertex alice = g.addV("person").property("age", POSITIVE_INFINITY).next();
-        Vertex book = g.addV("person").property("name", "book1").next();
-        g.V(alex).property("name","Alex").iterate();
-        //Vertex alice = g.addV("person").property("age", POSITIVE_INFINITY ).next();
-
-        Edge edge1 = g.addE("knows").from(bob).to(alice).property("d", 0.9,"C",55).next();
-        Edge edge2 = g.addE("write").from(alice).to(book).property("d", 0.94461).next();
-        //g.E(edge2.id()).property("d", 0.94461).iterate();
-        //System.out.println(POSITIVE_INFINITY);
-        String query1 = "g.V().has('age',0.29027268300579956)";
         //g.V().has('vp1', inside(0.24070676216155018,4.13998472E8)).inE('el0','el4').outV().not(__.values('vp1'))
 
         try{
             List<Result> results = connection.getClient().submit(query1).all().get();
             System.out.println(results.size());
             for (Result r : results) {
+                System.out.println(r.toString());
+            }
+
+            List<Result> results2 = connection.getClient().submit(query2).all().get();
+            System.out.println(results2.size());
+            for (Result r : results2) {
                 System.out.println(r.toString());
             }
         }catch (Exception e){

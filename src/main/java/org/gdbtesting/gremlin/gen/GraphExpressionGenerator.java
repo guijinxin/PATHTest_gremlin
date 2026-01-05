@@ -62,6 +62,7 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
     }
     // ========= start line of mutation rule ===========
     public int path_end_node_id = 0;
+    public int match_identifier_id = 0;
     public Pair<String, String> generateGraphTraversalAndMutation(){
         int length = Randomly.getInteger(2, state.getGenerateDepth());
         for(int i = 0; i < length; i++){
@@ -85,9 +86,9 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
             String traversal = t.toString();
             queryBuilder.append(".").append(traversal);
 
-            if (t instanceof NeighborTraversalOperation.Out ||
+            if ((t instanceof NeighborTraversalOperation.Out ||
                     t instanceof NeighborTraversalOperation.In ||
-                    t instanceof  NeighborTraversalOperation.Both){
+                    t instanceof  NeighborTraversalOperation.Both) && Randomly.getInteger(0, 10) < 5){
                 if (((NeighborTraversalOperation) t).isVariableLength){
                     int path_length = ((NeighborTraversalOperation) t).getLength();
                     int min_path_length;
@@ -103,7 +104,11 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
                     mutationBuilder.append(".").append(mutatedTraversal);
                 }
 
-            }else {
+            } else if (matchAvailable(t) && Randomly.getInteger(0, 10) < 5){
+                String mutatedTraversal = matchWrapper(traversal);
+                mutationBuilder.append(".").append(mutatedTraversal);
+            }
+            else {
                 mutationBuilder.append(".").append(traversal);
             }
         }
@@ -113,9 +118,14 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
     private static final Pattern PATH_PATTERN = Pattern.compile("(out|in|both)\\(([^)]*)\\)");
     public String var2FixPath(String path, int min, int max){
         boolean useUntil = Randomly.getBoolean();
+        boolean useMatchWrapper = Randomly.getBoolean();
         StringBuilder partitionResult = new StringBuilder();
 
-        if (useUntil){
+        if (useMatchWrapper){
+            useUntil = true;
+            partitionResult.append("match(__.as('start").append(start_id).append("').");
+        }
+        else if (useUntil){
             partitionResult.append("as('start").append(start_id).append("').");
         }
         partitionResult.append("union(");
@@ -144,7 +154,7 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
             int rand = Randomly.getInteger(0, 5);
             if (rand < 2) {
                 if (Randomly.getBoolean()) {
-                    if (!useUntil || Randomly.getBoolean()){
+                    if (!useUntil  || Randomly.getBoolean()){
                         partitionResult.append("repeat(__.").append(pathPattern).append(con)
                                 .append("as('a").append(path_end_node_id).append("'))")
                                 .append(con).append("times(").append(i).append(").simplePath().path()").append(con)
@@ -158,17 +168,28 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
                     }else {
                         partitionResult.append("repeat(__.").append(pathPattern).append(con)
                                 .append("as('a").append(path_end_node_id).append("'))")
-                                .append(con).append("times().until(__.path().from('start").append(start_id)
-                                .append("').unfold().count().is(eq(").append(i+1).append("))")
-                                .append(".simplePath().path()").append(con)
+                                .append(con).append("until(__.path().from('start").append(start_id)
+                                .append("').unfold().count().is(eq(");
+                        if (useMatchWrapper){
+                            partitionResult.append(i+2);
+                        }else {
+                            partitionResult.append(i+1);
+                        }
+
+                        partitionResult.append(")))").append(".simplePath().path()").append(con)
                                 .append("select(last, 'a").append(path_end_node_id).append("'), ");
 
                         partitionResult.append("repeat(__.").append(pathPattern).append(con)
                                 .append("as('a").append(path_end_node_id).append("'))")
-                                .append(con).append("times().until(__.path().from('start").append(start_id)
-                                .append("').unfold().count().is(eq(").append(i+1).append("))")
-                                .append(".cyclicPath().path()").append(con)
-                                .append("select(last, 'a").append(path_end_node_id).append("'), ");
+                                .append(con).append("until(__.path().from('start").append(start_id)
+                                .append("').unfold().count().is(eq(");
+                        if (useMatchWrapper){
+                            partitionResult.append(i+2);
+                        }else {
+                            partitionResult.append(i+1);
+                        }
+                        partitionResult.append(")))").append(".cyclicPath().path()").append(con)
+                                .append("select(last, 'a").append(path_end_node_id).append("')");
                         path_end_node_id++;
                     }
 
@@ -181,10 +202,15 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
                                 .append("times(").append(i).append(")");
                     }else {
                         partitionResult.append("repeat(__.").append(pathPattern).append(")").append(con)
-                                .append("times().").append("until(__.path().from('start").append(start_id)
-                                .append("').unfold().count().is(eq(").append(i+1).append("))");
+                                .append("until(__.path().from('start").append(start_id)
+                                .append("').unfold().count().is(eq(");
+                        if (useMatchWrapper) {
+                            partitionResult.append(i+2);
+                        }else {
+                            partitionResult.append(i+1);
+                        }
+                        partitionResult.append(")))");
                     }
-
 
                     if (i != max) {
                         partitionResult.append(", ");
@@ -203,11 +229,21 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
                 }
             }
         }
-        if (useUntil){
+        if (useMatchWrapper){
+            partitionResult.append(")");// end of union(...)
+            partitionResult.append(".as('m").append(match_identifier_id).append("'))")
+                    .append(".select('m").append(match_identifier_id).append("')");// end of match(...)
             start_id++;
+            match_identifier_id++;
+        }
+        else if (useUntil){
+            start_id++;
+            partitionResult.append(")");
+        }else {
+            partitionResult.append(")");
         }
 
-        return partitionResult.append(")").toString();
+        return partitionResult.toString();
     }
     public static void main(String[] args){
         String i = "out()";
@@ -217,14 +253,23 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
 
         String result = geg.fix2VarPath(i);
         String result2 = geg.fix2VarPath(i);
+        String result3 = geg.matchWrapper(i);
         System.out.println(result);
         System.out.println(result2);
+        System.out.println(result3);
 
     }
     private int start_id = 0;
     private String fix2VarPath(String path){
+        boolean useMatchWrapper = Randomly.getBoolean();
         StringBuilder varPathResult = new StringBuilder();
-        varPathResult.append("as('start").append(start_id).append("').");
+
+        if (useMatchWrapper){
+            varPathResult.append("match(__.as('start").append(start_id).append("').");
+        }else {
+            varPathResult.append("as('start").append(start_id).append("').");
+        }
+
         if (Randomly.getBoolean()){
             varPathResult.append("emit().repeat(__.").append(path).append(".as('a").append(path_end_node_id).append("'))");
         }else {
@@ -232,17 +277,54 @@ public class GraphExpressionGenerator extends UntypedExpressionGenerator<GraphEx
         }
 
         if (Randomly.getInteger(0, 10) < 3){
-            varPathResult.append(".times().until(__.path().from('start").append(start_id).append("').")
-                    .append("unfold().count().is(eq(2))).select(last, 'a").append(path_end_node_id).append("')");
+            varPathResult.append(".until(__.path().from('start").append(start_id).append("').")
+                    .append("unfold().count().");
+            if (useMatchWrapper){
+                varPathResult.append("is(eq(3))).select(last, 'a");
+            }else {
+                varPathResult.append("is(eq(2))).select(last, 'a");
+            }
+
+            varPathResult.append(path_end_node_id).append("')");
         }else {
             varPathResult.append(".times(").append(Randomly.getInteger(1, 5)).append(").where(__.path().from('start").append(start_id).append("').")
-                    .append("unfold().count().is(eq(2))).select(last, 'a").append(path_end_node_id).append("')");
+                    .append("unfold().count()");
+            if (useMatchWrapper){
+                varPathResult.append(".is(eq(3))).select(last, 'a");
+            }else {
+                varPathResult.append(".is(eq(2))).select(last, 'a");
+            }
+            varPathResult.append(path_end_node_id).append("')");
+        }
+        if (useMatchWrapper){
+            varPathResult.append(".as('m").append(match_identifier_id).append("'))")
+                    .append(".select('m").append(match_identifier_id).append("')");
+            match_identifier_id++;
         }
 
-
-        path_end_node_id++;
         start_id++;
+        path_end_node_id++;
         return varPathResult.toString();
+    }
+
+    private boolean matchAvailable(Traversal t){
+        if (t instanceof StartTraversalOperation){
+            return false;
+        }else if (t instanceof StatisticTraversalOperation){
+            return false;
+        }
+        return true;
+    }
+
+    private String matchWrapper(String path){
+        StringBuilder matchWrapperResult = new StringBuilder();
+        matchWrapperResult.append("match(__.as('start").append(start_id).append("').");
+
+        matchWrapperResult.append(path).append(".as('m").append(match_identifier_id).append("'))")
+                .append(".select('m").append(match_identifier_id).append("')");
+        start_id++;
+        match_identifier_id++;
+        return matchWrapperResult.toString();
     }
 
     // ========= end line of mutation rule ===========

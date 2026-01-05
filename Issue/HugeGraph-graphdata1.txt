@@ -1,0 +1,977 @@
+Vertex:
+Label: vl3
+Properties: 
+Key: vp3 Value: 0.9926524
+ID: 1072982898010750976
+
+Label: vl1
+Properties: 
+Key: vp0 Value: 0.7914121
+Key: vp3 Value: 0.9821574
+ID: 1072982898295963648
+
+Label: vl0
+Properties: 
+Key: vp2 Value: ''
+ID: 1072982898405015552
+
+Label: vl4
+Properties: 
+Key: vp1 Value: -2075164836
+Key: vp2 Value: 'B,.OH'
+ID: 1072982898522456064
+
+Label: vl3
+Properties: 
+Key: vp0 Value: 0.581517
+Key: vp3 Value: 0.47706884
+ID: 1072982898644090880
+
+Label: vl4
+Properties: 
+Key: vp1 Value: -25988267
+Key: vp3 Value: 0.82769775
+Key: vp2 Value: '罜E'
+ID: 1072982898761531392
+
+Label: vl2
+Properties: 
+Key: vp2 Value: '罜E'
+ID: 1072982898878971904
+
+Label: vl3
+Properties: 
+Key: vp0 Value: 0.74390197
+Key: vp3 Value: 0.32068372
+ID: 1072982898992218112
+
+Label: vl3
+Properties: 
+Key: vp0 Value: 0.5199603
+ID: 1072982899113852928
+
+Label: vl0
+Properties: 
+Key: vp2 Value: 'f'
+ID: 1072982899227099136
+
+Label: vl1
+Properties: 
+Key: vp3 Value: 0.71538657
+ID: 1072982899319373824
+
+Label: vl1
+Properties: 
+Key: vp0 Value: 0.53557175
+Key: vp3 Value: 0.2320031
+ID: 1072982899432620032
+
+Label: vl1
+Properties: 
+Key: vp0 Value: 0.3091781
+Key: vp3 Value: 0.55457187
+ID: 1072982899537477632
+
+Label: vl4
+Properties: 
+Key: vp2 Value: '& ⓖ'
+ID: 1072982899612975104
+
+Label: vl2
+Properties: 
+Key: vp2 Value: ''
+ID: 1072982899688472576
+
+Label: vl4
+Properties: 
+Key: vp1 Value: -407452308
+Key: vp2 Value: 'lⓖq'
+ID: 1072982899768164352
+
+Label: vl2
+Properties: 
+Key: vp2 Value: 'f'
+ID: 1072982899881410560
+
+Label: vl0
+Properties: 
+Key: vp2 Value: '.0J3hV d'
+ID: 1072982899986268160
+
+Label: vl3
+Properties: 
+Key: vp3 Value: 0.26236743
+ID: 1072982900091125760
+
+Label: vl3
+Properties: 
+Key: vp0 Value: 0.60232
+ID: 1072982900195983360
+
+Label: vl4
+Properties: 
+Key: vp3 Value: 0.45283753
+ID: 1072982900305035264
+
+Label: vl2
+Properties: 
+Key: vp2 Value: '184952022'
+ID: 1072982900409892864
+
+Label: vl1
+Properties: 
+Key: vp0 Value: 0.080473185
+Key: vp3 Value: 0.22013819
+ID: 1072982900510556160
+
+Label: vl0
+Properties: 
+Key: vp2 Value: '-T'
+ID: 1072982900615413760
+
+Label: vl4
+Properties: 
+Key: vp1 Value: -1562838212
+Key: vp2 Value: '& ⓖ'
+ID: 1072982900728659968
+
+Label: vl0
+Properties: 
+Key: vp2 Value: 'lⓖq'
+ID: 1072982900833517568
+
+Label: vl3
+Properties: 
+Key: vp0 Value: 0.6207929
+ID: 1072982900938375168
+
+Label: vl3
+Properties: 
+Key: vp0 Value: 0.34739983
+ID: 1072982901043232768
+
+Label: vl4
+Properties: 
+Key: vp1 Value: 1793043284
+Key: vp3 Value: 0.029916048
+Key: vp2 Value: 'H#7[]'
+ID: 1072982901148090368
+
+Label: vl3
+Properties: 
+Key: vp3 Value: 0.9242592
+ID: 1072982901252947968
+
+Label: vl3
+Properties: 
+Key: vp0 Value: 0.38148057
+ID: 1072982901353611264
+
+Label: vl4
+Properties: 
+Key: vp1 Value: 503620789
+Key: vp3 Value: 0.75892866
+Key: vp2 Value: ''
+ID: 1072982901416525824
+
+Label: vl4
+Properties: 
+Key: vp2 Value: '9J'
+ID: 1072982901487828992
+
+Label: vl4
+Properties: 
+Key: vp2 Value: ''
+ID: 1072982901554937856
+
+Label: vl1
+Properties: 
+Key: vp0 Value: 0.7249237
+ID: 1072982901622046720
+
+Label: vl3
+Properties: 
+Key: vp0 Value: 0.5467604
+Key: vp3 Value: 0.15942127
+ID: 1072982901684961280
+
+Label: vl4
+Properties: 
+Key: vp1 Value: 2030748701
+Key: vp2 Value: 'CQepu7k<'
+ID: 1072982901752070144
+
+Label: vl3
+Properties: 
+Key: vp3 Value: 0.43658406
+ID: 1072982901819179008
+
+Label: vl0
+Properties: 
+Key: vp2 Value: ''
+ID: 1072982901886287872
+
+Label: vl3
+Properties: 
+Key: vp3 Value: 0.49269944
+ID: 1072982901949202432
+
+Label: vl3
+Properties: 
+Key: vp0 Value: 0.14844364
+Key: vp3 Value: 0.98450047
+ID: 1072982902016311296
+
+Label: vl0
+Properties: 
+Key: vp2 Value: '<*O'
+ID: 1072982902087614464
+
+Label: vl1
+Properties: 
+Key: vp0 Value: 0.24179137
+ID: 1072982902163111936
+
+Label: vl2
+Properties: 
+Key: vp2 Value: '%'
+ID: 1072982902238609408
+
+Label: vl1
+Properties: 
+Key: vp0 Value: 0.8357996
+ID: 1072982902347661312
+
+Label: vl4
+Properties: 
+Key: vp1 Value: 1855342434
+ID: 1072982902431547392
+
+Label: vl2
+Properties: 
+Key: vp2 Value: ''
+ID: 1072982902515433472
+
+Label: vl1
+Properties: 
+Key: vp0 Value: 0.47438675
+Key: vp3 Value: 0.120755196
+ID: 1072982902590930944
+
+Label: vl4
+Properties: 
+Key: vp1 Value: -299640682
+Key: vp3 Value: 0.83533174
+Key: vp2 Value: '2030748701'
+ID: 1072982902662234112
+
+Label: vl3
+Properties: 
+Key: vp0 Value: 0.6333674
+Key: vp3 Value: 0.6369514
+ID: 1072982902729342976
+
+Edge:
+Label: el1
+Out: 15
+In: 6
+Properties: 
+Key: ep4  Value: 0.44688034
+ID: L1072982899768164352>2>2>>L1072982898878971904
+Label: el0
+Out: 16
+In: 5
+Properties: 
+Key: ep0  Value: 0.5953711
+Key: ep4  Value: 0.62437564
+Key: ep5  Value: 4735796245811407805
+ID: L1072982899881410560>1>1>>L1072982898761531392
+Label: el2
+Out: 25
+In: 0
+Properties: 
+Key: ep2  Value: '03'
+Key: ep1  Value: false
+ID: L1072982900833517568>3>3>>L1072982898010750976
+Label: el3
+Out: 36
+In: 24
+Properties: 
+Key: ep4  Value: 0.43126804
+ID: L1072982901752070144>4>4>>L1072982900728659968
+Label: el1
+Out: 45
+In: 43
+Properties: 
+Key: ep4  Value: 0.1202541
+ID: L1072982902431547392>2>2>>L1072982902238609408
+Label: el1
+Out: 20
+In: 46
+Properties: 
+Key: ep0  Value: 0.5987449
+Key: ep4  Value: 0.19348812
+Key: ep3  Value: true
+ID: L1072982900305035264>2>2>>L1072982902515433472
+Label: el1
+Out: 15
+In: 46
+Properties: 
+Key: ep3  Value: false
+ID: L1072982899768164352>2>2>>L1072982902515433472
+Label: el3
+Out: 20
+In: 33
+Properties: 
+Key: ep2  Value: 's%	Wu~a찣d'
+ID: L1072982900305035264>4>4>>L1072982901554937856
+Label: el2
+Out: 38
+In: 26
+Properties: 
+Key: ep2  Value: '紼aY앬'
+Key: ep1  Value: false
+Key: ep3  Value: true
+ID: L1072982901886287872>3>3>>L1072982900938375168
+Label: el3
+Out: 32
+In: 5
+Properties: 
+Key: ep2  Value: '& ⓖ'
+Key: ep4  Value: 0.7991745
+ID: L1072982901487828992>4>4>>L1072982898761531392
+Label: el1
+Out: 3
+In: 43
+Properties: 
+Key: ep3  Value: false
+ID: L1072982898522456064>2>2>>L1072982902238609408
+Label: el3
+Out: 48
+In: 24
+Properties: 
+Key: ep2  Value: ''
+Key: ep4  Value: 0.811014
+ID: L1072982902662234112>4>4>>L1072982900728659968
+Label: el1
+Out: 31
+In: 21
+Properties: 
+Key: ep4  Value: 0.07604653
+Key: ep3  Value: true
+ID: L1072982901416525824>2>2>>L1072982900409892864
+Label: el1
+Out: 24
+In: 6
+Properties: 
+Key: ep0  Value: 0.57661897
+Key: ep3  Value: true
+ID: L1072982900728659968>2>2>>L1072982898878971904
+Label: el3
+Out: 31
+In: 48
+Properties: 
+Key: ep2  Value: '-299640682'
+Key: ep4  Value: 0.79474723
+ID: L1072982901416525824>4>4>>L1072982902662234112
+Label: el3
+Out: 20
+In: 48
+Properties: 
+Key: ep2  Value: '-T'
+Key: ep4  Value: 0.1240384
+ID: L1072982900305035264>4>4>>L1072982902662234112
+Label: el1
+Out: 32
+In: 16
+Properties: 
+Key: ep4  Value: 0.6596716
+ID: L1072982901487828992>2>2>>L1072982899881410560
+Label: el3
+Out: 48
+In: 13
+Properties: 
+Key: ep4  Value: 0.94476265
+ID: L1072982902662234112>4>4>>L1072982899612975104
+Label: el2
+Out: 38
+In: 19
+Properties: 
+Key: ep2  Value: '<K'
+Key: ep1  Value: true
+ID: L1072982901886287872>3>3>>L1072982900195983360
+Label: el3
+Out: 33
+In: 15
+Properties: 
+Key: ep2  Value: 'm#6'
+ID: L1072982901554937856>4>4>>L1072982899768164352
+Label: el3
+Out: 20
+In: 3
+Properties: 
+Key: ep2  Value: '2030748701'
+Key: ep4  Value: 0.55456674
+ID: L1072982900305035264>4>4>>L1072982898522456064
+Label: el0
+Out: 43
+In: 32
+Properties: 
+Key: ep0  Value: 0.9983684
+Key: ep4  Value: 0.71931714
+ID: L1072982902238609408>1>1>>L1072982901487828992
+Label: el0
+Out: 6
+In: 3
+Properties: 
+Key: ep0  Value: 0.4623273
+Key: ep4  Value: 0.36182672
+Key: ep5  Value: -2123781644144911632
+ID: L1072982898878971904>1>1>>L1072982898522456064
+Label: el1
+Out: 28
+In: 6
+Properties: 
+Key: ep3  Value: false
+ID: L1072982901148090368>2>2>>L1072982898878971904
+Label: el0
+Out: 16
+In: 3
+Properties: 
+Key: ep5  Value: 8605447708791752891
+ID: L1072982899881410560>1>1>>L1072982898522456064
+Label: el2
+Out: 9
+In: 27
+Properties: 
+Key: ep2  Value: '<*O'
+Key: ep1  Value: true
+ID: L1072982899227099136>3>3>>L1072982901043232768
+Label: el2
+Out: 25
+In: 7
+Properties: 
+Key: ep1  Value: true
+ID: L1072982900833517568>3>3>>L1072982898992218112
+Label: el3
+Out: 20
+In: 15
+Properties: 
+Key: ep2  Value: 'v'
+Key: ep4  Value: 0.5252777
+ID: L1072982900305035264>4>4>>L1072982899768164352
+Label: el0
+Out: 43
+In: 36
+Properties: 
+Key: ep0  Value: 0.86484665
+Key: ep1  Value: true
+Key: ep4  Value: 0.4929937
+Key: ep5  Value: 3528307230967181034
+ID: L1072982902238609408>1>1>>L1072982901752070144
+Label: el0
+Out: 6
+In: 48
+Properties: 
+Key: ep1  Value: false
+Key: ep5  Value: 4159507495220954845
+ID: L1072982898878971904>1>1>>L1072982902662234112
+Label: el3
+Out: 13
+In: 13
+Properties: 
+Key: ep2  Value: '800095548'
+Key: ep4  Value: 0.20380366
+ID: L1072982899612975104>4>4>>L1072982899612975104
+Label: el2
+Out: 17
+In: 4
+Properties: 
+Key: ep2  Value: 'gf'
+Key: ep1  Value: true
+Key: ep3  Value: true
+ID: L1072982899986268160>3>3>>L1072982898644090880
+Label: el1
+Out: 13
+In: 21
+Properties: 
+Key: ep0  Value: 0.97606516
+ID: L1072982899612975104>2>2>>L1072982900409892864
+Label: el2
+Out: 9
+In: 7
+Properties: 
+Key: ep2  Value: '503620789'
+Key: ep1  Value: false
+Key: ep3  Value: false
+ID: L1072982899227099136>3>3>>L1072982898992218112
+Label: el0
+Out: 14
+In: 48
+Properties: 
+Key: ep0  Value: 0.31625223
+Key: ep4  Value: 0.0101583
+Key: ep5  Value: 8990088437295867673
+ID: L1072982899688472576>1>1>>L1072982902662234112
+Label: el2
+Out: 9
+In: 0
+Properties: 
+Key: ep2  Value: ''
+Key: ep1  Value: false
+Key: ep3  Value: true
+ID: L1072982899227099136>3>3>>L1072982898010750976
+Label: el0
+Out: 6
+In: 32
+Properties: 
+Key: ep0  Value: 0.8132815
+Key: ep1  Value: true
+ID: L1072982898878971904>1>1>>L1072982901487828992
+Label: el0
+Out: 14
+In: 32
+Properties: 
+Key: ep0  Value: 0.5728465
+Key: ep4  Value: 0.49562305
+Key: ep5  Value: 8237227984461074532
+ID: L1072982899688472576>1>1>>L1072982901487828992
+Label: el3
+Out: 15
+In: 48
+Properties: 
+Key: ep4  Value: 0.8556043
+ID: L1072982899768164352>4>4>>L1072982902662234112
+Label: el1
+Out: 48
+In: 21
+Properties: 
+Key: ep0  Value: 0.35732603
+Key: ep4  Value: 0.6321478
+ID: L1072982902662234112>2>2>>L1072982900409892864
+Label: el0
+Out: 43
+In: 13
+Properties: 
+Key: ep4  Value: 0.13664263
+ID: L1072982902238609408>1>1>>L1072982899612975104
+Label: el2
+Out: 23
+In: 8
+Properties: 
+Key: ep2  Value: ''
+Key: ep3  Value: false
+ID: L1072982900615413760>3>3>>L1072982899113852928
+Label: el2
+Out: 17
+In: 37
+Properties: 
+Key: ep1  Value: true
+Key: ep3  Value: false
+ID: L1072982899986268160>3>3>>L1072982901819179008
+Label: el3
+Out: 3
+In: 15
+Properties: 
+Key: ep4  Value: 0.22446263
+ID: L1072982898522456064>4>4>>L1072982899768164352
+Label: el3
+Out: 33
+In: 33
+Properties: 
+Key: ep2  Value: 'eq('
+Key: ep4  Value: 0.81544125
+ID: L1072982901554937856>4>4>>L1072982901554937856
+Label: el1
+Out: 20
+In: 6
+Properties: 
+Key: ep4  Value: 0.90106285
+Key: ep3  Value: false
+ID: L1072982900305035264>2>2>>L1072982898878971904
+Label: el3
+Out: 32
+In: 15
+Properties: 
+Key: ep2  Value: '<K'
+ID: L1072982901487828992>4>4>>L1072982899768164352
+Label: el2
+Out: 25
+In: 8
+Properties: 
+Key: ep2  Value: ''
+Key: ep3  Value: true
+ID: L1072982900833517568>3>3>>L1072982899113852928
+Label: el3
+Out: 15
+In: 24
+Properties: 
+Key: ep2  Value: '/佲'
+Key: ep4  Value: 0.71911615
+ID: L1072982899768164352>4>4>>L1072982900728659968
+Label: el1
+Out: 33
+In: 6
+Properties: 
+Key: ep0  Value: 0.067762494
+Key: ep3  Value: false
+ID: L1072982901554937856>2>2>>L1072982898878971904
+Label: el2
+Out: 9
+In: 37
+Properties: 
+Key: ep2  Value: '& ⓖ'
+Key: ep1  Value: false
+Key: ep3  Value: false
+ID: L1072982899227099136>3>3>>L1072982901819179008
+Label: el0
+Out: 14
+In: 5
+Properties: 
+Key: ep5  Value: -1034199677921058597
+ID: L1072982899688472576>1>1>>L1072982898761531392
+Label: el3
+Out: 45
+In: 45
+Properties: 
+Key: ep2  Value: '1776012323'
+Key: ep4  Value: 0.70477545
+ID: L1072982902431547392>4>4>>L1072982902431547392
+Label: el0
+Out: 14
+In: 3
+Properties: 
+Key: ep0  Value: 0.15616125
+ID: L1072982899688472576>1>1>>L1072982898522456064
+Label: el0
+Out: 46
+In: 36
+Properties: 
+Key: ep0  Value: 0.81741005
+Key: ep1  Value: true
+Key: ep4  Value: 0.5908824
+Key: ep5  Value: 1016920386000099743
+ID: L1072982902515433472>1>1>>L1072982901752070144
+Label: el1
+Out: 20
+In: 14
+Properties: 
+Key: ep0  Value: 0.8833464
+Key: ep4  Value: 0.6117036
+ID: L1072982900305035264>2>2>>L1072982899688472576
+Label: el2
+Out: 2
+In: 39
+Properties: 
+Key: ep2  Value: '& ⓖ'
+Key: ep3  Value: false
+ID: L1072982898405015552>3>3>>L1072982901949202432
+Label: el0
+Out: 6
+In: 13
+Properties: 
+Key: ep0  Value: 0.49235803
+Key: ep1  Value: true
+Key: ep5  Value: 3128904819570951868
+ID: L1072982898878971904>1>1>>L1072982899612975104
+Label: el3
+Out: 33
+In: 31
+Properties: 
+Key: ep2  Value: 'B,.OH'
+Key: ep4  Value: 0.1950143
+ID: L1072982901554937856>4>4>>L1072982901416525824
+Label: el3
+Out: 36
+In: 13
+Properties: 
+Key: ep2  Value: '-1562838212'
+ID: L1072982901752070144>4>4>>L1072982899612975104
+Label: el0
+Out: 43
+In: 20
+Properties: 
+Key: ep0  Value: 0.78640646
+Key: ep4  Value: 0.7677983
+ID: L1072982902238609408>1>1>>L1072982900305035264
+Label: el1
+Out: 45
+In: 14
+Properties: 
+Key: ep4  Value: 0.54156226
+ID: L1072982902431547392>2>2>>L1072982899688472576
+Label: el0
+Out: 21
+In: 5
+Properties: 
+Key: ep0  Value: 0.33679724
+Key: ep1  Value: true
+Key: ep4  Value: 0.8859324
+Key: ep5  Value: 2154385889257685560
+ID: L1072982900409892864>1>1>>L1072982898761531392
+Label: el2
+Out: 17
+In: 27
+Properties: 
+Key: ep2  Value: '['
+Key: ep1  Value: false
+Key: ep3  Value: false
+ID: L1072982899986268160>3>3>>L1072982901043232768
+Label: el0
+Out: 21
+In: 24
+Properties: 
+Key: ep0  Value: 0.028656304
+ID: L1072982900409892864>1>1>>L1072982900728659968
+Label: el3
+Out: 13
+In: 15
+Properties: 
+Key: ep2  Value: '_諙'
+ID: L1072982899612975104>4>4>>L1072982899768164352
+Label: el0
+Out: 21
+In: 36
+Properties: 
+Key: ep0  Value: 0.90244687
+Key: ep1  Value: false
+Key: ep4  Value: 0.07970476
+Key: ep5  Value: -3517280401904637662
+ID: L1072982900409892864>1>1>>L1072982901752070144
+Label: el0
+Out: 6
+In: 20
+Properties: 
+Key: ep0  Value: 0.4698723
+Key: ep1  Value: false
+Key: ep4  Value: 0.80114836
+Key: ep5  Value: 7141803065466682200
+ID: L1072982898878971904>1>1>>L1072982900305035264
+Label: el0
+Out: 16
+In: 13
+Properties: 
+Key: ep0  Value: 0.50672793
+Key: ep1  Value: true
+Key: ep4  Value: 0.008114219
+Key: ep5  Value: 405665455876204825
+ID: L1072982899881410560>1>1>>L1072982899612975104
+Label: el2
+Out: 41
+In: 26
+Properties: 
+Key: ep2  Value: ''
+Key: ep1  Value: true
+Key: ep3  Value: false
+ID: L1072982902087614464>3>3>>L1072982900938375168
+Label: el0
+Out: 14
+In: 28
+Properties: 
+Key: ep0  Value: 0.77657276
+Key: ep1  Value: false
+Key: ep5  Value: 1125857922009567608
+ID: L1072982899688472576>1>1>>L1072982901148090368
+Label: el2
+Out: 25
+In: 19
+Properties: 
+Key: ep1  Value: false
+Key: ep3  Value: false
+ID: L1072982900833517568>3>3>>L1072982900195983360
+Label: el3
+Out: 36
+In: 20
+Properties: 
+Key: ep2  Value: 'm#6'
+Key: ep4  Value: 0.5780918
+ID: L1072982901752070144>4>4>>L1072982900305035264
+Label: el1
+Out: 5
+In: 21
+Properties: 
+Key: ep0  Value: 0.60959065
+Key: ep4  Value: 0.82973
+Key: ep3  Value: true
+ID: L1072982898761531392>2>2>>L1072982900409892864
+Label: el3
+Out: 24
+In: 13
+Properties: 
+Key: ep2  Value: '6D㝉'
+Key: ep4  Value: 0.73190194
+ID: L1072982900728659968>4>4>>L1072982899612975104
+Label: el3
+Out: 24
+In: 24
+Properties: 
+Key: ep2  Value: 'v'
+Key: ep4  Value: 0.8248878
+ID: L1072982900728659968>4>4>>L1072982900728659968
+Label: el0
+Out: 21
+In: 32
+Properties: 
+Key: ep1  Value: false
+Key: ep4  Value: 0.50632024
+Key: ep5  Value: -684426358616866404
+ID: L1072982900409892864>1>1>>L1072982901487828992
+Label: el3
+Out: 45
+In: 5
+Properties: 
+Key: ep4  Value: 0.33260775
+ID: L1072982902431547392>4>4>>L1072982898761531392
+Label: el0
+Out: 46
+In: 15
+Properties: 
+Key: ep1  Value: false
+Key: ep4  Value: 0.35253102
+ID: L1072982902515433472>1>1>>L1072982899768164352
+Label: el2
+Out: 25
+In: 39
+Properties: 
+Key: ep2  Value: '/}'
+Key: ep1  Value: false
+ID: L1072982900833517568>3>3>>L1072982901949202432
+Label: el3
+Out: 36
+In: 28
+Properties: 
+Key: ep2  Value: 'csF'
+Key: ep4  Value: 0.2695551
+ID: L1072982901752070144>4>4>>L1072982901148090368
+Label: el3
+Out: 32
+In: 28
+Properties: 
+Key: ep2  Value: 'e'
+Key: ep4  Value: 0.34003192
+ID: L1072982901487828992>4>4>>L1072982901148090368
+Label: el3
+Out: 45
+In: 3
+Properties: 
+Key: ep4  Value: 0.5719464
+ID: L1072982902431547392>4>4>>L1072982898522456064
+Label: el2
+Out: 41
+In: 8
+Properties: 
+Key: ep2  Value: '9J'
+ID: L1072982902087614464>3>3>>L1072982899113852928
+Label: el2
+Out: 41
+In: 18
+Properties: 
+Key: ep2  Value: '*꒵*|'
+Key: ep1  Value: true
+Key: ep3  Value: true
+ID: L1072982902087614464>3>3>>L1072982900091125760
+Label: el1
+Out: 3
+In: 14
+Properties: 
+Key: ep3  Value: false
+ID: L1072982898522456064>2>2>>L1072982899688472576
+Label: el3
+Out: 36
+In: 32
+Properties: 
+Key: ep2  Value: '楎m'
+Key: ep4  Value: 0.8807892
+ID: L1072982901752070144>4>4>>L1072982901487828992
+Label: el3
+Out: 13
+In: 32
+Properties: 
+Key: ep4  Value: 0.99310845
+ID: L1072982899612975104>4>4>>L1072982901487828992
+Label: el2
+Out: 23
+In: 30
+Properties: 
+Key: ep2  Value: '_f'
+Key: ep3  Value: true
+ID: L1072982900615413760>3>3>>L1072982901353611264
+Label: el3
+Out: 5
+In: 31
+Properties: 
+Key: ep2  Value: 'q+'
+Key: ep4  Value: 0.23144346
+ID: L1072982898761531392>4>4>>L1072982901416525824
+Label: el3
+Out: 36
+In: 3
+Properties: 
+Key: ep2  Value: '*ox9'
+ID: L1072982901752070144>4>4>>L1072982898522456064
+Label: el2
+Out: 38
+In: 18
+Properties: 
+Key: ep2  Value: 'fE'
+Key: ep1  Value: true
+Key: ep3  Value: false
+ID: L1072982901886287872>3>3>>L1072982900091125760
+Label: el3
+Out: 32
+In: 13
+Properties: 
+Key: ep2  Value: '_c%'
+Key: ep4  Value: 0.76244473
+ID: L1072982901487828992>4>4>>L1072982899612975104
+Label: el1
+Out: 33
+In: 43
+Properties: 
+Key: ep0  Value: 0.71671855
+Key: ep4  Value: 0.8620892
+ID: L1072982901554937856>2>2>>L1072982902238609408
+Label: el1
+Out: 3
+In: 16
+Properties: 
+Key: ep0  Value: 0.23225272
+Key: ep4  Value: 0.0034853816
+Key: ep3  Value: false
+ID: L1072982898522456064>2>2>>L1072982899881410560
+Label: el1
+Out: 24
+In: 16
+Properties: 
+Key: ep0  Value: 0.12761909
+Key: ep3  Value: false
+ID: L1072982900728659968>2>2>>L1072982899881410560
+Label: el2
+Out: 38
+In: 4
+Properties: 
+Key: ep2  Value: 'T*oX'
+Key: ep1  Value: true
+Key: ep3  Value: true
+ID: L1072982901886287872>3>3>>L1072982898644090880
+Label: el2
+Out: 25
+In: 30
+Properties: 
+Key: ep3  Value: false
+ID: L1072982900833517568>3>3>>L1072982901353611264
+Label: el2
+Out: 17
+In: 26
+Properties: 
+Key: ep2  Value: 'rO'
+Key: ep3  Value: false
+ID: L1072982899986268160>3>3>>L1072982900938375168
+Label: el0
+Out: 43
+In: 24
+Properties: 
+Key: ep0  Value: 0.029690683
+Key: ep4  Value: 0.15273678
+Key: ep5  Value: 4815867134138573525
+ID: L1072982902238609408>1>1>>L1072982900728659968
