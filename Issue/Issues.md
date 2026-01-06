@@ -1,17 +1,23 @@
-### Issue1. NoIndexException in hugegraph
+## Issue1. NoIndexException in hugegraph
+title: Two query behaviors that produce the same result are inconsistent.
+- Server Version: 1.7.0
+- Backend: RocksDB x nodes
+- OS: 192 CPUs, 256 G RAM, Ubuntu 22.04
+- Data Size:  50 vertices, 100 edges
+### Expected behavior
+For the two query below, the same result should be returned:
 ```gremlin
 g.E().has('ep4', lt(0.32696354)).and(__.hasLabel('el2')).count()
 
 g.E().has('ep4', lt(0.32696354)).match(__.as('start1').and(__.hasLabel('el2')).as('m1')).select('m1').count()
 ```
-error messages:
-```
-db0 first : org.apache.hugegraph.exception.NoIndexException: Don't accept query based on properties [ep4] that are not indexed in label 'el2', may not match secondary/range condition
-db0 second: 11
-```
+### Actual behavior
++ The first query thrown a exception: ```org.apache.hugegraph.exception.NoIndexException: Don't accept query based on properties [ep4] that are not indexed in label 'el2', may not match secondary/range condition```
++ The second query returned the results normally.
++ When I executed these two queries on Janusgraph and Tinkerpop, they both returned the same results.
 + file: 1HugeGraph-graphdata1.txt
 
-### Issue2. IllegalArgumentException in hugeGraph
+## Issue2. IllegalArgumentException in hugeGraph
 ```gremlin
 g.E().bothV().where(__.out('el0').count().is(gte(-3))).count()
 
@@ -24,16 +30,30 @@ java.lang.IllegalArgumentException: Not a legal range: [0, -3]
 db0 second: 200
 ```
 + file: 1HugeGraph-graphdata1.txt
-### Issue3. logic bug in hugeGraph
+## Issue3. logic bug in hugeGraph
+title: match()-step returns false results
+- Server Version: 1.7.0
+- Backend: RocksDB x nodes
+- OS: 192 CPUs, 256 G RAM, Ubuntu 22.04
+- Data Size:  50 vertices, 100 edges
+### Expected behavior
+For the two query below, the same result should be returned:
 ```gremlin
-g.E().outV().both().match(__.as('start1').where(__.outE().count().is(lt(-3))).as('m1')).select('m1').count()
+g.E().outV().both().match(__.as('start').where(__.outE().count().is(lt(-3))).as('end')).select('end').count()
 -- 0
 g.E().outV().repeat(__.both()).times(1).where(__.outE().count().is(lt(-3))).count()
--- 98
+-- 305
 ```
-+ file: 2HugeGraph-graphdata1.txt
+### Actual behavior
++ The first query returns: 0
++ The second query returns: 305
++ We replaced the ```repeat(__.both()).times(1)``` step in the second query with ```both()```, and moved the```where (...)``` step into the ```match()```step. Both of these operations should not affect the result.
++ When I executed these two queries on Janusgraph and Tinkerpop, they both returned the same results.
++ file: 
+  + 4HugeGraph-graphdata1.txt
+  + 4schema-out.txt
 
-### Issue4. Exception in hugeGraph
+## Issue4. Exception in hugeGraph
 ```gremlin
 g.E().where(__.has('ep5', lt(true)))
 
@@ -52,7 +72,7 @@ second:9
 
 reference: janusGraph returns: 9
 
-### Issue5: java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
+## Issue5: java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
 g.V().has('vp4', lt('')).repeat(__.out('el2')).emit().times(1).count()
 g.V().match(__.as('start').has('vp4', lt('')).union(__.out('el2')).as('m')).select('m').count()
 
@@ -62,7 +82,7 @@ second query: 0
 + file
   + 3HugeGraph-creat.txt
   + 3schema-out.txt
-### Issue6: NoIndexException in HugeGraph, triggered by match()
+## Issue6: NoIndexException in HugeGraph, triggered by match()
 ```gremlin
 g.V().has('vp4', neq('J2O')).has('vl1', 'vp2',gte(false)).has('vp2').has('vl0', 'vp3',gt(4592737712018141718)).out().count()
 
@@ -76,7 +96,7 @@ error messages: org.apache.hugegraph.exception.NoIndexException: Don't accept qu
 + file
   + 3HugeGraph-creat.txt
   + 3schema-out.txt
-### Issue7: IllegalStateException in hugeGraph
+## Issue7: IllegalStateException in hugeGraph
 ```gremlin
 g.V().inE('el0').hasLabel('el0','el2').hasLabel('el1')
 
@@ -90,3 +110,104 @@ second query: return empty result.
 + file
   + 3HugeGraph-creat.txt
   + 3schema-out.txt
+
+## Issue8: logic bug in janusGraph
+title: mathch()-step returns false results
+
+- Version: 1.1.0
+- Storage Backend: inmemory
+- Mixed Index Backend: none
+- Link to discussed bug: 
+- Expected Behavior:
+  When i execute ```g.V().order().by(asc).has('vp3',0.62307286)``` and ```g.V().order().by(asc).match(__.as('start0').has('vp3',0.62307286).as('m0')).select('m0')```. Both queries need returns the same results.
+  
+  When i execute both queries on HugeGraph, they return same results and met the expectations.
+- Current Behavior:
+  The first query returns: ```result{object=v[32896] class=org.apache.tinkerpop.gremlin.structure.util.detached.DetachedVertex}```
+  The second query returns: empty results.
+- Steps to Reproduce:
+  1. connect to a empty graph
+  2. Insert the target node into the graph and execute two queries above
+```
+GraphTraversalSource g = test.getG();
+g.E().drop().iterate();
+g.V().drop().iterate();
+g.addV().property("vp3", 0.62307286).next();
+String query1 = "g.V().has('vp3',0.62307286).count()";
+String query2 = "g.V().order().by(asc).match(__.as('start0').has('vp3',0.62307286).as('m0')).select('m0')" ;
+try{
+    List<Result> results = test.getClient().submit(query1).all().get();
+    for (Result r : results) {
+        System.out.println(r);
+    }
+    System.out.println("=============");
+    List<Result> results1 = test.getClient().submit(query2).all().get();
+
+    for (Result r : results1) {
+        System.out.println(r);
+    }
+}catch (Exception e){
+    e.printStackTrace();
+}
+```
+  3. The first query returns ```result{object=v[32896] class=org.apache.tinkerpop.gremlin.structure.util.detached.DetachedVertex}```, the second returns empty results.
+
+
+```gremlin
+g.V().order().by(asc).has('vp3',0.62307286)
+
+g.V().order().by(asc).match(__.as('start0').has('vp3',0.62307286).as('m0')).select('m0')
+```
+
+```gremlin
+first result: result{object=v[32896] class=org.apache.tinkerpop.gremlin.structure.util.detached.DetachedVertex}
+
+second result: empty
+```
+
++ file
+  + 4JanusGraph-create.txt
+  + 4schema-out.txt
+
+ref: After we further investigate the graph data, we found that the query should return the first result.
+    When I execute those two queries in hugeGraph, both return the first result
+
+## Issue9: logic bug in TinkerGraph
+```gremlin
+g.V().has('vp3',0.62307286)
+```
+it returns:
+```shell
+empty result
+```
++ file
+  + 4TinkerGraph-create.txt
+  + 4schema-out.txt
+ref: When we execute the same query in hugeGraph, it returns the inserted node.
+
+## Issue10: logic bug in HugeGraph
+title:
+- Server Version: 1.7.0
+- Backend: RocksDB x nodes
+- OS: 192 CPUs, 256 G RAM, Ubuntu 22.04
+- Data Size:  50 vertices, 100 edges
+### Expected behavior
+For the two query below, the same result should be returned:
+```gremlin
+g.V().both('el2','el1','el3').inE('el2').where(__.bothV().count().is(outside(-1435889948263879801,-3366956858553110955))).count()
+
+g.V().repeat(__.both('el2','el1','el3')).times(1).inE('el2').match(__.as('start').where(__.bothV().count().is(outside(-1435889948263879801,-3366956858553110955))).as('end')).select('end').count()
+```
+the first query returns: ```0```
+the second query returns: ```99```
+
+### Actual behavior
++ The first query returns: 0
++ The second query returns: 99
++ We replaced the ```both('el2','el1','el3')``` step in the first query with ```repeat(__.both('el2','el1','el3')).times(1)```, and moved the```where (...)``` step into the ```match()```step. Both of these operations should not affect the result.
++ When I executed these two queries on Janusgraph and Tinkerpop, they both returned the same results.
++ file
+  + 4HugeGraph-create.txt
+  + 4schema-out.txt
+
+ref: When we execute the same query in JanusGraph and TinkerGraph, both queries in both GDBMSs returns 99.

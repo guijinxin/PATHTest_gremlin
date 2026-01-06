@@ -57,11 +57,11 @@ public class HugeGraphConnection extends GremlinConnection {
         HugeClient hugegraph = connection.getHugespecial();
         GremlinManager gremlin = hugegraph.gremlin();
 
-        String query1 = "g.E().outV().repeat(__.both()).times(1).where(__.outE().count().is(lt(-3))).count()"
+        String query1 = "g.V().both().inE().where(__.bothV().count().is(outside(-1435889948263879801,-3366956858553110955))).count()"
                ;
 
 
-        String query2 = " g.V().match(__.as('start1').repeat(__.inE('el0')).times(1).as('m1')).select('m1').hasLabel('el0','el2').hasLabel('el1')" ;
+        String query2 = "g.V().repeat(__.both()).times(1).inE().match(__.as('start').where(__.bothV().count().is(outside(-1435889948263879801,-3366956858553110955))).as('end')).select('end').count()" ;
         try {
             org.apache.hugegraph.structure.gremlin.ResultSet hugeResult = gremlin.gremlin(query1).execute();
             org.apache.hugegraph.structure.gremlin.ResultSet hugeResult1 = gremlin.gremlin(query2).execute();

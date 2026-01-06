@@ -12,7 +12,7 @@ public class Starter {
     public static void main(String[] args) throws IOException {
         // Fine tuning
         // String[] mockArgs = {"5", "100", "200", "20", "20", "100"};
-        String[] mockArgs = {"20", "50", "100", "5", "5", "1000"};
+        String[] mockArgs = {"10", "50", "100", "5", "5", "1000"};
         // String[] mockArgs = {"5", "100", "200", "5", "5", "300"};
         args = mockArgs;
         if (args.length != 6)
