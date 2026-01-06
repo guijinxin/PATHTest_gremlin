@@ -1,0 +1,17 @@
+schema().propertyKey('vp0').asFloat().ifNotExist().create();
+schema().propertyKey('vp1').asDouble().ifNotExist().create();
+schema().propertyKey('vp2').asFloat().ifNotExist().create();
+schema().vertexLabel('vl0').ifNotExist().create();
+schema().vertexLabel('vl0').properties('vp0').nullableKeys('vp0').append();
+schema().indexLabel('vl0byvp0Shard').onV('vl0').by('vp0').shard().ifNotExist().create();
+schema().vertexLabel('vl0').properties('vp2').nullableKeys('vp2').append();
+schema().indexLabel('vl0byvp2Shard').onV('vl0').by('vp2').shard().ifNotExist().create();
+schema().propertyKey('ep0').asInt().ifNotExist().create();
+schema().propertyKey('ep1').asFloat().ifNotExist().create();
+schema().propertyKey('ep2').asFloat().ifNotExist().create();
+schema().propertyKey('ep3').asText().ifNotExist().create();
+schema().edgeLabel('el0').link('vl0', 'vl0').ifNotExist().create();
+schema().edgeLabel('el0').properties('ep0').nullableKeys('ep0').append();
+schema().indexLabel('el0byep0Shard').onE('el0').by('ep0').shard().ifNotExist().create();
+schema().edgeLabel('el0').properties('ep3').nullableKeys('ep3').append();
+schema().indexLabel('el0byep3Shard').onE('el0').by('ep3').shard().ifNotExist().create();

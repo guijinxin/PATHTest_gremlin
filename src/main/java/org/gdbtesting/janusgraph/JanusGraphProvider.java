@@ -12,6 +12,8 @@ import org.gdbtesting.gremlin.query.GraphTraversalGenerator;
 import org.gdbtesting.janusgraph.gen.JanusGraphAddVertexGeneration;
 
 
+import java.io.IOException;
+
 import static org.apache.tinkerpop.gremlin.process.traversal.AnonymousTraversalSource.traversal;
 
 public class JanusGraphProvider extends GremlinGraphProvider {
@@ -26,7 +28,7 @@ public class JanusGraphProvider extends GremlinGraphProvider {
         return graph;
     }
 
-    public JanusGraphProvider(GraphGlobalState globalState) {
+    public JanusGraphProvider(GraphGlobalState globalState) throws IOException {
         super(globalState);
     }
 

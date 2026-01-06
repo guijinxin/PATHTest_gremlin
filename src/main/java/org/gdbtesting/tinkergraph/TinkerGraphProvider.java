@@ -14,6 +14,8 @@ import org.gdbtesting.tinkergraph.gen.TinkerGraphDropIndexGenerator;
 import org.gdbtesting.tinkergraph.gen.TinkerGraphEdgeIndexGeneration;
 import org.gdbtesting.tinkergraph.gen.TinkerGraphVertexIndexGeneration;
 
+import java.io.IOException;
+
 import static org.apache.tinkerpop.gremlin.process.traversal.AnonymousTraversalSource.traversal;
 
 public class TinkerGraphProvider extends GremlinGraphProvider {
@@ -28,7 +30,7 @@ public class TinkerGraphProvider extends GremlinGraphProvider {
 
     private Graph graph;
 
-    public TinkerGraphProvider(GraphGlobalState state){
+    public TinkerGraphProvider(GraphGlobalState state) throws IOException {
         super(state);
     }
 
@@ -210,7 +212,7 @@ public class TinkerGraphProvider extends GremlinGraphProvider {
         return version;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         GraphGlobalState state = new GraphGlobalState(2);
         TinkerGraphProvider provider = new TinkerGraphProvider(state);
         try {

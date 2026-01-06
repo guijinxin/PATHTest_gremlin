@@ -4,14 +4,15 @@ import org.gdbtesting.gremlin.GraphGlobalState;
 import org.gdbtesting.gremlin.GremlinGraphProvider;
 import org.gdbtesting.janusgraph.JanusGraphProvider;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Starter {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // Fine tuning
         // String[] mockArgs = {"5", "100", "200", "20", "20", "100"};
-        String[] mockArgs = {"20", "50", "100", "20", "20", "1000"};
+        String[] mockArgs = {"20", "50", "100", "5", "5", "1000"};
         // String[] mockArgs = {"5", "100", "200", "5", "5", "300"};
         args = mockArgs;
         if (args.length != 6)

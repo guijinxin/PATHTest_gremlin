@@ -541,6 +541,8 @@ public class GraphDBExecutor {
     public void setupGraphDatabase(GremlinConnection connection, List<GraphData.VertexObject> addV, List<GraphData.EdgeObject> addE) throws IOException {
         String cur = System.getProperty("period");
         BufferedWriter out = new BufferedWriter(new FileWriter(System.getProperty("user.dir") + "/log-" + cur + "/" + connection.getDatabase() + "-graphdata.txt"));
+        BufferedWriter create = new BufferedWriter(new FileWriter(System.getProperty("user.dir") + "/log" + "/" + connection.getDatabase() + "-create.txt"));
+
         Map<String, String> vIDMap = new HashMap<>();
         Map<Integer, String> tempMap = new HashMap<>();
         Map<String, String> eIDMap = new HashMap<>();
@@ -549,23 +551,30 @@ public class GraphDBExecutor {
             GraphManager graph = hc.graph();
             Map<String,org.apache.hugegraph.structure.graph.Vertex> verticesMap = new HashMap<>();
             out.write("Vertex:");
+            create.write("Vertex:");
             for(GraphData.VertexObject v : addV){
                 try {
                     String Label = v.getLabel();
                     org.apache.hugegraph.structure.graph.Vertex add = new org.apache.hugegraph.structure.graph.Vertex(Label);
                     Map<String, GraphConstant> map = v.getProperites();
                     out.newLine();
+                    create.newLine();
                     out.write("Label: " + add.label());
                     out.newLine();
                     out.write("Properties: ");
                     out.newLine();
+                    String addVQuery = "";
+                    addVQuery = "g.addV('" + Label + "')";
                     for(String key : map.keySet()){
                         Object value = getTransValue(map.get(key));
                         out.write("Key: " + key + " Value: " + value);
                         out.newLine();
                         add.property(key,value);
+                        addVQuery += ".property('" + key + "','" + value + "')";
                     }
                     add = graph.addVertex(add);
+                    addVQuery += ".property(T.id," + add.id().toString() + ")";
+                    create.write(addVQuery);
                     vIDMap.put(add.id().toString(), String.valueOf(v.getId()));
                     tempMap.put(v.getId(), add.id().toString());
                     out.write("ID: " + add.id().toString());
@@ -579,8 +588,11 @@ public class GraphDBExecutor {
                 }
             }
             out.newLine();
+            create.newLine();
             out.write("Edge:");
+            create.write("Edge:");
             out.newLine();
+            create.newLine();
             try {
                 for (GraphData.EdgeObject e : addE) {
                     org.apache.hugegraph.structure.graph.Vertex outVertex = verticesMap.get(tempMap.get(e.getOutVertex().getId()));
@@ -601,9 +613,14 @@ public class GraphDBExecutor {
                         addEdge.property(key,getTransValue(map.get(key)));
                     }
                     addEdge = graph.addEdge(addEdge);
+                    String inId = tempMap.get(e.getInVertex().getId());
+                    String outId = tempMap.get(e.getOutVertex().getId());
+                    String addEQuery = "g.V(" + inId + ").as('" + inId + "').V(" + outId + ").as('" + outId + "').addE('" + addEdge.label() + "').from('" + inId + "').to('" + outId + "')";
+                    create.write(addEQuery);
                     eIDMap.put(addEdge.id(), String.valueOf(e.getId()));
                     out.write("ID: " + addEdge.id());
                     out.newLine();
+                    create.newLine();
                 }
             }catch (Exception e){
                 out.write(e.toString());
@@ -619,10 +636,12 @@ public class GraphDBExecutor {
             g.V().drop().iterate();
             // add vertices
             out.write("Vertex:");
+            create.write("Vertex:");
             out.newLine();
+            create.newLine();
             for(GraphData.VertexObject v : addV){
                 try {
-                    Vertex vv = generateVertex(g, v , out);
+                    Vertex vv = generateVertex(g, v , out, create);
                     vIDMap.put(vv.id().toString(), String.valueOf(v.getId()));
                     tempMap.put(v.getId(), vv.id().toString());
                 }catch (Exception e){
@@ -636,11 +655,18 @@ public class GraphDBExecutor {
             out.newLine();
             out.write("Edge:");
             out.newLine();
+            create.newLine();
+            create.write("Edge:");
+            create.newLine();
             try {
                 for (GraphData.EdgeObject e : addE) {
                     Vertex outVertex = g.V(tempMap.get(e.getOutVertex().getId())).next();
                     Vertex inVertex = g.V(tempMap.get(e.getInVertex().getId())).next();
                     Edge edge = g.addE(e.getLabel()).from(outVertex).to(inVertex).next();
+                    String inId = tempMap.get(e.getInVertex().getId());
+                    String outId = tempMap.get(e.getOutVertex().getId());
+                    String addEQuery = "g.V(" + inId + ").as('" + inId + "').V(" + outId + ").as('" + outId + "').addE('" + e.getLabel() + "').from('" + inId + "').to('" + outId + "')";
+                    create.write(addEQuery);
                     out.write("ID: " + edge.id());
                     out.newLine();
                     out.write("Label: " + edge.label());
@@ -658,6 +684,7 @@ public class GraphDBExecutor {
                         g.E(edge.id()).property(key, getTransValue(map.get(key))).iterate();
                     }
                     out.newLine();
+                    create.newLine();
                     eIDMap.put(edge.id().toString(), String.valueOf(e.getId()));
                 }
             }catch (Exception e){
@@ -668,6 +695,7 @@ public class GraphDBExecutor {
         }
 
         out.close();
+        create.close();
         vertexIDMap.put(connection.getDatabase(), vIDMap);
         edgeIDMap.put(connection.getDatabase(), eIDMap);
 
@@ -851,7 +879,7 @@ public class GraphDBExecutor {
     }
 
 
-    public Vertex generateVertex(GraphTraversalSource g, GraphData.VertexObject v, BufferedWriter out) throws IOException {
+    public Vertex generateVertex(GraphTraversalSource g, GraphData.VertexObject v, BufferedWriter out, BufferedWriter create) throws IOException {
         Vertex vertex = g.addV(v.getLabel()).next();
         Map<String, GraphConstant> map = v.getProperites();
         out.newLine();
@@ -861,12 +889,18 @@ public class GraphDBExecutor {
         out.newLine();
         out.write("Properties: ");
         out.newLine();
+        String addVQuery = "";
+        addVQuery = "g.addV('" + v.getLabel() + "')";
         for(String key : map.keySet()){
             Object value = getTransValue(map.get(key));
             out.write("Key: " + key + " Value: " + value);
             out.newLine();
             g.V(vertex).property(key, value).iterate();
+            addVQuery += ".property('" + key + "','" + value + "')";
         }
+        addVQuery += ".property(T.id," + vertex.id().toString() + ")";
+        create.write(addVQuery);
+        create.newLine();
         return vertex;
     }
 

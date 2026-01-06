@@ -48,7 +48,9 @@ public class GremlinGraphProvider implements GraphDBProvider<GraphGlobalState, G
     List<String> indexList = new ArrayList<>();
     List<String> EdgeindexList = new ArrayList<>();
 
-    public GremlinGraphProvider(GraphGlobalState globalState){
+    BufferedWriter schema_out = new BufferedWriter(new FileWriter(System.getProperty("user.dir") + "/log" + "/schema-out.txt"));
+
+    public GremlinGraphProvider(GraphGlobalState globalState) throws IOException {
         this.state = globalState;
         this.randomly = globalState.getRandomly();
         this.version = globalState.getDbVersion();
@@ -266,9 +268,11 @@ public class GremlinGraphProvider implements GraphDBProvider<GraphGlobalState, G
         out.close();
 //        System.out.println(newSchema.toString());
         state.setSchema(newSchema);
+
+        schema_out.close();
     }
 
-    public void createVertexProperty(){
+    public void createVertexProperty() throws IOException {
         for(int j = 0; j < randomly.getInteger(state.getPropertyMaxNum()); j++){
             // for each property
             String propertyName = GDBCommon.createVertexPropertyName(j);
@@ -288,7 +292,10 @@ public class GremlinGraphProvider implements GraphDBProvider<GraphGlobalState, G
             List<GraphSchema.GraphVertexProperty> list = new ArrayList<>();
             if(this.getConnection().getHugespecial() != null)
             {
-                this.getConnection().getHugespecial().schema().vertexLabel(labelName).ifNotExist().create();            }
+                this.getConnection().getHugespecial().schema().vertexLabel(labelName).ifNotExist().create();
+                schema_out.write("schema().vertexLabel('" + labelName + "').ifNotExist().create();");
+                schema_out.newLine();
+            }
             int random = (int) randomly.getInteger(vertexProperties.size());
             for(int j = 0; j < random; j++){
                 GraphSchema.GraphVertexProperty gvp =
@@ -297,10 +304,14 @@ public class GremlinGraphProvider implements GraphDBProvider<GraphGlobalState, G
                     list.add(gvp);
                     if(containsHuge){
                         this.getConnection().getHugespecial().schema().vertexLabel(labelName).properties(gvp.getVertexPropertyName()).nullableKeys(gvp.getVertexPropertyName()).append();
+                        schema_out.write("schema().vertexLabel('" + labelName + "').properties('" + gvp.getVertexPropertyName() + "').nullableKeys('" + gvp.getVertexPropertyName() + "').append();");
+                        schema_out.newLine();
                         // index property
                         String indexname = labelName + "by" + gvp.getVertexPropertyName() + "Shard";
                         indexList.add(indexname);
                         this.getConnection().getHugespecial().schema().indexLabel(indexname).onV(labelName).by(gvp.getVertexPropertyName()).shard().ifNotExist().create();
+                        schema_out.write("schema().indexLabel('" + indexname + "').onV('" + labelName + "').by('" + gvp.getVertexPropertyName() + "').shard().ifNotExist().create();");
+                        schema_out.newLine();
                     }
                 }
             }
@@ -322,7 +333,7 @@ public class GremlinGraphProvider implements GraphDBProvider<GraphGlobalState, G
         }
     }
 
-    public void createEdgeProperty(){
+    public void createEdgeProperty() throws IOException {
         for(int j = 0; j < randomly.getInteger(state.getPropertyMaxNum()); j++){
             // for each property
             String propertyName = GDBCommon.createEdgePropertyName(j);
@@ -335,53 +346,38 @@ public class GremlinGraphProvider implements GraphDBProvider<GraphGlobalState, G
         }
     }
 
-    public void whetherHuge(String propertyName, ConstantType type) {
-//        if(containsHuge) {
-//            SchemaManager schema = this.getConnection().getHugespecial().schema();
-//            if (schema.propertyKey(propertyName) == null) {
-//                switch (type) {
-//                    case INTEGER:
-//                        this.getConnection().getHugespecial().schema().propertyKey(propertyName).asInt().ifNotExist().create();
-//                        break;
-//                    case STRING:
-//                        this.getConnection().getHugespecial().schema().propertyKey(propertyName).asText().ifNotExist().create();
-//                        break;
-//                    case DOUBLE:
-//                        this.getConnection().getHugespecial().schema().propertyKey(propertyName).asDouble().ifNotExist().create();
-//                        break;
-//                    case BOOLEAN:
-//                        this.getConnection().getHugespecial().schema().propertyKey(propertyName).asBoolean().ifNotExist().create();
-//                        break;
-//                    case FLOAT:
-//                        this.getConnection().getHugespecial().schema().propertyKey(propertyName).asFloat().ifNotExist().create();
-//                        break;
-//                    case LONG:
-//                        this.getConnection().getHugespecial().schema().propertyKey(propertyName).asLong().ifNotExist().create();
-//                        break;
-//                }
-//            }
-//
-//        }Whether to check the vertices exist for those using customized id strategy.
+    public void whetherHuge(String propertyName, ConstantType type) throws IOException {
         if (containsHuge)
             switch (type) {
                 case INTEGER:
                     this.getConnection().getHugespecial().schema().propertyKey(propertyName).asInt().ifNotExist().create();
+                    schema_out.write("schema().propertyKey('" + propertyName + "').asInt().ifNotExist().create();");
+                    schema_out.newLine();
                     break;
                 case STRING:
                     this.getConnection().getHugespecial().schema().propertyKey(propertyName).asText().ifNotExist().create();
+                    schema_out.write("schema().propertyKey('" + propertyName + "').asText().ifNotExist().create();");
+                    schema_out.newLine();
                     break;
                 case DOUBLE:
                     this.getConnection().getHugespecial().schema().propertyKey(propertyName).asDouble().ifNotExist().create();
+                    schema_out.write("schema().propertyKey('" + propertyName + "').asDouble().ifNotExist().create();");
+                    schema_out.newLine();
                     break;
                 case BOOLEAN:
                     this.getConnection().getHugespecial().schema().propertyKey(propertyName).asBoolean().ifNotExist().create();
-
+                    schema_out.write("schema().propertyKey('" + propertyName + "').asBoolean().ifNotExist().create();");
+                    schema_out.newLine();
                     break;
                 case FLOAT:
                     this.getConnection().getHugespecial().schema().propertyKey(propertyName).asFloat().ifNotExist().create();
+                    schema_out.write("schema().propertyKey('" + propertyName + "').asFloat().ifNotExist().create();");
+                    schema_out.newLine();
                     break;
                 case LONG:
                     this.getConnection().getHugespecial().schema().propertyKey(propertyName).asLong().ifNotExist().create();
+                    schema_out.write("schema().propertyKey('" + propertyName + "').asLong().ifNotExist().create();");
+                    schema_out.newLine();
                     break;
             }
     }
@@ -400,7 +396,7 @@ public class GremlinGraphProvider implements GraphDBProvider<GraphGlobalState, G
         }*/
     }
 
-    public void createEdgeLabel(){
+    public void createEdgeLabel() throws IOException {
         for(int i = 0; i < randomly.getInteger(state.getEdgeLabelNum()); i++){
             // for each label
             String labelName = GDBCommon.createEdgeLabelName(i);
@@ -414,6 +410,8 @@ public class GremlinGraphProvider implements GraphDBProvider<GraphGlobalState, G
             edgeLabels.add(edgeLabel);
             if(containsHuge) {
                 this.getConnection().getHugespecial().schema().edgeLabel(labelName).link(edgeLabel.getOutLabel().getLabelName(),edgeLabel.getInLabel().getLabelName()).ifNotExist().create();
+                schema_out.write("schema().edgeLabel('" + labelName + "').link('" + edgeLabel.getOutLabel().getLabelName() + "', '" + edgeLabel.getInLabel().getLabelName() + "').ifNotExist().create();");
+                schema_out.newLine();
             }
             // generate randomly properties
             int random = (int) randomly.getInteger(edgeProperties.size());
@@ -424,12 +422,16 @@ public class GremlinGraphProvider implements GraphDBProvider<GraphGlobalState, G
                     list.add(gep);
                     if(containsHuge){
                         this.getConnection().getHugespecial().schema().edgeLabel(labelName).properties(gep.getEdgePropertyName()).nullableKeys(gep.getEdgePropertyName()).append();
+                        schema_out.write("schema().edgeLabel('" + labelName + "').properties('" + gep.getEdgePropertyName() + "').nullableKeys('" + gep.getEdgePropertyName() + "').append();");
+                        schema_out.newLine();
                     }
                     // index edge property
                     String indexname = labelName + "by" + gep.getEdgePropertyName() + "Shard";
                     EdgeindexList.add(indexname);
                     if(containsHuge){
                         this.getConnection().getHugespecial().schema().indexLabel(indexname).onE(labelName).by(gep.getEdgePropertyName()).shard().ifNotExist().create();
+                        schema_out.write("schema().indexLabel('" + indexname + "').onE('" + labelName + "').by('" + gep.getEdgePropertyName() + "').shard().ifNotExist().create();");
+                        schema_out.newLine();
                     }
                 }
 

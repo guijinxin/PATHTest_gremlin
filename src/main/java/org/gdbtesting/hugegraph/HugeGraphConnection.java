@@ -57,9 +57,11 @@ public class HugeGraphConnection extends GremlinConnection {
         HugeClient hugegraph = connection.getHugespecial();
         GremlinManager gremlin = hugegraph.gremlin();
 
-        String query1 = "g.E().order().by(asc).has('ep4',0.49562305).outV().both('el0','el2','el1').repeat(__.in('el3')).emit().times(2).where(__.bothE('el2','el1','el3').count().is(lt(886129397034095534))).count()";
-        String query2 = "g.E().match(__.as('start0').order().by(asc).as('m0')).select('m0').match(__.as('start1').has('ep4',0.49562305).as('m1')).select('m1').outV().as('start2').emit().repeat(__.both('el0','el2','el1').as('a0')).times(3).where(__.path().from('start2').unfold().count().is(eq(2))).select(last, 'a0').as('start3').union(repeat(__.in('el3').as('a1')).times(1).simplePath().path().select(last, 'a1'), repeat(__.in('el3').as('a1')).times(1).cyclicPath().path().select(last, 'a1'), __.in('el3').in('el3')).where(__.bothE('el2','el1','el3').count().is(lt(886129397034095534))).count()";
+        String query1 = "g.E().outV().repeat(__.both()).times(1).where(__.outE().count().is(lt(-3))).count()"
+               ;
 
+
+        String query2 = " g.V().match(__.as('start1').repeat(__.inE('el0')).times(1).as('m1')).select('m1').hasLabel('el0','el2').hasLabel('el1')" ;
         try {
             org.apache.hugegraph.structure.gremlin.ResultSet hugeResult = gremlin.gremlin(query1).execute();
             org.apache.hugegraph.structure.gremlin.ResultSet hugeResult1 = gremlin.gremlin(query2).execute();

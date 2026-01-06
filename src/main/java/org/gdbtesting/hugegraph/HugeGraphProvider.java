@@ -14,6 +14,7 @@ import org.gdbtesting.gremlin.GremlinGraphProvider;
 import org.gdbtesting.gremlin.GraphGlobalState;
 import org.gdbtesting.gremlin.gen.GraphExpressionGenerator;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class HugeGraphProvider extends GremlinGraphProvider {
     private GraphExpressionGenerator generator;
     private List<String> vertexPropertyList;
 
-    public HugeGraphProvider(GraphGlobalState state) {
+    public HugeGraphProvider(GraphGlobalState state) throws IOException {
         super(state);
         this.state = state;
         this.version = state.getDbVersion();
