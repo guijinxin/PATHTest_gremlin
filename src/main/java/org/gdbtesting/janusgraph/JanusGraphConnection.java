@@ -76,9 +76,11 @@ public class JanusGraphConnection extends GremlinConnection {
         GraphTraversalSource g = test.getG();
         g.E().drop().iterate();
         g.V().drop().iterate();
-        g.addV().property("vp3",(float)0.62307286).next();
+        g.addV().property("vp3",0.62307286).next();
+        g.addV().property("vp1", 1).next();
+
         String query1 = "g.V().has('vp3',0.62307286).count()";
-        String query2 = "g.V().order().by(asc).match(__.as('start0').has('vp3',0.62307286).as('m0')).select('m0')" ;
+        String query2 = "g.V().order().by(asc).match(__.as('start0').has('vp3',P.between(0.62307286 - 1e-10, 0.62307286 + 1e-10)).as('m0')).select('m0').count()" ;
         try{
             List<Result> results = test.getClient().submit(query1).all().get();
             for (Result r : results) {

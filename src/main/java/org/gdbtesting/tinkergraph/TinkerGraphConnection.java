@@ -74,7 +74,7 @@ public class TinkerGraphConnection extends GremlinConnection {
         GraphTraversalSource g = connection.getG();
         g.E().drop().iterate();
         g.V().drop().iterate();
-        g.addV().property("vp3",(float)0.62307286).next();
+        g.addV().property("vp3",0.62307286).next();
         String query1 = "g.V().has('vp3',0.62307286).count()";
 
         //g.V().has('vp1', inside(0.24070676216155018,4.13998472E8)).inE('el0','el4').outV().not(__.values('vp1'))

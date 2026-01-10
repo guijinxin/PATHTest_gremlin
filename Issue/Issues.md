@@ -18,11 +18,23 @@ g.E().has('ep4', lt(0.32696354)).match(__.as('start1').and(__.hasLabel('el2')).a
 + file: 1HugeGraph-graphdata1.txt
 
 ## Issue2. IllegalArgumentException in hugeGraph
+title:
+- Server Version: 1.7.0
+- Backend: RocksDB x nodes
+- OS: 192 CPUs, 256 G RAM, Ubuntu 22.04
+- Data Size:  50 vertices, 100 edges
+### Expected behavior
+For the two query below, the same result should be returned:
 ```gremlin
 g.E().bothV().where(__.out('el0').count().is(gte(-3))).count()
 
-g.E().match(__.as('start0').bothV().as('m0')).select('m0').match(__.as('start1').where(__.out('el0').count().is(gte(-1))).as('m1')).select('m1').count()
+g.E().match(__.as('start0').repeat(__.bothV()).times(1).as('m0')).select('m0').match(__.as('start1').where(__.out('el0').count().is(gte(-3))).as('m1')).select('m1').count()
 ```
+### Actual behavior
++ The first query thrown a exception: ```java.lang.IllegalArgumentException: Not a legal range: [0, -3]```
++ The second query returned the results normally.
++ We replaced the ```bothV()``` step in the second query with ```match(__.as('start0').repeat(__.bothV()).times(1).as('m0')).select('m0')```, and moved the```where (...)``` step into the ```match()```step. Both of these operations should not affect the result.
++ When I executed these two queries on Janusgraph and Tinkerpop, they both returned the same results and were consistent with the results of the second query.
 error messages:
 ``` 
 java.lang.IllegalArgumentException: Not a legal range: [0, -3]
@@ -54,11 +66,23 @@ g.E().outV().repeat(__.both()).times(1).where(__.outE().count().is(lt(-3))).coun
   + 4schema-out.txt
 
 ## Issue4. Exception in hugeGraph
+title: Unexpected NumberFormatException for filter-step
+- Server Version: 1.7.0
+- Backend: RocksDB x nodes
+- OS: 192 CPUs, 256 G RAM, Ubuntu 22.04
+- Data Size:  50 vertices, 100 edges
+### Expected behavior
+For the two query below, the same result should be returned:
 ```gremlin
 g.E().where(__.has('ep5', lt(true)))
 
 g.E().match(__.as('start1').where(__.has('ep5', lt(true))).as('m1')).select('m1')
 ```
+### Actual behavior
++ The first query thrown a exception: ```java.lang.NumberFormatException: Character t is neither a decimal digit number, decimal point, nor "e" notation exponential mark.```
++ The second query returned the results normally.
++ We moved the```where (...)``` step in first query into the ```match()```step, which should not affect the result.
++ When I executed these two queries on Janusgraph and Tinkerpop, they both returned the same results and were consistent with the results of the second query.
 
 error message : 
 ```
@@ -73,8 +97,22 @@ second:9
 reference: janusGraph returns: 9
 
 ## Issue5: java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
+title: Unexpected ArrayIndexOutOfBoundsException for filter-step and repeat()-step
+- Server Version: 1.7.0
+- Backend: RocksDB x nodes
+- OS: 192 CPUs, 256 G RAM, Ubuntu 22.04
+- Data Size:  50 vertices, 100 edges
+### Expected behavior
+For the two query below, the same result should be returned:
+```
 g.V().has('vp4', lt('')).repeat(__.out('el2')).emit().times(1).count()
 g.V().match(__.as('start').has('vp4', lt('')).union(__.out('el2')).as('m')).select('m').count()
+```
+### Actual behavior
++ The first query thrown a exception: ```java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0```
++ The second query returned the results normally.
++ We moved the```has(...)``` step and ```repeat()```step in first query into the ```match()```step and replace the ```repeat()``` with ```union()``` step, which should not affect the result.
++ When I executed these two queries on Janusgraph and Tinkerpop, they both returned the same results and were consistent with the results of the second query.
 
 error messages: java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
 
@@ -83,11 +121,25 @@ second query: 0
   + 3HugeGraph-creat.txt
   + 3schema-out.txt
 ## Issue6: NoIndexException in HugeGraph, triggered by match()
+title: NoIndexException triggered by match()
+- Server Version: 1.7.0
+- Backend: RocksDB x nodes
+- OS: 192 CPUs, 256 G RAM, Ubuntu 22.04
+- Data Size:  50 vertices, 100 edges
+### Expected behavior
+For the two query below, the same result should be returned:
 ```gremlin
 g.V().has('vp4', neq('J2O')).has('vl1', 'vp2',gte(false)).has('vp2').has('vl0', 'vp3',gt(4592737712018141718)).out().count()
 
-g.V().has('vp4', neq('J2O')).has('vl1', 'vp2',gte(false)).match(__.as('start0').has('vp2').repeat(__.out()).times(1).has('vl0', 'vp3',gt(4592737712018141718)).as('m0')).count()
+g.V().has('vp4', neq('J2O')).has('vl1', 'vp2',gte(false)).match(__.as('start0').has('vp2').has('vl0', 'vp3',gt(4592737712018141718)).repeat(__.out()).times(1).as('m0')).select('m0').count()
 ```
+### Actual behavior
++ The first query returned the results normally.
++ The second query thrown a exception: ```org.apache.hugegraph.exception.NoIndexException: Don't accept query based on properties [vp4, vp2] that are not indexed in label 'vl1', may not match secondary/range/not-equal condition```
+### 
++ We moved the```has(...)``` step and ```out()```step in first query into the ```match()```step and replace the ```out()``` with ```repeat()``` step, which should not affect the result.
++ When I executed these two queries on Janusgraph and Tinkerpop, they both returned the same results and were consistent with the results of the first query.
++ I have implemented a fuzzing tool and am using it to test HugeGraph. To reduce the burden on developers, I have simplified the test cases as much as possible and isolated irrelevant information. I hope this work can be helpful for further improving the stability of HugeGraph.
 
 first query: 0
 
@@ -97,11 +149,23 @@ error messages: org.apache.hugegraph.exception.NoIndexException: Don't accept qu
   + 3HugeGraph-creat.txt
   + 3schema-out.txt
 ## Issue7: IllegalStateException in hugeGraph
+- Server Version: 1.7.0
+- Backend: RocksDB x nodes
+- OS: 192 CPUs, 256 G RAM, Ubuntu 22.04
+- Data Size:  50 vertices, 100 edges
+### Expected behavior
+For the two query below, the same result should be returned:
 ```gremlin
 g.V().inE('el0').hasLabel('el0','el2').hasLabel('el1')
 
 g.V().match(__.as('start1').repeat(__.inE('el0')).times(1).as('m1')).select('m1').hasLabel('el0','el2').hasLabel('el1')
 ```
+### Actual behavior
++ The first query thrown a exception: ```java.lang.IllegalStateException: Illegal key 'LABEL' with more than one value: [1, 3]```
++ The second query returned the results normally.
++ We replaced the ```inE('el0')``` step in the first query with ```match(__.as('start1').repeat(__.inE('el0')).times(1).as('m1')).select('m1')```, which should not affect the result.
++ When I executed these two queries on Janusgraph and Tinkerpop, they both returned the same results and were consistent with the results of the second query.
++ This issue was previously resolved in https://github.com/apache/incubator-hugegraph/pull/1737#issue-1109290490, but it has occurred again.
 
 error messages:  java.lang.IllegalStateException: Illegal key 'LABEL' with more than one value: [1, 3]
 
